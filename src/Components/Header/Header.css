@@ -1,3 +1,27 @@
 .header{
-    background-image: url("../images/Pixar pier.jpg");
+    background-image:  url("../../images/Roller coaster.jpg");
+    background-position: top;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.header__container{
+    margin-left: 2.5rem;
+}
+
+.header__h1{
+    font-size: 6rem;
+    font-weight: bold;
+    color: #FFFFFF;
+    margin: 0.9rem;
+}
+
+.header__h2{
+    font-size: 2rem;
+    font-weight: bold;
+    color: #FFFFFF;
+    margin: 1rem;
 }
