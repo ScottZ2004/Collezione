@@ -1,0 +1,10 @@
+@import url('http://fonts.cdnfonts.com/css/apercu');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Apercu', sans-serif;
+}
+
+body{
+    font-size: 62.5%;
+}
