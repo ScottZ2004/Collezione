@@ -1,4 +1,4 @@
-.header{
+.navigation{
     display: flex;
     justify-content: space-evenly   ;
     height: auto;
@@ -6,26 +6,26 @@
     align-items: center;
 }
 
-.header__img{
+.navigation__img{
     width: auto;
-    height: 5rem;
+    height: 3.5rem;
     margin: 1rem;
 }
 
-.header__list{
+.navigation__list{
     display: flex;
     justify-content: space-evenly;
     list-style: none;
     width: 70rem;
 }
 
-.header__item{
+.navigation__item{
     font-size: 1.1rem;
     text-decoration: none;
-    margin: 1rem;
+    padding: 0 1rem;
     color: #413D45;
 }
 
-.header__item:hover{
+.navigation__item:hover{
 
 }

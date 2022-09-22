@@ -1,12 +1,12 @@
 .button{
     margin: 1rem;
-    padding: 1rem 2rem;
+    padding: 0.8rem 1.6rem;
     background-color: #0C6FF9;
     border-radius: 2.5rem;
     color: white;
     text-decoration: none;
     font-size: 1.1rem;
-    box-shadow: 0 0.2rem 0.01rem 0.01rem #dcdcdc;
+    box-shadow: 0 0.2rem 0.01rem 0.01rem rgba(0, 0, 0, 0.17);
     transition: 0.2s;
     height: 1.3rem;
     width: auto;
@@ -18,5 +18,6 @@
 
 .button:active{
     background-color: #0c51bb;
-    margin-top: 1.2rem
+    margin-top: 1.1rem;
+    margin-bottom:0.9rem;
 }
