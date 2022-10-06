@@ -1,0 +1,35 @@
+.about__section{
+    padding: 3rem;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 5rem;
+    margin-top: 5rem;
+}
+.about__article{
+    width: 40rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+.about__h1{
+    font-size: 4rem;
+    font-weight: bold;
+}
+.about__h2{
+    font-size: 1.8rem;
+    font-weight: normal;
+}
+.about__image-container{
+    width: 40rem;
+    height: 40rem;
+    border-radius: 1.5rem;
+    margin: 2rem;
+}
+.about__image{
+
+    height: 40rem;
+    width: 40rem;
+    object-fit: cover;
+    border-radius: 1.5rem;
+}

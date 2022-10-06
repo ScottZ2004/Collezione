@@ -9,13 +9,13 @@ const Navigation = (props) => {
         return <a key={item.key} className="navigation__item" href={item.goto}>{item.name}</a>
     });
     return(
-        <header className="navigation">
+        <nav className="navigation">
             <img src={logo} alt="logo" className="navigation__img"/>
             <ul className="navigation__list">
                 {items}
             </ul>
             <Button title="Login" goto="#"/>
-        </header>
+        </nav>
     );
 }
 

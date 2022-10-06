@@ -11,7 +11,7 @@ const Header = () => {
                 <div className="header__container">
                     <h1 className="header__h1">Collezione</h1>
                     <h2 className="header__h2">Life is like a roller coaster</h2>
-                    <Button title="Login"/>
+                    <Button title="Login" class="button-center"/>
                 </div>
                 <img className="header__img" src={rolleCcoasterTrans}alt="Achtbaan 2"/>
             </div>

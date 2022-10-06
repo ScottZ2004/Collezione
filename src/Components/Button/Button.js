@@ -1,8 +1,11 @@
 import "./Button.css"
 
 const Button = (props) => {
+
+    let classname = props.class + " button";
+
     return(
-        <a class="button" target="_blank" href={props.goto || "#"}>{props.title || "Button"}</a>
+        <a className={classname} target="_blank" href={props.goto || "#"}>{props.title || "Button"}</a>
     );
 }
 
