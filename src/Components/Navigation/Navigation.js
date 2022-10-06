@@ -1,16 +1,18 @@
-import logo from '../images/logo.png';
+import logo from '../../images/logo.png';
 import "./Navigation.css";
 import Button from "../Button/Button";
 
 const Navigation = (props) => {
+
+
+    let items = props.items.map(item => {
+        return <a key={item.key} className="navigation__item" href={item.goto}>{item.name}</a>
+    });
     return(
-        <header class="navigation">
-            <img src={logo} alt="logo" class="navigation__img"/>
-            <ul class="navigation__list">
-                <li><a class="navigation__item" href={props.goto1 || "#"}>{props.itemone || "item 1"}</a></li>
-                <li><a class="navigation__item" href={props.goto2 || "#"}>{props.itemtwo || "item 2"}</a></li>
-                <li><a class="navigation__item" href={props.goto3 || "#"}>{props.itemthree || "item 3"}</a></li>
-                <li><a class="navigation__item" href={props.goto4 || "#"}>{props.itemfour || "item 4"}</a></li>
+        <header className="navigation">
+            <img src={logo} alt="logo" className="navigation__img"/>
+            <ul className="navigation__list">
+                {items}
             </ul>
             <Button title="Login" goto="#"/>
         </header>
