@@ -1,6 +1,7 @@
 import Navigation from "../Navigation/Navigation";
 import Header from "../Header/Header";
 import About from "../About/About";
+import Price from "../Price/Price";
 const Homepage = () => {
     const itemsList = [
         {
@@ -29,6 +30,7 @@ const Homepage = () => {
             <Navigation items={itemsList} />
             <Header />
             <About />
+            <Price/>
         </>
     )
 }
