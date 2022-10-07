@@ -2,6 +2,7 @@ import Navigation from "../Navigation/Navigation";
 import Header from "../Header/Header";
 import About from "../About/About";
 import Features from "../Features/Features";
+import Prices from "../Prices/Prices";
 import "./Homepage.css";
 const Homepage = () => {
     const itemsList = [
@@ -56,6 +57,7 @@ const Homepage = () => {
             </section>
             <section className="homepage__dark">
                 <Features/>
+                <Prices/>
             </section>
 
         </>

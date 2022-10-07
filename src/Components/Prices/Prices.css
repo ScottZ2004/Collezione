@@ -1,0 +1,38 @@
+.prices{
+    margin-top: 10rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.prices__h1{
+    font-size: 4rem;
+    display: flex;
+    justify-content: center;
+    margin: 3rem;
+}
+
+.prices__check_container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 2rem;
+    max-width: 70rem;
+}
+
+.prices__check{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.4rem;
+    margin: 2rem;
+}
+
+.prices__check__svg{
+    height: 1.3rem;
+    width: 1.6rem;
+}
+
+.prices__check__p{
+    font-size: 1.8rem;
+}

@@ -5,8 +5,10 @@
 
 .homepage__light{
     background: #FFFFFF;
+    color: #413D45;
 }
 
 .homepage__dark{
     background: #413D45;
+    color: #FFFFFF;
 }
