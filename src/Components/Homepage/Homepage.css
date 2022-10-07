@@ -1,0 +1,12 @@
+.homepage__svg{
+    width: 100%;
+    height: auto;
+}
+
+.homepage__light{
+    background: #FFFFFF;
+}
+
+.homepage__dark{
+    background: #413D45;
+}
