@@ -1,0 +1,59 @@
+.price__input{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background: rgb(245, 242, 237);
+    color: #413D45;
+    max-width: 50rem;
+    min-width: 40rem;
+    padding: 2.4rem;
+    margin: 2rem;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.price__input--checked{
+    background: rgb(255, 126, 29);
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 50rem;
+    min-width: 40rem;
+    padding: 2.4rem;
+    margin: 2rem;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.price__h3{
+    font-size: 1.2rem;
+    font-weight: normal;
+}
+
+.price__h1{
+    font-size: 2.4rem;
+    font-weight: bold;
+}
+
+.price__h2{
+    font-size: 1.8rem;
+    font-weight: normal;
+}
+.price__checkbox{
+    background: #FFFFFF;
+    width: 3rem;
+    height: 3rem;
+    padding: 0.4rem;
+    border: #d3cec8 solid 0.1rem;
+    border-radius: 25%;
+ }
+.price__check__svg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    height: 2rem;
+}

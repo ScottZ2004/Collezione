@@ -5,11 +5,16 @@
     justify-content: center;
 }
 
-.prices__h1{
-    font-size: 4rem;
+.prices__header{
     display: flex;
     justify-content: center;
-    margin: 3rem;
+    flex-direction: column;
+    align-items: center;
+}
+
+.prices__h1{
+    font-size: 4rem;
+    margin: 1rem;
 }
 
 .prices__check_container{
@@ -35,4 +40,11 @@
 
 .prices__check__p{
     font-size: 1.8rem;
+}
+
+.prices__inputWrapper{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
