@@ -5,8 +5,8 @@
     align-items: center;
     background: rgb(245, 242, 237);
     color: #413D45;
-    max-width: 50rem;
-    min-width: 40rem;
+    width: 40rem;
+    min-width: 30rem;
     padding: 2.4rem;
     margin: 2rem;
     border-radius: 1rem;
@@ -20,8 +20,8 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    max-width: 50rem;
-    min-width: 40rem;
+    width: 40rem;
+    min-width: 30rem;
     padding: 2.4rem;
     margin: 2rem;
     border-radius: 1rem;

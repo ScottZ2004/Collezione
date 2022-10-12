@@ -72,6 +72,9 @@ class Prices extends React.Component{
                 <section className="prices__inputWrapper">
                     {prices}
                 </section>
+                <footer className="prices__footer">
+                    <button className="prices__button">Try for free</button>
+                </footer>
             </article>
 
         );

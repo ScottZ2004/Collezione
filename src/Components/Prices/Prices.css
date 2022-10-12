@@ -48,3 +48,26 @@
     flex-direction: row;
     flex-wrap: wrap;
 }
+
+.prices__footer{
+    display: flex;
+    justify-content: center;
+}
+
+.prices__button{
+    font-size: 1.6rem;
+    background: rgb(255, 255, 255);
+    padding: 2rem 4rem;
+    border-radius: 3rem;
+    margin: 1rem;
+}
+
+.prices__button:hover{
+    background: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+}
+
+.prices__button:active{
+    margin-top: 1.1rem;
+    margin-bottom: 0.9rem;
+}
