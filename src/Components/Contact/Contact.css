@@ -1,0 +1,68 @@
+.contact{
+    margin-top: -1rem;
+    font-size: 8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    flex-direction: column;
+    background:  #FAF6F4;
+}
+
+.contactWrapper{
+    background: #FFFFFF;
+    width: 40%;
+    padding: 3rem;
+    border-radius: 0.4rem;
+    margin: 5rem;
+}
+
+.contact__title{
+    display: flex;
+    justify-content: center;
+    font-size: 2.8rem;
+    padding:1rem 1rem 3rem 1rem;
+}
+
+.contact__input{
+    border: 1px solid #DAD7D5;
+    border-radius: 0.8rem;
+    height: 5.8rem;
+    font-size: 1.6rem;
+    color: rgb(90, 88, 87);
+    width: 100%;
+    padding-left: 1rem;
+}
+
+.contact__label{
+    font-size: 1.6rem;
+    transform: translateY(-2.35em);
+    transform-origin: 0 0;
+    display: block;
+    padding-left: 1rem;
+    transition: all 0.3s;
+}
+
+.contact__label:hover{
+    cursor: text;
+}
+
+.contact__input::placeholder{
+    color: transparent;
+}
+
+.contact__input:focus + .contact__label, .contact__input:not(:placeholder-shown) + .contact__label{
+    transform: translateY(-3em) scale(0.7);
+    padding-left: 1.5rem;
+}
+
+.contact__input:focus, .contact__input:not(:placeholder-shown){
+    padding-top: 2rem;
+    border: rgb(0, 164, 82) solid 0.1rem;
+}
+
+@media (max-width: 1000px) {
+    .contactWrapper{
+        width: 80%;
+    }
+}
