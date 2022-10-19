@@ -13,7 +13,7 @@ class Prices extends React.Component{
                     'h2': '4.83 EUR/month',
                     'checked': false,
                     'id': 1,
-                    'best-value': false,
+                    'best_value': false,
                 },
                 {
                     'h3': 'Jaarlijks',
@@ -21,7 +21,7 @@ class Prices extends React.Component{
                     'h2': '4.83 EUR/month',
                     'checked': true,
                     'id': 2,
-                    'best-value': true,
+                    'best_value': true,
                 },
                 {
                     'h3': 'Annual',
@@ -35,10 +35,13 @@ class Prices extends React.Component{
         }
     }
 
+    checkPrice = (id) =>{
+
+    }
 
     render(){
         let prices = this.state.price_list.map(price =>{
-            return <Price best_value={this.best_value} h3={price.h3} h1={price.h1} h2={price.h2} checked={price.checked} key={price.id} id={price.id}/>
+            return <Price best_value={price.best_value} h3={price.h3} h1={price.h1} h2={price.h2} checked={price.checked} key={price.id} id={price.id}/>
         })
         return(
             <article className="prices">
