@@ -18,28 +18,11 @@
 }
 
 .prices__check_container{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-auto-rows: auto;
     margin: 2rem;
-    max-width: 70rem;
-}
-
-.prices__check{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 1.4rem;
-    margin: 2rem;
-}
-
-.prices__check__svg{
-    height: 1.3rem;
-    width: 1.6rem;
-}
-
-.prices__check__p{
-    font-size: 1.8rem;
+    max-width: 100rem;
 }
 
 .prices__inputWrapper{
@@ -71,4 +54,14 @@
 .prices__button:active{
     margin-top: 1.1rem;
     margin-bottom: 0.9rem;
+}
+
+@media (max-width: 880px) {
+    .prices__check_container{
+        display: grid;
+        grid-template-columns: 100%;
+        grid-auto-rows: auto;
+        margin: 2rem;
+        max-width: 100rem;
+    }
 }
