@@ -1,3 +1,107 @@
 .footer{
     background: #413D45;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.footer__list{
+    display: flex;
+    gap: 3rem;
+}
+
+.footer__list__item{
+    color: #FFFFFF;
+    opacity: 0.7;
+    font-size: 1.8rem;
+    text-decoration: none;
+    list-style: none;
+}
+
+.footer__list__item:hover{
+    opacity: 1;
+    text-decoration: underline;
+
+}
+
+.footer__socialList{
+    display: flex;
+    gap: 2rem;
+    margin: 1rem;
+}
+
+.footer__socialList__item li svg{
+    height: 2.8rem;
+    width: 2.8rem;
+}
+
+.footer__socialList__item:hover{
+    opacity: 0.8;
+    transition: 0.2s;
+}
+
+.footer__dropdownContainer{
+    position: relative;
+    display: inline-block;
+}
+
+.footer__dropdown{
+    border-radius: 2.7rem;
+    display: flex;
+    gap: 2rem;
+    font-size: 2.4rem;
+    color: #FFFFFF;
+    align-items: center;
+    padding: 1.2rem;
+    margin: 2rem;
+    border: #FFFFFF solid 0.2rem;
+}
+
+.footer__dropdown:hover{
+    cursor: pointer;
+}
+
+.footer__dropdown__svg{
+    transform: scale(0.8);
+}
+
+.footer__dropdown__listContainer{
+    display: block;
+    position: absolute;
+    bottom: 9rem;
+}
+.footer__dropdown__list{
+    display: flex;
+    justify-content: center;
+    width: 18.4rem;
+    background: #413D45;
+    flex-direction: column;
+    margin: 0 2rem;
+    padding: 1rem;
+    border-radius: 0.7rem;
+}
+
+.footer__dropdown__listItem{
+    font-size: 1.6rem;
+    list-style: none;
+    color: #FFFFFF;
+    width: 100%;
+    padding: 1.32rem 2.4rem;
+    border-radius: 0.7rem;
+}
+
+.footer__dropdown__listItem:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.footer__dropdown__listItem--active{
+    background: rgb(103, 100, 106);
+}
+
+@media(max-width: 1000px){
+    .footer{
+        padding: 1rem;
+    }
 }
