@@ -52,6 +52,10 @@
     border: #FFFFFF solid 0.2rem;
 }
 
+.footer__dropdown:hover{
+    cursor: pointer;
+}
+
 .footer__dropdown__svg{
     transform: scale(0.8);
 }
