@@ -4,45 +4,172 @@ import React from "react";
 import Check from "../Check/Check";
 
 class Prices extends React.Component{
-    constructor() {
-        super();
-        this.state ={
+    constructor(props) {
+        super(props);
+        this.state = {
+            price_list: []
+        }
+    }
+
+    componentDidMount() {
+        this.setState({
             price_list: [
                 {
                     'h3': '',
                     'h1': 'Gratis',
                     'h2': '4.83 EUR/month',
-                    'checked': false,
                     'id': 1,
                     'best_value': false,
+                    'checked': false,
                 },
                 {
                     'h3': 'Jaarlijks',
                     'h1': '14 days free',
                     'h2': '4.83 EUR/month',
-                    'checked': true,
                     'id': 2,
                     'best_value': true,
+                    'checked': true,
                 },
                 {
                     'h3': 'Annual',
                     'h1': '14 days free',
                     'h2': '4.83 EUR/month',
-                    'checked': false,
                     'id': 3,
                     'best_value': false,
+                    'checked': false,
                 }
             ]
-        }
+        })
     }
 
     checkPrice = (id) =>{
-
+        this.setState({price_list:
+            [
+                {
+                    'h3': '',
+                    'h1': 'Gratis',
+                    'h2': '4.83 EUR/month',
+                    'id': 1,
+                    'best_value': false,
+                    'checked': false,
+                },
+                {
+                    'h3': 'Jaarlijks',
+                    'h1': '14 days free',
+                    'h2': '4.83 EUR/month',
+                    'id': 2,
+                    'best_value': true,
+                    'checked': false,
+                },
+                {
+                    'h3': 'Annual',
+                    'h1': '14 days free',
+                    'h2': '4.83 EUR/month',
+                    'id': 3,
+                    'best_value': false,
+                    'checked': false,
+                }
+            ]
+        }
+        );
+        this.state.price_list.map(price => {
+            if (id === 1){
+                this.setState({price_list:
+                        [
+                            {
+                                'h3': '',
+                                'h1': 'Gratis',
+                                'h2': '0 EUR/month',
+                                'id': 1,
+                                'best_value': false,
+                                'checked': true,
+                            },
+                            {
+                                'h3': 'Jaarlijks',
+                                'h1': '14 days free',
+                                'h2': '4.83 EUR/month',
+                                'id': 2,
+                                'best_value': true,
+                                'checked': false,
+                            },
+                            {
+                                'h3': 'Annual',
+                                'h1': '14 days free',
+                                'h2': '4.83 EUR/month',
+                                'id': 3,
+                                'best_value': false,
+                                'checked': false,
+                            }
+                        ]
+                    }
+                );
+            }else if (id === 2){
+                this.setState({price_list:
+                            [
+                                {
+                                    'h3': '',
+                                    'h1': 'Gratis',
+                                    'h2': '4.83 EUR/month',
+                                    'id': 1,
+                                    'best_value': false,
+                                    'checked': false,
+                                },
+                                {
+                                    'h3': 'Jaarlijks',
+                                    'h1': '14 days free',
+                                    'h2': '4.83 EUR/month',
+                                    'id': 2,
+                                    'best_value': true,
+                                    'checked': true,
+                                },
+                                {
+                                    'h3': 'Annual',
+                                    'h1': '14 days free',
+                                    'h2': '4.83 EUR/month',
+                                    'id': 3,
+                                    'best_value': false,
+                                    'checked': false,
+                                }
+                            ]
+                    }
+                );
+            }else if (id === 3){
+                this.setState({price_list:
+                            [
+                                {
+                                    'h3': '',
+                                    'h1': 'Gratis',
+                                    'h2': '4.83 EUR/month',
+                                    'id': 1,
+                                    'best_value': false,
+                                    'checked': false,
+                                },
+                                {
+                                    'h3': 'Jaarlijks',
+                                    'h1': '14 days free',
+                                    'h2': '4.83 EUR/month',
+                                    'id': 2,
+                                    'best_value': true,
+                                    'checked': false,
+                                },
+                                {
+                                    'h3': 'Annual',
+                                    'h1': '14 days free',
+                                    'h2': '4.83 EUR/month',
+                                    'id': 3,
+                                    'best_value': false,
+                                    'checked': true,
+                                }
+                            ]
+                    }
+                );
+            }
+        })
     }
 
     render(){
         let prices = this.state.price_list.map(price =>{
-            return <Price best_value={price.best_value} h3={price.h3} h1={price.h1} h2={price.h2} checked={price.checked} key={price.id} id={price.id}/>
+            return <Price checkPrice={this.checkPrice} best_value={price.best_value} h3={price.h3} h1={price.h1} h2={price.h2} key={price.id} checked={price.checked} id={price.id}/>
         })
         return(
             <article className="prices">

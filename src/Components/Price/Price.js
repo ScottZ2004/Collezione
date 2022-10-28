@@ -1,5 +1,6 @@
 import "./Price.css"
 import React from "react";
+import check from "../Check/Check";
 
 class Price extends React.Component{
     constructor(props) {
@@ -7,21 +8,27 @@ class Price extends React.Component{
         this.className = "price__input";
         this.state = {
             checked: this.props.checked,
-            best_value: this.props.best_value
+            best_value: this.props.best_value,
+            id: this.props.id
         }
     }
 
     componentDidMount() {
-        this.setState({checked: this.props.checked});
-        this.setState({best_value: this.props.best_value})
+        this.setState({
+            checked: this.props.checked,
+            best_value: this.props.best_value,
+            id: this.props.id
+        });
     }
 
+
     onclick = () => {
-        this.setState({checked: !this.state.checked});
+        this.props.checkPrice(this.state.id);
+        this.setState({checked: this.state.checked});
+        console.log('click2?');
     }
 
     render(){
-
         if (this.state.checked){
             this.className = "price__input--checked";
             this.svg = <svg className="price__check__svg" xmlns="http://www.w3.org/2000/svg" width="36" height="26.846" viewBox="0 0 36 26.846">
