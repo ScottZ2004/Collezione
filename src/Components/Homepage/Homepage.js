@@ -6,7 +6,29 @@ import Prices from "../Prices/Prices";
 import Contact from "../Contact/Contact";
 import Footer from "../Footer/Footer";
 import "./Homepage.css";
+import React, {useEffect, useState} from "react";
+
 const Homepage = () => {
+    const [windowDimension, detectHW] = useState({
+        winWidth: window.innerWidth,
+        winHeight: window.innerHeight,
+    })
+
+    const detectSize = () => {
+        detectHW({
+            winWidth:  window.innerWidth,
+            winHeight: window.innerHeight,
+        })
+    }
+    useEffect(() => {
+        window.addEventListener('resive', detectSize)
+
+        return() => {
+            window.removeEventListener('resize', detectSize)
+        }
+    }, [windowDimension])
+
+
     const itemsList = [
         {
             name: 'Over',
@@ -32,7 +54,7 @@ const Homepage = () => {
     return(
         <>
             <section className="homepage__light">
-                <Navigation items={itemsList} />
+                <Navigation items={itemsList} width={windowDimension.winWidth}/>
                 <Header />
                 <About />
                 <svg className="homepage__svg" xmlns="http://www.w3.org/2000/svg" width="1920.045" height="420.76" viewBox="0 0 1920.045 420.76">
