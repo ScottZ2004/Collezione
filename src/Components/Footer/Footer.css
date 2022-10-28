@@ -1,8 +1,9 @@
 .footer{
     background: #413D45;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .footer__list{
@@ -97,4 +98,10 @@
 
 .footer__dropdown__listItem--active{
     background: rgb(103, 100, 106);
+}
+
+@media(max-width: 1000px){
+    .footer{
+        padding: 1rem;
+    }
 }
