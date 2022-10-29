@@ -1,4 +1,5 @@
 .about__section{
+    scroll-margin-top: 10rem;
     padding: 3rem;
     display: flex;
     justify-content: space-evenly;

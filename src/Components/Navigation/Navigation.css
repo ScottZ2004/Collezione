@@ -6,6 +6,7 @@
     position: fixed;
     background: #FFFFFF;
     z-index: 2;
+    scroll-behavior: smooth;
 }
 
 .navigation__left{
@@ -18,20 +19,24 @@
     display: flex;
     align-items: center;
     gap: 0.7rem;
+    text-decoration: none;
 }
 
 .navigation__logo:hover{
     cursor: pointer;
+
 }
 
 .navigation__img{
     width: auto;
     height: 4rem;
+
 }
 
 .navigation__logo__text{
     font-size: 2.7rem;
     font-weight:500;
+    color: #413D45;
 }
 
 .navigation__list{

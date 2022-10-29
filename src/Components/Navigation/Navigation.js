@@ -17,10 +17,10 @@ class Navigation extends React.Component{
         return(
             <nav className="navigation">
                 <div className="navigation__left">
-                    <div className="navigation__logo">
+                    <a className="navigation__logo" href="#">
                         <img src={logo} alt="logo" className="navigation__img"/>
                         <h1 className="navigation__logo__text">Collezione</h1>
-                    </div>
+                    </a>
                     <ul className="navigation__list">
                         {items}
                     </ul>

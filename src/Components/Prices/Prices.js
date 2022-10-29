@@ -41,7 +41,7 @@ class Prices extends React.Component{
             return <Price best_value={this.best_value} h3={price.h3} h1={price.h1} h2={price.h2} checked={price.checked} key={price.id} id={price.id}/>
         })
         return(
-            <article className="prices">
+            <article id="prijs" className="prices">
                 <header className="prices__header">
                     <h1 className="prices__h1">Probeer Collezione</h1>
                     <div className="prices__check_container">

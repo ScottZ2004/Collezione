@@ -32,22 +32,22 @@ const Homepage = () => {
     const itemsList = [
         {
             name: 'Over',
-            goto: '#',
+            goto: '#over',
             border_color: "orange"
         },
         {
             name: 'Features',
-            goto: '#',
+            goto: '#features',
             border_color: "blue"
         },
         {
             name: 'Prijs',
-            goto: '#',
+            goto: '#prijs',
             border_color: "yellow"
         },
         {
             name: 'Contact',
-            goto: '#',
+            goto: '#contact',
             border_color: "purple"
         }
     ]

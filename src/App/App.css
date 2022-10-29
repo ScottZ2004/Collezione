@@ -7,8 +7,9 @@
     font-size: 62.5%;
 }
 
-body{
+html, body{
     color: #413D45;
+    scroll-behavior: smooth;
 }
 #root{
     font-size: 2rem;
