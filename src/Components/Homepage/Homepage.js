@@ -33,22 +33,22 @@ const Homepage = () => {
         {
             name: 'Over',
             goto: '#',
-            key: 1
+            border_color: "orange"
         },
         {
             name: 'Features',
             goto: '#',
-            key: 2
+            border_color: "blue"
         },
         {
             name: 'Prijs',
             goto: '#',
-            key: 3
+            border_color: "yellow"
         },
         {
             name: 'Contact',
             goto: '#',
-            key: 4
+            border_color: "purple"
         }
     ]
     return(
