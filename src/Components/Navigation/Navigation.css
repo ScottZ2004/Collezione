@@ -13,6 +13,12 @@
     display: flex;
     width: 50%;
     justify-content: space-evenly;
+    align-items: center;
+}
+.navigation__icon{
+    font-size: 4rem;
+    display: none;
+    margin: 1rem;
 }
 
 .navigation__logo{
@@ -78,4 +84,38 @@
     display: flex;
     width: 50%;
     justify-content: right;
+}
+
+@media(max-width: 1200px){
+    .navigation__left{
+        width: 70%;
+    }
+
+    .navigation__right{
+        width: 30%;
+    }
+}
+
+@media (max-width: 800px) {
+    .navigation__list{
+        display: none;
+    }
+
+    .navigation__icon{
+        display: block;
+    }
+
+    .navigation__left{
+        justify-content: normal;
+        gap: 2rem;
+    }
+
+    .navigation__logo__text{
+        font-size: 2rem;
+    }
+    .navigation__img{
+        width: auto;
+        height: 3rem;
+
+    }
 }
