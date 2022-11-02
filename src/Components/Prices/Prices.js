@@ -43,8 +43,63 @@ class Prices extends React.Component{
     }
 
     checkPrice = (id) =>{
-        this.setState({price_list:
-            [
+        let TempState;
+        if (id === 1){
+             TempState = [
+                {
+                    'h3': '',
+                    'h1': 'Gratis',
+                    'h2': '4.83 EUR/month',
+                    'id': 1,
+                    'best_value': false,
+                    'checked': true,
+                },
+                {
+                    'h3': 'Jaarlijks',
+                    'h1': '14 days free',
+                    'h2': '4.83 EUR/month',
+                    'id': 2,
+                    'best_value': true,
+                    'checked': false,
+                },
+                {
+                    'h3': 'Annual',
+                    'h1': '14 days free',
+                    'h2': '4.83 EUR/month',
+                    'id': 3,
+                    'best_value': false,
+                    'checked': false,
+                }
+            ];
+        }else if (id === 2){
+             TempState = [
+                {
+                    'h3': '',
+                    'h1': 'Gratis',
+                    'h2': '4.83 EUR/month',
+                    'id': 1,
+                    'best_value': false,
+                    'checked': false,
+                },
+                {
+                    'h3': 'Jaarlijks',
+                    'h1': '14 days free',
+                    'h2': '4.83 EUR/month',
+                    'id': 2,
+                    'best_value': true,
+                    'checked': true,
+                },
+                {
+                    'h3': 'Annual',
+                    'h1': '14 days free',
+                    'h2': '4.83 EUR/month',
+                    'id': 3,
+                    'best_value': false,
+                    'checked': false,
+                }
+            ];
+        }else if (id === 3){
+             TempState = [
                 {
                     'h3': '',
                     'h1': 'Gratis',
@@ -67,104 +122,14 @@ class Prices extends React.Component{
                     'h2': '4.83 EUR/month',
                     'id': 3,
                     'best_value': false,
-                    'checked': false,
+                    'checked': true,
                 }
-            ]
+            ];
         }
-        );
-        this.state.price_list.map(price => {
-            if (id === 1){
-                this.setState({price_list:
-                        [
-                            {
-                                'h3': '',
-                                'h1': 'Gratis',
-                                'h2': '0 EUR/month',
-                                'id': 1,
-                                'best_value': false,
-                                'checked': true,
-                            },
-                            {
-                                'h3': 'Jaarlijks',
-                                'h1': '14 days free',
-                                'h2': '4.83 EUR/month',
-                                'id': 2,
-                                'best_value': true,
-                                'checked': false,
-                            },
-                            {
-                                'h3': 'Annual',
-                                'h1': '14 days free',
-                                'h2': '4.83 EUR/month',
-                                'id': 3,
-                                'best_value': false,
-                                'checked': false,
-                            }
-                        ]
-                    }
-                );
-            }else if (id === 2){
-                this.setState({price_list:
-                            [
-                                {
-                                    'h3': '',
-                                    'h1': 'Gratis',
-                                    'h2': '4.83 EUR/month',
-                                    'id': 1,
-                                    'best_value': false,
-                                    'checked': false,
-                                },
-                                {
-                                    'h3': 'Jaarlijks',
-                                    'h1': '14 days free',
-                                    'h2': '4.83 EUR/month',
-                                    'id': 2,
-                                    'best_value': true,
-                                    'checked': true,
-                                },
-                                {
-                                    'h3': 'Annual',
-                                    'h1': '14 days free',
-                                    'h2': '4.83 EUR/month',
-                                    'id': 3,
-                                    'best_value': false,
-                                    'checked': false,
-                                }
-                            ]
-                    }
-                );
-            }else if (id === 3){
-                this.setState({price_list:
-                            [
-                                {
-                                    'h3': '',
-                                    'h1': 'Gratis',
-                                    'h2': '4.83 EUR/month',
-                                    'id': 1,
-                                    'best_value': false,
-                                    'checked': false,
-                                },
-                                {
-                                    'h3': 'Jaarlijks',
-                                    'h1': '14 days free',
-                                    'h2': '4.83 EUR/month',
-                                    'id': 2,
-                                    'best_value': true,
-                                    'checked': false,
-                                },
-                                {
-                                    'h3': 'Annual',
-                                    'h1': '14 days free',
-                                    'h2': '4.83 EUR/month',
-                                    'id': 3,
-                                    'best_value': false,
-                                    'checked': true,
-                                }
-                            ]
-                    }
-                );
-            }
-        })
+
+
+        this.setState({price_list: TempState});
+
     }
 
     render(){
