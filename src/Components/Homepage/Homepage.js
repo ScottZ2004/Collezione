@@ -6,33 +6,34 @@ import Prices from "../Prices/Prices";
 import Contact from "../Contact/Contact";
 import Footer from "../Footer/Footer";
 import "./Homepage.css";
+
 const Homepage = () => {
     const itemsList = [
         {
             name: 'Over',
-            goto: '#',
-            key: 1
+            goto: '#over',
+            border_color: "orange"
         },
         {
             name: 'Features',
-            goto: '#',
-            key: 2
+            goto: '#features',
+            border_color: "blue"
         },
         {
             name: 'Prijs',
-            goto: '#',
-            key: 3
+            goto: '#prijs',
+            border_color: "yellow"
         },
         {
             name: 'Contact',
-            goto: '#',
-            key: 4
+            goto: '#contact',
+            border_color: "purple"
         }
     ]
     return(
         <>
             <section className="homepage__light">
-                <Navigation items={itemsList} />
+                <Navigation items={itemsList}/>
                 <Header />
                 <About />
                 <svg className="homepage__svg" xmlns="http://www.w3.org/2000/svg" width="1920.045" height="420.76" viewBox="0 0 1920.045 420.76">
