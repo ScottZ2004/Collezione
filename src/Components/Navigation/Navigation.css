@@ -16,7 +16,7 @@
     align-items: center;
 }
 .navigation__icon{
-    font-size: 4rem;
+    font-size: 3rem;
     display: none;
     margin: 1rem;
 }
@@ -118,4 +118,23 @@
         height: 3rem;
 
     }
+}
+
+.sideNavigation{
+    position: fixed;
+    width: 100%;
+    top: 6rem;
+    font-size: 5.2rem;
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+    padding: 1rem;
+}
+
+.sideNavigation__item{
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
+    color: #413D45;
+    font-weight: bold;
 }
