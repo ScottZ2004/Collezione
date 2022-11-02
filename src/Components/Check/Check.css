@@ -1,0 +1,21 @@
+
+.check{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.4rem;
+    margin: 2rem;
+    align-self: flex-start;
+    text-align: left;
+}
+
+.check__svg{
+    min-height: 1.3rem;
+    min-width: 1.6rem;
+    max-height: 1.3rem;
+    max-width: 1.6rem;
+}
+
+.check__p{
+    font-size: 1.8rem;
+}
