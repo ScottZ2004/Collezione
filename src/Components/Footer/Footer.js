@@ -5,7 +5,7 @@ class Footer extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            dropDownIsActive: true,
+            dropDownIsActive: false,
             language: "Nederlands",
         }
     }
