@@ -18,7 +18,7 @@ class Footer extends React.Component{
     setLanguage = (event) => {
         this.state.dropDownItems.map(item => {
             if (item === event.currentTarget.innerText){
-                this.setState({language: event.currentTarget.innerText})
+                this.setState({language: event.currentTarget.innerText, dropDownIsActive: false})
             }
         })
     }
