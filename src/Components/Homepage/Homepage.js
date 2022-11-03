@@ -6,6 +6,7 @@ import Prices from "../Prices/Prices";
 import Contact from "../Contact/Contact";
 import Footer from "../Footer/Footer";
 import "./Homepage.css";
+import priceList from "../../data/priceList";
 
 const Homepage = () => {
     const itemsList = [
@@ -29,7 +30,8 @@ const Homepage = () => {
             goto: '#contact',
             border_color: "purple"
         }
-    ]
+    ];
+
     return(
         <>
             <section className="homepage__light">
@@ -60,7 +62,7 @@ const Homepage = () => {
             </section>
             <section className="homepage__dark">
                 <Features/>
-                <Prices/>
+                <Prices PriceList={priceList}/>
             </section>
             <section  className="homepage__light">
                 <svg className="homepage__svg" xmlns="http://www.w3.org/2000/svg" width="1920" height="156.862" viewBox="0 0 1920 156.862">
@@ -72,7 +74,7 @@ const Homepage = () => {
                 <path id="Path_8" data-name="Path 8" d="M0,0H1920V72.251s-479.472,84.611-959.467,84.611S0,72.251,0,72.251Z" transform="translate(1920 156.862) rotate(180)" fill="#faf6f4"/>
             </svg>
             <Contact/>
-            <Footer/>
+            <Footer dropDownItems = {["Deutsch","English","Nederlands","Español","Français","Português"]}/>
         </>
     )
 }

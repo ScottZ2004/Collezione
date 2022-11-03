@@ -3,138 +3,47 @@ import Price from "../Price/Price";
 import React from "react";
 import Check from "../Check/Check";
 
+
 class Prices extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            price_list: []
+            price_list: [],
+            checked: [],
         }
     }
 
     componentDidMount() {
         this.setState({
-            price_list: [
-                {
-                    'h3': '',
-                    'h1': 'Gratis',
-                    'h2': '4.83 EUR/month',
-                    'id': 1,
-                    'best_value': false,
-                    'checked': false,
-                },
-                {
-                    'h3': 'Jaarlijks',
-                    'h1': '14 days free',
-                    'h2': '4.83 EUR/month',
-                    'id': 2,
-                    'best_value': true,
-                    'checked': true,
-                },
-                {
-                    'h3': 'Annual',
-                    'h1': '14 days free',
-                    'h2': '4.83 EUR/month',
-                    'id': 3,
-                    'best_value': false,
-                    'checked': false,
-                }
-            ]
+            price_list: this.props.PriceList.priceList,
+            checked: [false, true, false]
         })
     }
 
     checkPrice = (id) =>{
         let TempState;
         if (id === 1){
-             TempState = [
-                {
-                    'h3': '',
-                    'h1': 'Gratis',
-                    'h2': '4.83 EUR/month',
-                    'id': 1,
-                    'best_value': false,
-                    'checked': true,
-                },
-                {
-                    'h3': 'Jaarlijks',
-                    'h1': '14 days free',
-                    'h2': '4.83 EUR/month',
-                    'id': 2,
-                    'best_value': true,
-                    'checked': false,
-                },
-                {
-                    'h3': 'Annual',
-                    'h1': '14 days free',
-                    'h2': '4.83 EUR/month',
-                    'id': 3,
-                    'best_value': false,
-                    'checked': false,
-                }
-            ];
+            TempState = [true, false, false]
         }else if (id === 2){
-             TempState = [
-                {
-                    'h3': '',
-                    'h1': 'Gratis',
-                    'h2': '4.83 EUR/month',
-                    'id': 1,
-                    'best_value': false,
-                    'checked': false,
-                },
-                {
-                    'h3': 'Jaarlijks',
-                    'h1': '14 days free',
-                    'h2': '4.83 EUR/month',
-                    'id': 2,
-                    'best_value': true,
-                    'checked': true,
-                },
-                {
-                    'h3': 'Annual',
-                    'h1': '14 days free',
-                    'h2': '4.83 EUR/month',
-                    'id': 3,
-                    'best_value': false,
-                    'checked': false,
-                }
-            ];
+            TempState = [false, true, false]
         }else if (id === 3){
-             TempState = [
-                {
-                    'h3': '',
-                    'h1': 'Gratis',
-                    'h2': '4.83 EUR/month',
-                    'id': 1,
-                    'best_value': false,
-                    'checked': false,
-                },
-                {
-                    'h3': 'Jaarlijks',
-                    'h1': '14 days free',
-                    'h2': '4.83 EUR/month',
-                    'id': 2,
-                    'best_value': true,
-                    'checked': false,
-                },
-                {
-                    'h3': 'Annual',
-                    'h1': '14 days free',
-                    'h2': '4.83 EUR/month',
-                    'id': 3,
-                    'best_value': false,
-                    'checked': true,
-                }
-            ];
+            TempState = [false, false, true]
         }
 
-
-        this.setState({price_list: TempState});
+        this.setState({checked: TempState});
 
     }
 
     render(){
         let prices = this.state.price_list.map(price =>{
-            return <Price checkPrice={this.checkPrice} best_value={price.best_value} h3={price.h3} h1={price.h1} h2={price.h2} key={price.id} checked={price.checked} id={price.id}/>
+            let checked;
+            for (let i = 0; i <= 3; i++){
+                if (price.id -1 === i){
+                    return <Price checkPrice={this.checkPrice} best_value={price.best_value} h3={price.h3} h1={price.h1} h2={price.h2} key={price.id} checked={this.state.checked[i]} id={price.id}/>
+
+                }
+            }
+
         })
         return(
             <article id="prijs" className="prices">

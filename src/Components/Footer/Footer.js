@@ -5,16 +5,25 @@ class Footer extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            dropDownIsActive: true,
+            dropDownIsActive: false,
             language: "Nederlands",
+            dropDownItems: this.props.dropDownItems,
         }
     }
 
     dropDown = () => {
         this.setState({dropDownIsActive: !this.state.dropDownIsActive})
     }
+
+    setLanguage = (event) => {
+        this.state.dropDownItems.map(item => {
+            if (item === event.currentTarget.innerText){
+                this.setState({language: event.currentTarget.innerText, dropDownIsActive: false})
+            }
+        })
+    }
+
     render(){
-        let dropDownItems = ["Deutsch","English","Nederlands","Español","Français","Português"]
 
         let arrowSVG = null;
         let dropDownMenu = null;
@@ -25,14 +34,14 @@ class Footer extends React.Component{
                 </svg>
             )
 
-            let dropDownItemsToBeRendered = dropDownItems.map(item => {
+            let dropDownItemsToBeRendered = this.state.dropDownItems.map(item => {
                 if (item === this.state.language){
                     return (
                         <li className="footer__dropdown__listItem footer__dropdown__listItem--active">{item}</li>
                     )
                 }else {
                     return (
-                        <li className="footer__dropdown__listItem">{item}</li>
+                        <li onClick={this.setLanguage} className="footer__dropdown__listItem">{item}</li>
                     )
                 }
             })

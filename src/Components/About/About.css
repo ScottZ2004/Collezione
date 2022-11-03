@@ -26,11 +26,22 @@
     height: 40rem;
     border-radius: 1.5rem;
     margin: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .about__image{
-
     height: 40rem;
     width: 40rem;
     object-fit: cover;
     border-radius: 1.5rem;
+
+}
+
+@media (max-width: 500px) {
+    .about__image{
+        height: 30rem;
+        width: 30rem;
+
+    }
 }
