@@ -1,21 +1,23 @@
 .login{
+    z-index: -2;
     scroll-margin-top: 10rem;
     padding-top: 9rem;
     font-size: 8rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     flex-direction: column;
     background:  #FAF6F4;
 }
 
 .loginWrapper{
+    z-index: 1;
     background: #FFFFFF;
-    width: 40%;
+    width: 60rem;
     padding: 3rem;
     border-radius: 0.4rem;
-    margin: 5rem;
+    margin: 0 5rem 5rem 5rem;
 }
 
 .login__header{
@@ -155,8 +157,32 @@
     color: white;
 }
 
+.login__svgContainer{
+    overflow: hidden;
+}
+
+.login__svg{
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+}
+
 @media (max-width: 1000px) {
     .loginWrapper{
         width: 80%;
     }
+
+    .login__svgContainer{
+        max-width: 85%;
+        margin-bottom: -1.5rem;
+    }
+
+    .login__svg{
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
 }
+
