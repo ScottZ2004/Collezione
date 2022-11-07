@@ -22,6 +22,18 @@ class Navigation extends React.Component{
     }
 
     render(){
+        const url = window.location.pathname;
+        let leftButton;
+        if (url === "/login"){
+            leftButton = (<div className="navigation__right">
+                <Link to="/Signup" className="button">Signup</Link>
+            </div>)
+        }else{
+            leftButton = (<div className="navigation__right">
+                <Link to="/login" className="button">Login</Link>
+            </div>)
+        }
+
         let items = null;
         if (this.props.items != null){
             items = this.props.items.map(item => {
@@ -57,17 +69,15 @@ class Navigation extends React.Component{
                 <nav className="navigation">
                     <div className="navigation__left">
                         {hamburgerMenu}
-                        <a className="navigation__logo" href="#">
+                        <Link className="navigation__logo" to="/">
                             <img src={logo} alt="logo" className="navigation__img"/>
                             <h1 className="navigation__logo__text">Collezione</h1>
-                        </a>
+                        </Link>
                         <ul className="navigation__list">
                             {items}
                         </ul>
                     </div>
-                    <div className="navigation__right">
-                        <Link to="/login" className="button">Login</Link>
-                    </div>
+                    {leftButton}
                 </nav>
                 {sideNavigation}
             </>
