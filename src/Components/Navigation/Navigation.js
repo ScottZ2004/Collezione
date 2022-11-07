@@ -5,6 +5,7 @@ import React  from "react";
 import {GiHamburgerMenu} from 'react-icons/gi';
 import {ImCross} from 'react-icons/im';
 import {AiOutlineArrowRight} from 'react-icons/ai';
+import {Link} from "react-router-dom";
 
 
 class Navigation extends React.Component{
@@ -21,10 +22,13 @@ class Navigation extends React.Component{
     }
 
     render(){
+        let items = null;
+        if (this.props.items != null){
+            items = this.props.items.map(item => {
+                return <a key={item.name} className={`navigation__item navigation__item--${item.border_color} `} href={item.goto}>{item.name}</a>
+            });
+        }
 
-        let items = this.props.items.map(item => {
-            return <a key={item.name} className={`navigation__item navigation__item--${item.border_color} `} href={item.goto}>{item.name}</a>
-        });
 
         let hamburgerMenu = null;
         if (this.state.hamburgermenu){
@@ -62,7 +66,7 @@ class Navigation extends React.Component{
                         </ul>
                     </div>
                     <div className="navigation__right">
-                        <Button title="Login" goto="#"/>
+                        <Link to="/login" className="button">Login</Link>
                     </div>
                 </nav>
                 {sideNavigation}

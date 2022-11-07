@@ -1,8 +1,12 @@
 import "./Login.css";
 
+import Navigation from "../Navigation/Navigation";
+
 const Login = () => {
     return(
-        <h1>ik ben Login</h1>
+        <>
+            <Navigation/>
+        </>
     );
 }
 

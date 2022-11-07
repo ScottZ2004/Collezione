@@ -13,7 +13,7 @@
 .navigation__left{
     display: flex;
     width: 50%;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
 }
 .navigation__icon{
@@ -27,6 +27,7 @@
     align-items: center;
     gap: 0.7rem;
     text-decoration: none;
+    margin: 2rem;
 }
 
 .navigation__logo:hover{
