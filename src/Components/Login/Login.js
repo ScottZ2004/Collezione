@@ -90,7 +90,10 @@ class Login extends React.Component{
                     <div className="loginWrapper">
                         <form className="login__form" action="">
                             <h1 className="login__header">Log in</h1>
-                            <p className="login__text">Nieuw bij Collezione? <Link to="/signup" className="login__text__link">Meld je hier gratis aan</Link> </p>
+                            <header className="login__textContainer">
+                                <p className="login__text">Nieuw bij Collezione? </p>
+                                <Link to="/signup" className="login__text__link">Meld je hier gratis aan</Link>
+                            </header>
                             <div className="login__inputContainer">
                                 <div className="login__inputWrapper">
                                     <input placeholder="email"  id="email" className="login__input" type="email"/>

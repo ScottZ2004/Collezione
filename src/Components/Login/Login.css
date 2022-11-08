@@ -27,12 +27,18 @@
     padding:1rem 1rem 3rem 1rem;
 }
 
-.login__text{
+.login__textContainer{
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     font-size: 1.6rem;
     color: #5A6175;
     margin-bottom: 2rem;
+}
+
+.login__text{
+    font-size: 1.6rem;
+    color: #5A6175;
 }
 
 .login__text__link{
