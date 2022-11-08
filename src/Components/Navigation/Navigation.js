@@ -26,7 +26,7 @@ class Navigation extends React.Component{
         let leftButton;
         if (url === "/login"){
             leftButton = (<div className="navigation__right">
-                <Link to="/Signup" className="button">Signup</Link>
+                <Link to="/signup" className="button">Signup</Link>
             </div>)
         }else{
             leftButton = (<div className="navigation__right">

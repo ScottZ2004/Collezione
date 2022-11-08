@@ -48,7 +48,24 @@
 }
 
 .login__inputContainer{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.login__inputWrapper{
     width: 100%;
+}
+
+.login__passwordSvg{
+    position: absolute;
+    right: 1rem;
+    top: 1.5rem;
+    font-size: 3rem;
+}
+
+.login__passwordSvg:hover{
+    cursor: pointer;
 }
 
 .login__input{
