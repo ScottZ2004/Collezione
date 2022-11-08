@@ -7,13 +7,13 @@
     background: #FFFFFF;
     z-index: 2;
     scroll-behavior: smooth;
-    box-shadow: 0px 10px 9px 0px rgba(0,0,0,0.05);
+    box-shadow: 0 10px 9px 0 rgba(0,0,0,0.05);
 }
 
 .navigation__left{
     display: flex;
     width: 50%;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
 }
 .navigation__icon{
@@ -27,6 +27,7 @@
     align-items: center;
     gap: 0.7rem;
     text-decoration: none;
+    margin: 2rem;
 }
 
 .navigation__logo:hover{

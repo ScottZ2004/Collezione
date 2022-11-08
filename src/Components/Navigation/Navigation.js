@@ -5,6 +5,7 @@ import React  from "react";
 import {GiHamburgerMenu} from 'react-icons/gi';
 import {ImCross} from 'react-icons/im';
 import {AiOutlineArrowRight} from 'react-icons/ai';
+import {Link} from "react-router-dom";
 
 
 class Navigation extends React.Component{
@@ -21,10 +22,25 @@ class Navigation extends React.Component{
     }
 
     render(){
+        const url = window.location.pathname;
+        let leftButton;
+        if (url === "/login"){
+            leftButton = (<div className="navigation__right">
+                <Link to="/signup" className="button">Signup</Link>
+            </div>)
+        }else{
+            leftButton = (<div className="navigation__right">
+                <Link to="/login" className="button">Login</Link>
+            </div>)
+        }
 
-        let items = this.props.items.map(item => {
-            return <a key={item.name} className={`navigation__item navigation__item--${item.border_color} `} href={item.goto}>{item.name}</a>
-        });
+        let items = null;
+        if (this.props.items != null){
+            items = this.props.items.map(item => {
+                return <a key={item.name} className={`navigation__item navigation__item--${item.border_color} `} href={item.goto}>{item.name}</a>
+            });
+        }
+
 
         let hamburgerMenu = null;
         if (this.state.hamburgermenu){
@@ -53,17 +69,15 @@ class Navigation extends React.Component{
                 <nav className="navigation">
                     <div className="navigation__left">
                         {hamburgerMenu}
-                        <a className="navigation__logo" href="#">
+                        <Link className="navigation__logo" to="/">
                             <img src={logo} alt="logo" className="navigation__img"/>
                             <h1 className="navigation__logo__text">Collezione</h1>
-                        </a>
+                        </Link>
                         <ul className="navigation__list">
                             {items}
                         </ul>
                     </div>
-                    <div className="navigation__right">
-                        <Button title="Login" goto="#"/>
-                    </div>
+                    {leftButton}
                 </nav>
                 {sideNavigation}
             </>

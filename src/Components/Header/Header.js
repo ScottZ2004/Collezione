@@ -1,5 +1,5 @@
 import "./Header.css"
-import Button from "../Button/Button";
+import {Link} from "react-router-dom";
 import rolleCcoasterTrans from "../../images/roller-coaster-trans.png";
 import rolleCcoasterTrans2 from "../../images/roller-coaster-trans2.png";
 
@@ -11,7 +11,7 @@ const Header = () => {
                 <div className="header__container">
                     <h1 className="header__h1">Collezione</h1>
                     <h2 className="header__h2">Life is like a roller coaster</h2>
-                    <Button title="Login" class="button-center"/>
+                    <Link to="/login" className="button-center button">Login</Link>
                 </div>
                 <img className="header__img" src={rolleCcoasterTrans}alt="Achtbaan 2"/>
             </div>
