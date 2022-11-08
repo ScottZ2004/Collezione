@@ -4,7 +4,7 @@ import React from "react";
 
 import Navigation from "../Navigation/Navigation";
 import Footer from "../Footer/Footer";
-import {Link} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 
 import {ImFacebook, ImSpotify} from "react-icons/im";
 import {AiFillApple, AiFillEyeInvisible, AiFillEye} from "react-icons/ai";
@@ -14,23 +14,47 @@ class Login extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            password: false,
+            passwordCheck: false,
+            email: "",
+            password: "",
+            wrongInput: false,
         }
     }
 
     onEyeClick = () => {
-        this.setState({password: !this.state.password})
+        this.setState({passwordCheck: !this.state.passwordCheck})
+    }
+
+    onInputChange = (event) => {
+        if (event.target.id === "password"){
+            this.setState({password: event.target.value})
+        }else if (event.target.id === "email"){
+            this.setState({email: event.target.value})
+        }
+    }
+
+    checkInput = () => {
+        if (this.state.email === "scottzico2004@gmail.com" && this.state.password === "123456789"){
+            this.props.history.push("/dashboard")
+        }else{
+            this.setState({wrongInput: true});
+        }
     }
 
     render(){
         let passwordType = "text";
         let eye = (<AiFillEye onClick={this.onEyeClick} className="login__passwordSvg"/>);
-        if (!this.state.password){
+        if (!this.state.passwordCheck){
             eye = (
                 <AiFillEyeInvisible onClick={this.onEyeClick} className="login__passwordSvg"/>
             )
             passwordType = "password";
         }
+        let wrongText = null;
+        if (this.state.wrongInput){
+            wrongText = (<p className="login__Text__wrong">Sorry maar dit account bestaat niet. Probeer het nog een keer of maak een nieuw account.</p>)
+        }
+
         return(
             <>
                 <Navigation/>
@@ -96,18 +120,19 @@ class Login extends React.Component{
                             </header>
                             <div className="login__inputContainer">
                                 <div className="login__inputWrapper">
-                                    <input placeholder="email"  id="email" className="login__input" type="email"/>
+                                    <input onChange={this.onInputChange} placeholder="email"  id="email" className="login__input" type="email"/>
                                     <label  className="login__label" htmlFor="email">Email address*</label>
                                 </div>
                             </div>
                             <div className="login__inputContainer">
                                 <div className="login__inputWrapper">
-                                    <input type={passwordType} id="label" className="login__input"  placeholder="password"/>
-                                    <label className="login__label" htmlFor="label">Password (8+ characters)*</label>
+                                    <input onChange={this.onInputChange} type={passwordType} id="password" className="login__input"  placeholder="password"/>
+                                    <label className="login__label" htmlFor="password">Password (8+ characters)*</label>
                                 </div>
                                 {eye}
                             </div>
-                            <button className="login__button">LOG IN</button>
+                            {wrongText}
+                            <button type="button" className="login__button" onClick={this.checkInput}>LOG IN</button>
                             <div className="login__socialButtons">
                                 <button className="login__socialButton__apple login__socialButton">
                                     <AiFillApple className="login__socialButton__icon"/>
@@ -124,8 +149,6 @@ class Login extends React.Component{
                             </div>
                         </form>
                     </div>
-
-
                 </section>
                 <Footer dropDownItems = {["Deutsch","English","Nederlands","Español","Français","Português"]}/>
             </>
@@ -133,4 +156,4 @@ class Login extends React.Component{
     }
 }
 
-export default Login;
+export default withRouter(Login);

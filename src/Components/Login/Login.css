@@ -111,6 +111,12 @@
     border: rgb(0, 164, 82) solid 0.1rem;
 }
 
+.login__Text__wrong{
+    color: #FF7E1DFF;
+    font-size: 1.6rem;
+    margin: 0.5rem;
+}
+
 .login__button{
     margin: 1rem;
     padding:1.32rem 2.4rem ;
