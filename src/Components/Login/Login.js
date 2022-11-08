@@ -9,6 +9,7 @@ import {Link, withRouter} from "react-router-dom";
 import {ImFacebook, ImSpotify} from "react-icons/im";
 import {AiFillApple, AiFillEyeInvisible, AiFillEye} from "react-icons/ai";
 import {FcGoogle} from "react-icons/fc"
+import {logDOM} from "@testing-library/react";
 
 class Login extends React.Component{
     constructor(props) {
@@ -34,14 +35,18 @@ class Login extends React.Component{
     }
 
     checkInput = () => {
-        if (this.state.email === "scottzico2004@gmail.com" && this.state.password === "123456789"){
-            this.props.history.push("/dashboard")
-        }else{
-            this.setState({wrongInput: true});
-        }
+        this.props.users.users.map(user => {
+            if (this.state.email === user.email && this.state.password === user.password){
+                this.props.history.push("/dashboard")
+            }else{
+                this.setState({wrongInput: true});
+            }
+        })
+
     }
 
     render(){
+
         let passwordType = "text";
         let eye = (<AiFillEye onClick={this.onEyeClick} className="login__passwordSvg"/>);
         if (!this.state.passwordCheck){
