@@ -6,9 +6,7 @@ import Navigation from "../Navigation/Navigation";
 import Footer from "../Footer/Footer";
 import {Link, withRouter} from "react-router-dom";
 
-import {ImFacebook, ImSpotify} from "react-icons/im";
-import {AiFillApple, AiFillEyeInvisible, AiFillEye} from "react-icons/ai";
-import {FcGoogle} from "react-icons/fc"
+import {AiFillEyeInvisible, AiFillEye} from "react-icons/ai";
 
 class Signup extends React.Component{
     constructor(props) {
@@ -32,14 +30,27 @@ class Signup extends React.Component{
             this.setState({password: event.target.value})
         }else if (event.target.id === "email"){
             this.setState({email: event.target.value})
-        }else if (event.target.id === "name"){
+        }else if (event.target.id === "firstName"){
             this.setState({name: event.target.value})
         }else if (event.target.id === "lastName"){
             this.setState({lastName: event.target.value})
         }
     }
 
+    onSubmitButtonClick = () => {
+        if (this.state.password === "" || this.state.email === "" || this.state.name === "" || this.state.lastName === ""){
+            this.setState({wrongInput: true})
+        }else{
+            this.props.addUser(this.state.name, this.state.lastName, this.state.email, this.state.password);
+            this.props.history.push("/login")
+        }
+    }
+
     render(){
+        let wrongInput = null;
+        if (this.state.wrongInput){
+            wrongInput = ( <p className="signup__text__wrong">Je bent een veld vergeten in te vullen</p>)
+        }
 
         let passwordType = "text";
         let eye = (<AiFillEye onClick={this.onEyeClick} className="login__passwordSvg"/>);
@@ -116,19 +127,19 @@ class Signup extends React.Component{
                             <div className="signup__inputContainer">
                                 <div className="signup__inputWrapper">
                                     <input onChange={this.onInputChange} placeholder="firstName"  id="firstName" className="signup__input" type="text"/>
-                                    <label  className="signup__label" htmlFor="firstName">First name*</label>
+                                    <label className="signup__label" htmlFor="firstName">First name*</label>
                                 </div>
                             </div>
                             <div className="signup__inputContainer">
                                 <div className="signup__inputWrapper">
                                     <input onChange={this.onInputChange} placeholder="lastName"  id="lastName" className="signup__input" type="text"/>
-                                    <label  className="signup__label" htmlFor="lastName">Last name*</label>
+                                    <label className="signup__label" htmlFor="lastName">Last name*</label>
                                 </div>
                             </div>
                             <div className="signup__inputContainer">
                                 <div className="signup__inputWrapper">
                                     <input onChange={this.onInputChange} placeholder="email"  id="email" className="signup__input" type="email"/>
-                                    <label  className="signup__label" htmlFor="email">Email address*</label>
+                                    <label className="signup__label" htmlFor="email">Email address*</label>
                                 </div>
                             </div>
                             <div className="signup__inputContainer">
@@ -138,21 +149,8 @@ class Signup extends React.Component{
                                 </div>
                                 {eye}
                             </div>
-                            <button type="button" className="signup__button">Sign up</button>
-                            <div className="signup__socialButtons">
-                                <button className="signup__socialButton__apple signup__socialButton">
-                                    <AiFillApple className="signup__socialButton__icon"/>
-                                </button>
-                                <button className="signup__socialButton__facebook signup__socialButton">
-                                    <ImFacebook className="signup__socialButton__icon"/>
-                                </button>
-                                <button className="signup__socialButton__spotify signup__socialButton">
-                                    <ImSpotify className="signup__socialButton__icon"/>
-                                </button>
-                                <button className="signup__socialButton__google signup__socialButton">
-                                    <FcGoogle className="signup__socialButton__icon"/>
-                                </button>
-                            </div>
+                            {wrongInput}
+                            <button onClick={this.onSubmitButtonClick} type="button" className="signup__button">Sign up</button>
                         </form>
                     </div>
                 </section>

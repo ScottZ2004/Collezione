@@ -1,5 +1,4 @@
 .login{
-    z-index: -2;
     scroll-margin-top: 10rem;
     padding-top: 9rem;
     font-size: 8rem;
@@ -119,7 +118,7 @@
 }
 
 .login__button{
-    margin: 1rem;
+    margin: 1rem 0;
     padding:1.32rem 2.4rem ;
     background-color: #0C6FF9;
     border-radius: 2.5rem;
@@ -149,7 +148,7 @@
     display: flex;
     justify-content: space-between;
     gap: 1rem;
-    margin: 1rem;
+    margin: 1rem 0;
 }
 
 .login__socialButton{

@@ -34,9 +34,9 @@ class Login extends React.Component{
     }
 
     checkInput = () => {
-        this.props.users.users.map(user => {
+        this.props.users.map(user => {
             if (this.state.email === user.email && this.state.password === user.password){
-                this.props.history.push("/dashboard")
+                this.props.history.push("/dashboard");
             }else{
                 this.setState({wrongInput: true});
             }
@@ -45,7 +45,6 @@ class Login extends React.Component{
     }
 
     render(){
-
         let passwordType = "text";
         let eye = (<AiFillEye onClick={this.onEyeClick} className="login__passwordSvg"/>);
         if (!this.state.passwordCheck){
@@ -137,20 +136,6 @@ class Login extends React.Component{
                             </div>
                             {wrongText}
                             <button type="button" className="login__button" onClick={this.checkInput}>LOG IN</button>
-                            <div className="login__socialButtons">
-                                <button className="login__socialButton__apple login__socialButton">
-                                    <AiFillApple className="login__socialButton__icon"/>
-                                </button>
-                                <button className="login__socialButton__facebook login__socialButton">
-                                    <ImFacebook className="login__socialButton__icon"/>
-                                </button>
-                                <button className="login__socialButton__spotify login__socialButton">
-                                    <ImSpotify className="login__socialButton__icon"/>
-                                </button>
-                                <button className="login__socialButton__google login__socialButton">
-                                    <FcGoogle className="login__socialButton__icon"/>
-                                </button>
-                            </div>
                         </form>
                     </div>
                 </section>
