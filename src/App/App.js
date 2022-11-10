@@ -11,7 +11,17 @@ class App extends React.Component{
         super(props);
         this.state = {
             users: usersObject.users,
+            loggedIn: false,
+            userId: null,
         }
+    }
+
+    logIn = (id) => {
+        this.setState({
+            loggedIn: true,
+            userId: id,
+        })
+
     }
 
     addUser = (firstName, lastName, email, password) => {
@@ -35,7 +45,7 @@ class App extends React.Component{
             <Router>
                 <Switch>
                     <Route path="/login">
-                        <Login users={this.state.users}/>
+                        <Login logIn={this.logIn} users={this.state.users}/>
                     </Route>
                     <Route path="/signup">
                         <Signup addUser={this.addUser}/>

@@ -36,6 +36,7 @@ class Login extends React.Component{
     checkInput = () => {
         this.props.users.map(user => {
             if (this.state.email === user.email && this.state.password === user.password){
+                this.props.logIn(user.id)
                 this.props.history.push("/dashboard");
             }else{
                 this.setState({wrongInput: true});
