@@ -1,13 +1,17 @@
 const users = [
     {
-        "id": 1,
-        "email": "scottzico2004@gmail.com",
-        "password": "123456789"
+        name: "scott",
+        lastName: "van den Broek",
+        email: "scottzico2004@gmail.com",
+        password: "123456789",
+        id: 1
     },
     {
-        "id": 2,
-        "email": "p.groot121@upcmail.nl",
-        "password": "123456789"
+        name: "scott",
+        lastName: "van den Broek",
+        email: "p.groot121@upcmail.nl",
+        password: "123456789",
+        id: 2,
     }
 ];
 

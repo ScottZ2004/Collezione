@@ -1,4 +1,4 @@
-import "./Login.css";
+import "./Signup.css";
 
 import React from "react";
 
@@ -6,15 +6,15 @@ import Navigation from "../Navigation/Navigation";
 import Footer from "../Footer/Footer";
 import {Link, withRouter} from "react-router-dom";
 
-import {ImFacebook, ImSpotify} from "react-icons/im";
-import {AiFillApple, AiFillEyeInvisible, AiFillEye} from "react-icons/ai";
-import {FcGoogle} from "react-icons/fc"
+import {AiFillEyeInvisible, AiFillEye} from "react-icons/ai";
 
-class Login extends React.Component{
+class Signup extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
             passwordCheck: false,
+            name: "",
+            lastName: "",
             email: "",
             password: "",
             wrongInput: false,
@@ -30,22 +30,28 @@ class Login extends React.Component{
             this.setState({password: event.target.value})
         }else if (event.target.id === "email"){
             this.setState({email: event.target.value})
+        }else if (event.target.id === "firstName"){
+            this.setState({name: event.target.value})
+        }else if (event.target.id === "lastName"){
+            this.setState({lastName: event.target.value})
         }
     }
 
-    checkInput = () => {
-        this.props.users.map(user => {
-            if (this.state.email === user.email && this.state.password === user.password){
-                this.props.logIn(user.id)
-                this.props.history.push("/dashboard");
-            }else{
-                this.setState({wrongInput: true});
-            }
-        })
-
+    onSubmitButtonClick = () => {
+        if (this.state.password === "" || this.state.email === "" || this.state.name === "" || this.state.lastName === ""){
+            this.setState({wrongInput: true})
+        }else{
+            this.props.addUser(this.state.name, this.state.lastName, this.state.email, this.state.password);
+            this.props.history.push("/login")
+        }
     }
 
     render(){
+        let wrongInput = null;
+        if (this.state.wrongInput){
+            wrongInput = ( <p className="signup__text__wrong">Je bent een veld vergeten in te vullen</p>)
+        }
+
         let passwordType = "text";
         let eye = (<AiFillEye onClick={this.onEyeClick} className="login__passwordSvg"/>);
         if (!this.state.passwordCheck){
@@ -54,17 +60,13 @@ class Login extends React.Component{
             )
             passwordType = "password";
         }
-        let wrongText = null;
-        if (this.state.wrongInput){
-            wrongText = (<p className="login__Text__wrong">Sorry maar dit account bestaat niet. Probeer het nog een keer of maak een nieuw account.</p>)
-        }
 
         return(
             <>
                 <Navigation/>
-                <section className="login">
-                    <div className="login__svgContainer">
-                        <svg className="login__svg" xmlns="http://www.w3.org/2000/svg" width="714.021" height="343.283" viewBox="0 0 714.021 320.283">
+                <section className="signup">
+                    <div className="signup__svgContainer">
+                        <svg className="signup__svg" xmlns="http://www.w3.org/2000/svg" width="714.021" height="343.283" viewBox="0 0 714.021 320.283">
                             <g id="Group_16" data-name="Group 16" transform="translate(-36.978 -3229.717)">
                                 <path id="Path_23" data-name="Path 23" d="M4.739,70.6c14.475,22.747,54.282-4.691,54.282-4.691s-9.783,15.907-7.4,34.2c1.591,16.3,9.459,32.085,28.632,32.609,13.9-.174,32.61-5.269,41.755-19.883,11.506-18.386,7.158-46.925,7.158-46.925s8.908,46.13,36.347,46.925,32.052-46.925,32.052-46.925S200.392,3.075,175.339.689,57.589,3.075,34.524.689-9.736,47.851,4.739,70.6Z" transform="translate(608.168 3387.804) rotate(180)" fill="#fff"/>
                                 <g id="Group_14" data-name="Group 14">
@@ -115,28 +117,40 @@ class Login extends React.Component{
                             </g>
                         </svg>
                     </div>
-                    <div className="loginWrapper">
-                        <form className="login__form" action="">
-                            <h1 className="login__header">Log in</h1>
-                            <header className="login__textContainer">
-                                <p className="login__text">Nieuw bij Collezione? </p>
-                                <Link to="/signup" className="login__text__link">Meld je hier gratis aan</Link>
+                    <div className="signupWrapper">
+                        <form className="signup__form" action="">
+                            <h1 className="signup__header">Maak een nieuw account</h1>
+                            <header className="signup__textContainer">
+                                <p className="signup__text">Heb je al een account?</p>
+                                <Link to="/signup" className="signup__text__link">Log in</Link>
                             </header>
-                            <div className="login__inputContainer">
-                                <div className="login__inputWrapper">
-                                    <input onChange={this.onInputChange} placeholder="email"  id="email" className="login__input" type="email"/>
-                                    <label  className="login__label" htmlFor="email">Email address*</label>
+                            <div className="signup__inputContainer">
+                                <div className="signup__inputWrapper">
+                                    <input onChange={this.onInputChange} placeholder="firstName"  id="firstName" className="signup__input" type="text"/>
+                                    <label className="signup__label" htmlFor="firstName">First name*</label>
                                 </div>
                             </div>
-                            <div className="login__inputContainer">
-                                <div className="login__inputWrapper">
-                                    <input onChange={this.onInputChange} type={passwordType} id="password" className="login__input"  placeholder="password"/>
-                                    <label className="login__label" htmlFor="password">Password (8+ characters)*</label>
+                            <div className="signup__inputContainer">
+                                <div className="signup__inputWrapper">
+                                    <input onChange={this.onInputChange} placeholder="lastName"  id="lastName" className="signup__input" type="text"/>
+                                    <label className="signup__label" htmlFor="lastName">Last name*</label>
+                                </div>
+                            </div>
+                            <div className="signup__inputContainer">
+                                <div className="signup__inputWrapper">
+                                    <input onChange={this.onInputChange} placeholder="email"  id="email" className="signup__input" type="email"/>
+                                    <label className="signup__label" htmlFor="email">Email address*</label>
+                                </div>
+                            </div>
+                            <div className="signup__inputContainer">
+                                <div className="signup__inputWrapper">
+                                    <input onChange={this.onInputChange} type={passwordType} id="password" className="signup__input"  placeholder="password"/>
+                                    <label className="signup__label" htmlFor="password">Password (8+ characters)*</label>
                                 </div>
                                 {eye}
                             </div>
-                            {wrongText}
-                            <button type="button" className="login__button" onClick={this.checkInput}>LOG IN</button>
+                            {wrongInput}
+                            <button onClick={this.onSubmitButtonClick} type="button" className="signup__button">Sign up</button>
                         </form>
                     </div>
                 </section>
@@ -146,4 +160,4 @@ class Login extends React.Component{
     }
 }
 
-export default withRouter(Login);
+export default withRouter(Signup);
