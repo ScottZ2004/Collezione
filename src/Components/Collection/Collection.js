@@ -1,13 +1,15 @@
 import React from "react";
 
 import {BsFillPencilFill} from "react-icons/bs"
+import {FaPlus} from "react-icons/fa"
 
 import Navigation from "../Navigation/Navigation";
 import Footer from "../Footer/Footer";
 
 import "./Collection.css";
 
-import Poseidon from "../../images/coasters/Poseidon.jpg"
+import Poseidon from "../../images/coasters/Poseidon.jpg";
+import tempCoaster from "../../images/coasters/temp-roller coaster.jpg"
 
 class Collection extends React.Component{
     constructor(props) {
@@ -62,6 +64,29 @@ class Collection extends React.Component{
                             <h2 className="collection__selected__h2">Bouw jaar: 2001</h2>
                             <h2 className="collection__selected__h2">Park: Europapark</h2>
                         </article>
+                    </div>
+                    <div className="collection__right">
+                        <div className="collection__small">
+                            <img className="collection__smallContainer" src={tempCoaster} alt=""/>
+                        </div>
+                        <div className="collection__small">
+                            <img className="collection__smallContainer" src={tempCoaster} alt=""/>
+                        </div>
+                        <div className="collection__small">
+                            <img className="collection__smallContainer" src={tempCoaster} alt=""/>
+                        </div>
+                        <div className="collection__small">
+                            <img className="collection__smallContainer" src={tempCoaster} alt=""/>
+                        </div>
+                        <div className="collection__small">
+                            <img className="collection__smallContainer" src={tempCoaster} alt=""/>
+                        </div>
+                        <div className="collection__add">
+                            <div className="collection__add__svgContainer">
+                                <FaPlus className="collection__add__svg"/>
+                            </div>
+                            <p className="collection__add__text">Voeg een item toe</p>
+                        </div>
                     </div>
                 </section>
                 <Footer dropDownItems = {["Deutsch","English","Nederlands","Español","Français","Português"]}/>

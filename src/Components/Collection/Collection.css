@@ -89,3 +89,74 @@
 .collection__selected__h2{
     font-size: 3.5rem;
 }
+
+.collection__right{
+    display: flex;
+    justify-content: center;
+    align-content: start;
+    flex-wrap: wrap;
+    margin-top: 19rem;
+    gap: 2rem;
+}
+
+.collection__small{
+    width: 23.5rem;
+    height: 23.5rem;
+}
+
+.collection__smallContainer{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.collection__add{
+    width: 23.5rem;
+    height: 23.5rem;
+    border: rgb(44, 41, 47, 0.5) dashed 0.5rem;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.collection__add__svgContainer{
+    display: flex;
+    align-items: center;
+
+    height: 85%;
+}
+
+.collection__add__svg{
+    font-size: 8rem;
+    padding: 2rem;
+    border-radius: 50%;
+    background: #FFFFFF;
+    transition: 0.2s all;
+}
+
+.collection__add__text{
+    height: 15%;
+    justify-content: flex-end;
+    font-size: 2rem;
+}
+.collection__add:hover{
+    cursor: pointer;
+}
+
+.collection__add:hover .collection__add__svg{
+    background: hsl(0, 0%, 95%);
+}
+
+@media screen and (max-width: 1000px){
+    .collection{
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+    }
+
+    .collection__right{
+        margin-top: 0;
+    }
+}
