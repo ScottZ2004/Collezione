@@ -1,6 +1,7 @@
 import "./App.css";
 import React from "react";
 import Homepage from "../Components/Homepage/Homepage";
+import Collection from "../Components/Collection/Collection";
 import Login from "../Components/Login/Login";
 import usersObject from "../data/users";
 import{BrowserRouter as Router, Route, Switch, useHistory} from "react-router-dom";
@@ -41,6 +42,7 @@ class App extends React.Component{
     }
 
     render(){
+
         return(
             <Router>
                 <Switch>
@@ -51,7 +53,7 @@ class App extends React.Component{
                         <Signup addUser={this.addUser}/>
                     </Route>
                     <Route path="/user/:number/collection">
-                        <h1>Hallo daar</h1>
+                        <Collection/>
                     </Route>
                     <Route exact path="/">
                         <Homepage/>
