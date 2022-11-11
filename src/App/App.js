@@ -50,7 +50,7 @@ class App extends React.Component{
                     <Route path="/signup">
                         <Signup addUser={this.addUser}/>
                     </Route>
-                    <Route path="/dashboard">
+                    <Route path="/user/:number/collection">
                         <h1>Hallo daar</h1>
                     </Route>
                     <Route exact path="/">
