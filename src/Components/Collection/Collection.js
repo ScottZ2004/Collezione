@@ -14,7 +14,7 @@ class Collection extends React.Component{
         super(props);
         this.state = {
             collection: [],
-            selectedItemId: 4,
+            selectedItemId: 1,
         }
     }
 
@@ -30,12 +30,17 @@ class Collection extends React.Component{
             }
         })
 
-        let otherItems = [];
-        this.state.collection.map(item => {
+        let otherItems = this.state.collection.map(item => {
             if (item.id !== this.state.selectedItemId){
-                console.log(item)
+                return item
             }
+        });
+
+        otherItems = otherItems.filter(function(element){
+            return element !== undefined;
         })
+
+        console.log(otherItems)
         const itemsList = [
             {
                 name: 'Collectie',
@@ -63,7 +68,7 @@ class Collection extends React.Component{
                 <Navigation items={itemsList}/>
                 <section className="collection">
                     <CollectionLeft item={selectedItem}/>
-                    <CollectionRight/>
+                    <CollectionRight items={otherItems}/>
                 </section>
                 <Footer dropDownItems = {["Deutsch","English","Nederlands","Español","Français","Português"]}/>
             </>

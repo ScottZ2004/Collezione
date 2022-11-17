@@ -8,15 +8,12 @@ class CollectionRight extends React.Component{
     }
 
     render(){
+        let itemsToBeRendered = this.props.items.map(item => {
+            return <SmallColletionItem img={item.img} title={item.title}/>;
+        })
         return(
             <div className="collection__right">
-                <SmallColletionItem/>
-                <SmallColletionItem/>
-                <SmallColletionItem/>
-                <SmallColletionItem/>
-                <SmallColletionItem/>
-                <SmallColletionItem/>
-                <SmallColletionItem/>
+                {itemsToBeRendered}
                 <div className="collection__add">
                     <div className="collection__add__svgContainer">
                         <FaPlus className="collection__add__svg"/>

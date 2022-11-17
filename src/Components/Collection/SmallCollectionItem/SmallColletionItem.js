@@ -1,9 +1,9 @@
 import tempCoaster from "../../../images/coasters/temp-roller coaster.jpg";
-const SmallColletionItem = () => {
+const SmallColletionItem = (props) => {
     return(
         <div className="collection__small">
-            <img className="collection__smallContainer" src={tempCoaster} alt=""/>
-            <p className="collection__smallText">Coaster Name</p>
+            <img className="collection__smallContainer" src={props.img || tempCoaster} alt={props.title || "achtbaan heeft geen eigen afbeelding"}/>
+            <p className="collection__smallText">{props.title || "title"}</p>
         </div>
     )
 }
