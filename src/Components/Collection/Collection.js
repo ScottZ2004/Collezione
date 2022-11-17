@@ -30,7 +30,12 @@ class Collection extends React.Component{
             }
         })
 
-
+        let otherItems = [];
+        this.state.collection.map(item => {
+            if (item.id !== this.state.selectedItemId){
+                console.log(item)
+            }
+        })
         const itemsList = [
             {
                 name: 'Collectie',
