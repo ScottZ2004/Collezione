@@ -65,6 +65,7 @@ class CollectionLeft extends React.Component{
         if (this.props.editMode === true){
             articleSection = (
                 <article className="collection__selected__article">
+                    <label className="collection__selected__label" htmlFor="title">Achtbaan naam</label>
                     <input
                         placeholder="hallo"
                         className="collection__selected__input"
@@ -73,16 +74,14 @@ class CollectionLeft extends React.Component{
                         id="title"
                         defaultValue={this.props.item.title}
                         onChange={this.onInputchange}/>
-                    <label className="collection__selected__label" htmlFor="title">Achtbaan naam</label>
+                    <label className="collection__selected__label" htmlFor="description">Achtbaan descriptie</label>
                     <textarea
                         placeholder="hallo"
-                        className="collection__selected__input"
+                        className="collection__selected__textarea"
                         name="description" id="description"
-                        cols="30"
-                        rows="10"
                         defaultValue={this.props.item.description}
                         onChange={this.onInputchange}></textarea>
-                    <label className="collection__selected__label" htmlFor="description">Achtbaan descriptie</label>
+                    <label className="collection__selected__label" htmlFor="build_year">Achtbaan bouw jaar</label>
                     <input
                         placeholder="hallo"
                         className="collection__selected__input"
@@ -91,7 +90,7 @@ class CollectionLeft extends React.Component{
                         id="build_year"
                         defaultValue={this.props.item.Build_Year}
                         onChange={this.onInputchange}/>
-                    <label className="collection__selected__label" htmlFor="build_year">Achtbaan bouw jaar</label>
+                    <label className="collection__selected__label" htmlFor="park">Achtbaan park</label>
                     <input
                         placeholder="hallo"
                         className="collection__selected__input"
@@ -100,7 +99,6 @@ class CollectionLeft extends React.Component{
                         id="park"
                         defaultValue={this.props.item.Park}
                         onChange={this.onInputchange}/>
-                    <label className="collection__selected__label" htmlFor="park">Achtbaan park</label>
                     <button onClick={this.onButtonClick} className="collection__selected__button">Opslaan</button>
                 </article>
             )
