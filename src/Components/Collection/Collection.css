@@ -1,0 +1,214 @@
+.collection{
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-auto-rows: auto;
+    gap: 2rem;
+    padding: 0 3rem 3rem 3rem;
+    background: #FAF6F4;
+}
+
+.collection__Left{
+    display: flex;
+    flex-direction: column;
+}
+
+.collection__heading{
+    width: 100%;
+    padding-top: 10rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.collection__filter{
+    min-width: 48.5%;
+    font-size: 1.6rem;
+    background: #0C6FF9;
+    color: #FFFFFF;
+    padding: 1.32rem 2.4rem;
+    border-radius: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.collection__selected__imageContainer{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: auto;
+    width: auto;
+    min-width: 35rem;
+    max-height: 50rem;
+}
+
+.collection__selected__image{
+    object-fit: cover;
+    position: center;
+    height: 100%;
+    width: 100%;
+}
+
+@media screen and (max-width: 700px){
+    .collection__selected__imageContainer{
+        height: 40rem;
+        width: 100%;
+    }
+
+    .collection__selected__image{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        position: center;
+    }
+}
+
+.collection__selected__svgContainer{
+    display: flex;
+    justify-content: flex-end;
+    align-content: flex-end;
+    transition: 0.2s all;
+}
+
+.collection__selected__svg{
+    font-size: 5rem;
+    min-width: 5rem;
+    min-height: 5rem;
+    margin: 1rem;
+    padding: 1rem;
+    background: #FFFFFF;
+    border-radius: 25rem;
+    display: flex;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+    transition: 0.2s all;
+}
+
+.collection__selected__svg:hover{
+    background: #eaeaea;
+    cursor: pointer;
+}
+
+.collection__selected__article{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    gap: 1rem;
+}
+.collection__selected__h1{
+    font-size: 6rem;
+}
+
+.collection__selected__p{
+    font-size: 1.7rem;
+}
+
+.collection__selected__h2{
+    font-size: 3.5rem;
+}
+
+.collection__right{
+    display: flex;
+    justify-content: center;
+    align-content: start;
+    flex-wrap: wrap;
+    margin-top: 19rem;
+    gap: 2rem;
+}
+
+.collection__small{
+    width: 23.5rem;
+    height: 23.5rem;
+    position: relative;
+}
+
+.collection__smallContainer{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    -webkit-filter: brightness(100%);
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.collection__smallText{
+    position: absolute;
+    font-size: 2rem;
+    color: #FFFFFF;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    bottom: 1rem;
+    text-align: center;
+    display: none;
+    transition: 0.3s all;
+}
+
+.collection__small:hover .collection__smallContainer{
+    -webkit-filter: brightness(70%);
+    cursor: pointer;
+}
+.collection__small:hover .collection__smallText{
+    display: block;
+    cursor: pointer;
+}
+
+.collection__add{
+    width: 23.5rem;
+    height: 23.5rem;
+    border: rgb(44, 41, 47, 0.5) dashed 0.5rem;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.collection__add__svgContainer{
+    display: flex;
+    align-items: center;
+
+    height: 85%;
+}
+
+.collection__add__svg{
+    font-size: 8rem;
+    padding: 2rem;
+    border-radius: 50%;
+    background: #FFFFFF;
+    transition: 0.2s all;
+}
+
+.collection__add__text{
+    height: 15%;
+    justify-content: flex-end;
+    font-size: 2rem;
+}
+.collection__add:hover{
+    cursor: pointer;
+}
+
+.collection__add:hover .collection__add__svg{
+    background: hsl(0, 0%, 95%);
+}
+
+@media screen and (max-width: 1000px){
+    .collection{
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+    }
+
+    .collection__right{
+        margin-top: 0;
+    }
+}

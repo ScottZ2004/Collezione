@@ -37,7 +37,8 @@ class Login extends React.Component{
         this.props.users.map(user => {
             if (this.state.email === user.email && this.state.password === user.password){
                 this.props.logIn(user.id)
-                this.props.history.push("/dashboard");
+                let route = "/user/" + user.id + "/collection/"
+                this.props.history.push(route);
             }else{
                 this.setState({wrongInput: true});
             }
