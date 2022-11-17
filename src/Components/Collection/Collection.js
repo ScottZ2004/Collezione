@@ -22,6 +22,10 @@ class Collection extends React.Component{
         this.setState({collection: collectionList})
     }
 
+    onItemClick(id){
+        console.log(id);
+    }
+
     render(){
         let selectedItem = {};
         this.state.collection.filter(item => {
@@ -40,7 +44,6 @@ class Collection extends React.Component{
             return element !== undefined;
         })
 
-        console.log(otherItems)
         const itemsList = [
             {
                 name: 'Collectie',
@@ -68,7 +71,7 @@ class Collection extends React.Component{
                 <Navigation items={itemsList}/>
                 <section className="collection">
                     <CollectionLeft item={selectedItem}/>
-                    <CollectionRight items={otherItems}/>
+                    <CollectionRight items={otherItems} onItemClick={this.onItemClick}/>
                 </section>
                 <Footer dropDownItems = {["Deutsch","English","Nederlands","Español","Français","Português"]}/>
             </>
