@@ -46,21 +46,35 @@
 }
 
 .collection__selected__image{
-    height: 100%;
-    width: 100%;
     object-fit: cover;
+    position: center;
+}
+
+@media screen and (max-width: 700px){
+    .collection__selected__imageContainer{
+        height: 40rem;
+        width: 100%;
+    }
+
+    .collection__selected__image{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        position: center;
+    }
 }
 
 .collection__selected__svgContainer{
     display: flex;
     justify-content: flex-end;
     align-content: flex-end;
+    transition: 0.2s all;
 }
 
 .collection__selected__svg{
-    font-size: 7rem;
-    min-width: 7rem;
-    min-height: 7rem;
+    font-size: 5rem;
+    min-width: 5rem;
+    min-height: 5rem;
     margin: 1rem;
     padding: 1rem;
     background: #FFFFFF;
@@ -69,6 +83,12 @@
     text-align: center;
     align-content: center;
     justify-content: center;
+    transition: 0.2s all;
+}
+
+.collection__selected__svg:hover{
+    background: #eaeaea;
+    cursor: pointer;
 }
 
 .collection__selected__article{
