@@ -22,8 +22,8 @@ class Collection extends React.Component{
         this.setState({collection: collectionList})
     }
 
-    onItemClick(id){
-        console.log(id);
+    onItemClick = (id) =>{
+        this.setState({selectedItemId: id})
     }
 
     render(){
