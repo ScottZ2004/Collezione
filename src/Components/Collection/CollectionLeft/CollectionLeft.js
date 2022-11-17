@@ -6,12 +6,50 @@ class CollectionLeft extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            editMode: true,
+            title: this.props.item.title,
+            description: this.props.item.description,
+            build_year: this.props.item.Build_Year,
+            park: this.props.item.Park,
         }
     }
 
+    componentDidMount() {
+        this.setState({
+            title: this.props.item.title,
+            description: this.props.item.description,
+            build_year: this.props.item.Build_Year,
+            park: this.props.item.Park,
+        })
+    }
+
     changeMode = () => {
-        this.setState({editMode: !this.state.editMode})
+        this.props.changeMode();
+    }
+
+    onInputchange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        });
+    }
+
+    onButtonClick = () => {
+        let title = this.state.title;
+        if (this.state.title === null || this.state.title === undefined){
+            title = this.props.item.title;
+        }
+        let description = this.state.description;
+        if (this.state.description === null || this.state.description === undefined){
+            description = this.props.item.description;
+        }
+        let build_year = this.state.build_year;
+        if (this.state.build_year === null || this.state.build_year === undefined){
+            build_year = this.props.item.Build_Year;
+        }
+        let park = this.state.park;
+        if (this.state.park === null || this.state.park === undefined){
+            park = this.props.item.Park;
+        }
+        this.props.saveItem(title, description, build_year, park)
     }
 
     render(){
@@ -24,18 +62,46 @@ class CollectionLeft extends React.Component{
             </article>
         );
 
-        if (this.state.editMode === true){
+        if (this.props.editMode === true){
             articleSection = (
                 <article className="collection__selected__article">
+                    <input
+                        placeholder="hallo"
+                        className="collection__selected__input"
+                        type="text"
+                        name="title"
+                        id="title"
+                        defaultValue={this.props.item.title}
+                        onChange={this.onInputchange}/>
                     <label className="collection__selected__label" htmlFor="title">Achtbaan naam</label>
-                    <input className="collection__selected__input" type="text" id="title" placeholder={this.props.item.title}/>
-                    <label className="collection__selected__label" htmlFor="title">Achtbaan descriptie</label>
-                    <textarea className="collection__selected__textarea" name="" id="" value={this.props.item.description} cols="30" rows="10"></textarea>
-                    <label className="collection__selected__label" htmlFor="title">Achtbaan bouw jaar</label>
-                    <input className="collection__selected__input" type="text" placeholder={this.props.item.Build_Year}/>
-                    <label className="collection__selected__label" htmlFor="title">Achtbaan park</label>
-                    <input className="collection__selected__input" type="text" placeholder={this.props.item.Park}/>
-                    <button className="collection__selected__button">Opslaan</button>
+                    <textarea
+                        placeholder="hallo"
+                        className="collection__selected__input"
+                        name="description" id="description"
+                        cols="30"
+                        rows="10"
+                        defaultValue={this.props.item.description}
+                        onChange={this.onInputchange}></textarea>
+                    <label className="collection__selected__label" htmlFor="description">Achtbaan descriptie</label>
+                    <input
+                        placeholder="hallo"
+                        className="collection__selected__input"
+                        type="text"
+                        name="build_year"
+                        id="build_year"
+                        defaultValue={this.props.item.Build_Year}
+                        onChange={this.onInputchange}/>
+                    <label className="collection__selected__label" htmlFor="build_year">Achtbaan bouw jaar</label>
+                    <input
+                        placeholder="hallo"
+                        className="collection__selected__input"
+                        type="text"
+                        name="park"
+                        id="park"
+                        defaultValue={this.props.item.Park}
+                        onChange={this.onInputchange}/>
+                    <label className="collection__selected__label" htmlFor="park">Achtbaan park</label>
+                    <button onClick={this.onButtonClick} className="collection__selected__button">Opslaan</button>
                 </article>
             )
         }
