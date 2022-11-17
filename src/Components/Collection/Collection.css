@@ -112,6 +112,32 @@
     font-size: 3.5rem;
 }
 
+.collection__selected__label{
+    font-size: 4rem;
+}
+
+.collection__selected__input{
+    font-size: 4rem;
+}
+
+.collection__selected__textarea{
+    font-size: 2rem;
+    width: 100%;
+}
+
+.collection__selected__button{
+    min-width: 48.5%;
+    font-size: 1.6rem;
+    background: #0C6FF9;
+    color: #FFFFFF;
+    padding: 1.32rem 2.4rem;
+    border-radius: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+}
+
 .collection__right{
     display: flex;
     justify-content: center;
