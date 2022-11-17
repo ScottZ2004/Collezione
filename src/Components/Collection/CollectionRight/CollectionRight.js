@@ -1,6 +1,7 @@
 import React from "react";
 import tempCoaster from "../../../images/coasters/temp-roller coaster.jpg";
 import {FaPlus} from "react-icons/fa";
+import SmallColletionItem from "../SmallCollectionItem/SmallColletionItem";
 
 class CollectionRight extends React.Component{
     constructor(props) {
@@ -10,26 +11,13 @@ class CollectionRight extends React.Component{
     render(){
         return(
             <div className="collection__right">
-                <div className="collection__small">
-                    <img className="collection__smallContainer" src={tempCoaster} alt=""/>
-                    <p className="collection__smallText">Coaster Name</p>
-                </div>
-                <div className="collection__small">
-                    <img className="collection__smallContainer" src={tempCoaster} alt=""/>
-                    <p className="collection__smallText">Coaster Name</p>
-                </div>
-                <div className="collection__small">
-                    <img className="collection__smallContainer" src={tempCoaster} alt=""/>
-                    <p className="collection__smallText">Coaster Name</p>
-                </div>
-                <div className="collection__small">
-                    <img className="collection__smallContainer" src={tempCoaster} alt=""/>
-                    <p className="collection__smallText">Coaster Name</p>
-                </div>
-                <div className="collection__small">
-                    <img className="collection__smallContainer" src={tempCoaster} alt=""/>
-                    <p className="collection__smallText">Coaster Name</p>
-                </div>
+                <SmallColletionItem/>
+                <SmallColletionItem/>
+                <SmallColletionItem/>
+                <SmallColletionItem/>
+                <SmallColletionItem/>
+                <SmallColletionItem/>
+                <SmallColletionItem/>
                 <div className="collection__add">
                     <div className="collection__add__svgContainer">
                         <FaPlus className="collection__add__svg"/>

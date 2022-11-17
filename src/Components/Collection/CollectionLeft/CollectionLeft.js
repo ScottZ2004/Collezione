@@ -2,7 +2,6 @@ import React from "react";
 import Poseidon from "../../../images/coasters/Poseidon.jpg";
 import {BsFillPencilFill} from "react-icons/bs";
 
-
 class CollectionLeft extends React.Component{
     constructor(props) {
         super(props);
