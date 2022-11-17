@@ -9,7 +9,7 @@ class CollectionRight extends React.Component{
 
     render(){
         let itemsToBeRendered = this.props.items.map(item => {
-            return <SmallColletionItem img={item.img} title={item.title}/>;
+            return <SmallColletionItem img={item.img} title={item.title} onItemClick={this.props.onItemClick} key={item.id} id={item.id}/>;
         })
         return(
             <div className="collection__right">
