@@ -1,5 +1,4 @@
 import React from "react";
-import tempCoaster from "../../../images/coasters/temp-roller coaster.jpg";
 import {FaPlus} from "react-icons/fa";
 import SmallColletionItem from "../SmallCollectionItem/SmallColletionItem";
 

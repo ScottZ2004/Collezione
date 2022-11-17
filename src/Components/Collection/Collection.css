@@ -42,12 +42,14 @@
     height: auto;
     width: auto;
     min-width: 35rem;
-
+    max-height: 50rem;
 }
 
 .collection__selected__image{
     object-fit: cover;
     position: center;
+    height: 100%;
+    width: 100%;
 }
 
 @media screen and (max-width: 700px){

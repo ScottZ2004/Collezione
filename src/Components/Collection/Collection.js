@@ -5,16 +5,32 @@ import Footer from "../Footer/Footer";
 import CollectionRight from "./CollectionRight/CollectionRight";
 import CollectionLeft from "./CollectionLeft/CollectionLeft";
 
+import collectionList from "../../data/collection";
+
 import "./Collection.css";
 
 class Collection extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-
+            collection: [],
+            selectedItemId: 4,
         }
     }
+
+    componentDidMount() {
+        this.setState({collection: collectionList})
+    }
+
     render(){
+        let selectedItem = {};
+        this.state.collection.filter(item => {
+            if (item.id === this.state.selectedItemId){
+                selectedItem = item
+            }
+        })
+
+
         const itemsList = [
             {
                 name: 'Collectie',
@@ -41,7 +57,7 @@ class Collection extends React.Component{
             <>
                 <Navigation items={itemsList}/>
                 <section className="collection">
-                    <CollectionLeft/>
+                    <CollectionLeft item={selectedItem}/>
                     <CollectionRight/>
                 </section>
                 <Footer dropDownItems = {["Deutsch","English","Nederlands","Español","Français","Português"]}/>
