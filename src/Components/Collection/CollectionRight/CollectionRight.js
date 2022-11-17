@@ -12,18 +12,23 @@ class CollectionRight extends React.Component{
             <div className="collection__right">
                 <div className="collection__small">
                     <img className="collection__smallContainer" src={tempCoaster} alt=""/>
+                    <p className="collection__smallText">Coaster Name</p>
                 </div>
                 <div className="collection__small">
                     <img className="collection__smallContainer" src={tempCoaster} alt=""/>
+                    <p className="collection__smallText">Coaster Name</p>
                 </div>
                 <div className="collection__small">
                     <img className="collection__smallContainer" src={tempCoaster} alt=""/>
+                    <p className="collection__smallText">Coaster Name</p>
                 </div>
                 <div className="collection__small">
                     <img className="collection__smallContainer" src={tempCoaster} alt=""/>
+                    <p className="collection__smallText">Coaster Name</p>
                 </div>
                 <div className="collection__small">
                     <img className="collection__smallContainer" src={tempCoaster} alt=""/>
+                    <p className="collection__smallText">Coaster Name</p>
                 </div>
                 <div className="collection__add">
                     <div className="collection__add__svgContainer">
