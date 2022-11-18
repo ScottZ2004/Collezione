@@ -21,7 +21,9 @@ class Collection extends React.Component{
     }
 
     componentDidMount() {
-        let newCollection = collectionList.map(item => {
+        let newCollection = [];
+
+        newCollection = collectionList.map(item => {
             if (item.userId == this.state.myNumber){
                 return item
             }
@@ -31,14 +33,16 @@ class Collection extends React.Component{
             return element !== undefined;
         })
 
-        this.setState({
-            collection: newCollection,
-            selectedItemId: newCollection[0].id
-        })
+        if (newCollection.length !== 0){
+            this.setState({
+                collection: newCollection,
+                selectedItemId: newCollection[0].id
+            })
 
-        if (!this.props.isLoggedIn){
-            this.props.redirectToLogin(window.location.pathname)
-            this.props.history.push('/login')
+            if (!this.props.isLoggedIn){
+                this.props.redirectToLogin(window.location.pathname)
+                this.props.history.push('/login')
+            }
         }
     }
 
@@ -80,7 +84,9 @@ class Collection extends React.Component{
             }
         })
 
-        let otherItems = this.state.collection.map(item => {
+        let otherItems = [];
+
+        otherItems = this.state.collection.map(item => {
             if (item.id !== this.state.selectedItemId){
                 return item
             }
@@ -112,6 +118,10 @@ class Collection extends React.Component{
                 border_color: "purple"
             }
         ];
+
+        if (this.state.collection.length === 0){
+            return <h1>This page doesn't exist</h1>
+        }
         return(
             <>
                 <Navigation items={itemsList}/>
