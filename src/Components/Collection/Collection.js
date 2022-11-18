@@ -20,7 +20,18 @@ class Collection extends React.Component{
     }
 
     componentDidMount() {
-        this.setState({collection: collectionList})
+        let newCollection = collectionList.map(item => {
+            if (item.userId === this.props.userId){
+                return item
+            }
+        })
+
+        newCollection = newCollection.filter(function(element){
+            return element !== undefined;
+        })
+
+        console.log(newCollection);
+        this.setState({collection: newCollection})
     }
 
     changeMode = () => {
