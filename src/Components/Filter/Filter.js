@@ -6,15 +6,41 @@ class Filter extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-
+            sliderInput: null,
         }
     }
 
+    componentDidMount() {
+        this.setState({sliderInput: 1950})
+    }
+
+    changeSliderValue = (event) => {
+        this.setState({sliderInput: event.target.value})
+    }
+
     render(){
+        let dropDown = null
+        if (this.props.type === "slider"){
+            dropDown = (
+                <>
+                    <div className="filter__sliderContainer">
+                        <h2 className="filter__sliderText">1950</h2>
+                        <input onChange={this.changeSliderValue} className="filter__slider" type="range" min="1950" max="2022"/>
+                        <h2 className="filter__sliderText">2022</h2>
+                    </div>
+                    <h2 className="filter__sliderText">{this.state.sliderInput}</h2>
+                </>
+            )
+        }
         return(
             <div className="filter">
-                <h1 className="filter__h1">{this.props.type}</h1>
-                <IoIosArrowUp className="filter__icon"/>
+                <div className="filter__button filter__button--open">
+                    <h1 className="filter__h1">{this.props.title}</h1>
+                    <IoIosArrowUp className="filter__icon"/>
+                </div>
+                <div className="filter__open">
+                    {dropDown}
+                </div>
             </div>
         )
     }

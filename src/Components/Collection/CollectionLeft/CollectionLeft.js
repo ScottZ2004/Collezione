@@ -119,8 +119,8 @@ class CollectionLeft extends React.Component{
         return(
             <div className="collection__Left">
                 <header className="collection__heading">
-                    <Filter type="Bouw Jaar"/>
-                    <Filter type="Park"/>
+                    <Filter type="slider" title="Bouw jaar"/>
+                    <Filter type="search" title="Park"/>
                 </header>
                 <div className="collection__selected__imageContainer">
                     <img className="collection__selected__image" src={this.props.item.img || Poseidon} alt={this.props.item.title || "achtbaan heeft geen eigen afbeelding"}/>

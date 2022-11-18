@@ -1,12 +1,23 @@
 .filter{
     min-width: 48.5%;
+    position: relative;
+}
+
+.filter__button{
     background: #0C6FF9;
     padding: 1.1rem 2.2rem;
     border-radius: 2.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
+}
+
+.filter__button--open{
+    border-radius: 2.5rem 2.5rem 0 0;
+}
+
+.filter__button:hover{
+    cursor: pointer;
 }
 
 .filter__h1{
@@ -24,8 +35,71 @@
 }
 
 @media screen and (max-width: 460px) {
-    .filter{
+    .filter__button{
         justify-content: left;
-        padding-left: 2.8rem;
+        padding-left: 2.4rem;
     }
+}
+
+.filter__open{
+    background: #0C6FF9;
+    position: absolute;
+    border-radius: 0 0 2.5rem 2.5rem;
+    min-height: 11rem;
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.filter__sliderContainer{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.filter__sliderText{
+    font-size: 2rem;
+    color: #FFFFFF;
+}
+
+.filter__slider{
+    -webkit-appearance: none;
+    width: 55%;
+    min-width: 13rem;
+    height: 0.5rem;
+    opacity: 0.9;
+    background: #FFFFFF;
+    outline: none;
+    --webkit-transition: 0.2s;
+    transition: opacity 0.2s;
+    border-radius: 1rem;
+}
+
+.filter__slider:hover{
+    opacity: 1;
+}
+
+.filter__slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 1.5rem;
+    height: 2.5rem;
+    background: #413D45;
+    cursor: pointer;
+    border-radius: 0.5rem;
+}
+
+.filter__slider::-moz-range-thumb {
+    width: 1.5rem;
+    height: 2.5rem;
+    background: #413D45;
+    cursor: pointer;
+    border-radius: 0.5rem;
 }
