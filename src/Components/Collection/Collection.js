@@ -4,7 +4,7 @@ import Navigation from "../Navigation/Navigation";
 import Footer from "../Footer/Footer";
 import CollectionRight from "./CollectionRight/CollectionRight";
 import CollectionLeft from "./CollectionLeft/CollectionLeft";
-
+import {withRouter} from "react-router-dom";
 import collectionList from "../../data/collection";
 
 import "./Collection.css";
@@ -13,6 +13,7 @@ class Collection extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
+            myNumber: this.props.match.params.number,
             collection: [],
             selectedItemId: 1,
             editMode: false
@@ -20,7 +21,29 @@ class Collection extends React.Component{
     }
 
     componentDidMount() {
-        this.setState({collection: collectionList})
+        let newCollection = [];
+
+        newCollection = collectionList.map(item => {
+            if (item.userId == this.state.myNumber){
+                return item
+            }
+        })
+
+        newCollection = newCollection.filter(function(element){
+            return element !== undefined;
+        })
+
+        if (newCollection.length !== 0){
+            this.setState({
+                collection: newCollection,
+                selectedItemId: newCollection[0].id
+            })
+
+            if (!this.props.isLoggedIn){
+                this.props.redirectToLogin(window.location.pathname)
+                this.props.history.push('/login')
+            }
+        }
     }
 
     changeMode = () => {
@@ -47,14 +70,13 @@ class Collection extends React.Component{
             }
             return item
         });
-        console.log(newState)
         this.setState({
             collection: newState,
             editMode: false
         });
     }
-
     render(){
+
         let selectedItem = {};
         this.state.collection.filter(item => {
             if (item.id === this.state.selectedItemId){
@@ -62,7 +84,9 @@ class Collection extends React.Component{
             }
         })
 
-        let otherItems = this.state.collection.map(item => {
+        let otherItems = [];
+
+        otherItems = this.state.collection.map(item => {
             if (item.id !== this.state.selectedItemId){
                 return item
             }
@@ -94,12 +118,25 @@ class Collection extends React.Component{
                 border_color: "purple"
             }
         ];
+
+        if (this.state.collection.length === 0){
+            return <h1>This page doesn't exist</h1>
+        }
         return(
             <>
                 <Navigation items={itemsList}/>
                 <section className="collection">
-                    <CollectionLeft item={selectedItem} saveItem={this.saveItem} editMode={this.state.editMode} changeMode={this.changeMode}/>
-                    <CollectionRight items={otherItems} onItemClick={this.onItemClick}/>
+                    <CollectionLeft
+                        item={selectedItem}
+                        saveItem={this.saveItem}
+                        editMode={this.state.editMode}
+                        changeMode={this.changeMode}
+                        userId={this.props.userId}
+
+                    />
+                    <CollectionRight
+                        items={otherItems}
+                        onItemClick={this.onItemClick}/>
                 </section>
                 <Footer dropDownItems = {["Deutsch","English","Nederlands","Español","Français","Português"]}/>
             </>
@@ -107,4 +144,4 @@ class Collection extends React.Component{
     }
 }
 
-export default Collection;
+export default withRouter(Collection) ;

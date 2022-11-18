@@ -6,9 +6,7 @@ import Navigation from "../Navigation/Navigation";
 import Footer from "../Footer/Footer";
 import {Link, withRouter} from "react-router-dom";
 
-import {ImFacebook, ImSpotify} from "react-icons/im";
-import {AiFillApple, AiFillEyeInvisible, AiFillEye} from "react-icons/ai";
-import {FcGoogle} from "react-icons/fc"
+import {AiFillEyeInvisible, AiFillEye} from "react-icons/ai";
 
 class Login extends React.Component{
     constructor(props) {
@@ -37,16 +35,22 @@ class Login extends React.Component{
         this.props.users.map(user => {
             if (this.state.email === user.email && this.state.password === user.password){
                 this.props.logIn(user.id)
-                let route = "/user/" + user.id + "/collection/"
+                let route = "/user/" + user.id + "/collection/";
+                if (this.props.redirectPath !== null){
+                    route = this.props.redirectPath
+                }
+
                 this.props.history.push(route);
             }else{
                 this.setState({wrongInput: true});
+                this.props.redirectToLogin(null)
             }
         })
 
     }
 
     render(){
+        console.log(this.props.redirectPath)
         let passwordType = "text";
         let eye = (<AiFillEye onClick={this.onEyeClick} className="login__passwordSvg"/>);
         if (!this.state.passwordCheck){

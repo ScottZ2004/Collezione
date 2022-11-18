@@ -16,7 +16,8 @@ const collection = [
             " Na een rustig vaartochtje ga je nogmaals omhoog en duik je opnieuw in de Griekse wateren.",
         Build_Year: 2001,
         Park: "Europapark",
-        img: Poseidon
+        img: Poseidon,
+        userId: 1,
     },
     {
         id: 2,
@@ -29,7 +30,8 @@ const collection = [
             " De berg van Expedition Everest is op zijn hoogste punt 98 meter hoog.",
         Build_Year: 2003,
         Park: "Disney's Animal kingdom",
-        img: Expedition_Everest
+        img: Expedition_Everest,
+        userId: 1,
     },
     {
         id: 3,
@@ -40,7 +42,8 @@ const collection = [
             " speelgoedhond Slinky Dog.",
         Build_Year: 2018,
         Park: "Disney's Hollywood Studios",
-        img: Slinky_Dog_Dash
+        img: Slinky_Dog_Dash,
+        userId: 2,
     },
     {
         id: 4,
@@ -58,7 +61,8 @@ const collection = [
             " in hetzelfde gebied ligt en Taron meerdere keren kruist.",
         Build_Year: 2016,
         Park: "Phantasialand",
-        img: Taron
+        img: Taron,
+        userId: 1,
     },
     {
         id: 5,
@@ -70,7 +74,8 @@ const collection = [
             "De attractie met een donkerrood achtbaanspoor gaat net als de achtbaan Taron dwars door het sub-themagebied Rookburgh heen. Dit themagebied kenmerkt zich door de steampunkstijl. Het spoor kruist zichzelf meerdere keren en passeert onder en boven diverse wandelpaden waar bezoekers lopen. Tijdens de rit scheert de trein rakelings langs bebouwing en het decor. De gehele rit is 1150 meter lang en telt twee inversies. F.L.Y. is hiermee de langste vliegende achtbaan ter wereld. De wachtrij is grotendeels overdekt. In de wachtrij worden de veiligheidsinstructies per minifilm uitgelegd. Tevens moeten alle bezoekers door een metaaldetector om te voorkomen dat ze voorwerpen tijdens de rit meenemen. Deze dienen voorafgaand aan de rit in één van de kluizen in het station worden gelegd. Dit is om te voorkomen dat er voorwerpen op bezoekers vallen die onder het spoor lopen.",
         Build_Year: 2020,
         Park: "Phantasialand",
-        img: Fly
+        img: Fly,
+        userId: 1,
     },
 ];
 

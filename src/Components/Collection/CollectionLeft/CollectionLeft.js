@@ -104,6 +104,17 @@ class CollectionLeft extends React.Component{
             )
         }
 
+        let editMode = null
+        if(this.props.userId === this.props.item.userId){
+            editMode = (
+                <div className="collection__selected__svgContainer">
+                    <div onClick={this.changeMode} className="collection__selected__svg">
+                        <BsFillPencilFill/>
+                    </div>
+                </div>
+            )
+        }
+
         return(
             <div className="collection__Left">
                 <header className="collection__heading">
@@ -113,11 +124,7 @@ class CollectionLeft extends React.Component{
                 <div className="collection__selected__imageContainer">
                     <img className="collection__selected__image" src={this.props.item.img || Poseidon} alt={this.props.item.title || "achtbaan heeft geen eigen afbeelding"}/>
                 </div>
-                <div className="collection__selected__svgContainer">
-                    <div onClick={this.changeMode} className="collection__selected__svg">
-                        <BsFillPencilFill/>
-                    </div>
-                </div>
+                {editMode}
                 {articleSection}
             </div>
         )
