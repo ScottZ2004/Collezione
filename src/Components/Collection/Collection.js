@@ -116,8 +116,17 @@ class Collection extends React.Component{
             <>
                 <Navigation items={itemsList}/>
                 <section className="collection">
-                    <CollectionLeft item={selectedItem} saveItem={this.saveItem} editMode={this.state.editMode} changeMode={this.changeMode}/>
-                    <CollectionRight items={otherItems} onItemClick={this.onItemClick}/>
+                    <CollectionLeft
+                        item={selectedItem}
+                        saveItem={this.saveItem}
+                        editMode={this.state.editMode}
+                        changeMode={this.changeMode}
+                        userId={this.props.userId}
+
+                    />
+                    <CollectionRight
+                        items={otherItems}
+                        onItemClick={this.onItemClick}/>
                 </section>
                 <Footer dropDownItems = {["Deutsch","English","Nederlands","Español","Français","Português"]}/>
             </>
