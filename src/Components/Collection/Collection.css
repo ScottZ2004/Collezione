@@ -22,19 +22,6 @@
     margin: 2rem 0;
 }
 
-.collection__filter{
-    min-width: 48.5%;
-    font-size: 1.6rem;
-    background: #0C6FF9;
-    color: #FFFFFF;
-    padding: 1.32rem 2.4rem;
-    border-radius: 2.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-
 .collection__selected__imageContainer{
     display: flex;
     justify-content: center;

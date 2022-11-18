@@ -1,6 +1,7 @@
 import React from "react";
 import Poseidon from "../../../images/coasters/Poseidon.jpg";
 import {BsFillPencilFill} from "react-icons/bs";
+import Filter from "../../Filter/Filter";
 
 class CollectionLeft extends React.Component{
     constructor(props) {
@@ -118,8 +119,8 @@ class CollectionLeft extends React.Component{
         return(
             <div className="collection__Left">
                 <header className="collection__heading">
-                    <h1 className="collection__filter">Filter #1</h1>
-                    <h1 className="collection__filter">Filter #2</h1>
+                    <Filter type="Bouw Jaar"/>
+                    <Filter type="Park"/>
                 </header>
                 <div className="collection__selected__imageContainer">
                     <img className="collection__selected__image" src={this.props.item.img || Poseidon} alt={this.props.item.title || "achtbaan heeft geen eigen afbeelding"}/>

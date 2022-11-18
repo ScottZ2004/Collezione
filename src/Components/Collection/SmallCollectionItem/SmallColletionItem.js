@@ -1,6 +1,5 @@
 import tempCoaster from "../../../images/coasters/temp-roller coaster.jpg";
 const SmallColletionItem = (props) => {
-
     const click = () => {
         props.onItemClick(props.id)
     }

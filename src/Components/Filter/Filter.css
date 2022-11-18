@@ -1,0 +1,31 @@
+.filter{
+    min-width: 48.5%;
+    background: #0C6FF9;
+    padding: 1.1rem 2.2rem;
+    border-radius: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.filter__h1{
+    font-size: 1.6rem;
+    color: #FFFFFF;
+    align-self: center;
+}
+
+.filter__icon{
+    font-size: 3.2rem;
+    color: #FFFFFF;
+    position: absolute;
+    right: 2rem;
+    transform: rotate(180deg);
+}
+
+@media screen and (max-width: 460px) {
+    .filter{
+        justify-content: left;
+        padding-left: 2.8rem;
+    }
+}
