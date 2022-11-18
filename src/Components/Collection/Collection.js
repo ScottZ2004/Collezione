@@ -13,6 +13,7 @@ class Collection extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
+            myNumber: this.props.match.params.number,
             collection: [],
             selectedItemId: 1,
             editMode: false
@@ -21,7 +22,7 @@ class Collection extends React.Component{
 
     componentDidMount() {
         let newCollection = collectionList.map(item => {
-            if (item.userId === this.props.userId){
+            if (item.userId == this.state.myNumber){
                 return item
             }
         })
@@ -30,8 +31,15 @@ class Collection extends React.Component{
             return element !== undefined;
         })
 
-        console.log(newCollection);
-        this.setState({collection: newCollection})
+        this.setState({
+            collection: newCollection,
+            selectedItemId: newCollection[0].id
+        })
+
+        if (!this.props.isLoggedIn){
+            this.props.redirectToLogin(window.location.pathname)
+            this.props.history.push('/login')
+        }
     }
 
     changeMode = () => {
@@ -58,16 +66,13 @@ class Collection extends React.Component{
             }
             return item
         });
-        console.log(newState)
         this.setState({
             collection: newState,
             editMode: false
         });
     }
     render(){
-        if(!this.props.isLoggedIn){
-            this.props.history.push("/login");
-        }
+
         let selectedItem = {};
         this.state.collection.filter(item => {
             if (item.id === this.state.selectedItemId){
