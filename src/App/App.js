@@ -53,7 +53,7 @@ class App extends React.Component{
                         <Signup addUser={this.addUser}/>
                     </Route>
                     <Route path="/user/:number/collection">
-                        <Collection/>
+                        <Collection isLoggedIn={this.state.loggedIn} userId={this.state.userId}/>
                     </Route>
                     <Route exact path="/">
                         <Homepage/>

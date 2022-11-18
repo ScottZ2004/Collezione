@@ -4,7 +4,7 @@ import Navigation from "../Navigation/Navigation";
 import Footer from "../Footer/Footer";
 import CollectionRight from "./CollectionRight/CollectionRight";
 import CollectionLeft from "./CollectionLeft/CollectionLeft";
-
+import {withRouter} from "react-router-dom";
 import collectionList from "../../data/collection";
 
 import "./Collection.css";
@@ -53,8 +53,10 @@ class Collection extends React.Component{
             editMode: false
         });
     }
-
     render(){
+        if(!this.props.isLoggedIn){
+            this.props.history.push("/login");
+        }
         let selectedItem = {};
         this.state.collection.filter(item => {
             if (item.id === this.state.selectedItemId){
@@ -107,4 +109,4 @@ class Collection extends React.Component{
     }
 }
 
-export default Collection;
+export default withRouter(Collection) ;
