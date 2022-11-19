@@ -25,8 +25,8 @@ class Filter extends React.Component{
                 <>
                     <div className="filter__sliderContainer">
                         <h2 className="filter__sliderText">1950</h2>
-                        <input onChange={this.changeSliderValue} className="filter__slider" type="range" min="1950" max="2022"/>
-                        <h2 className="filter__sliderText">2022</h2>
+                        <input onChange={this.changeSliderValue} className="filter__slider" type="range" min="1950" max={new Date().getFullYear()}/>
+                        <h2 className="filter__sliderText">{new Date().getFullYear()}</h2>
                     </div>
                     <h2 className="filter__sliderText">{this.state.sliderInput}</h2>
                 </>

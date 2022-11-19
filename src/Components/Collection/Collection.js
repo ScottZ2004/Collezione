@@ -66,7 +66,6 @@ class Collection extends React.Component{
                 item.description = description;
                 item.Build_Year = build_year;
                 item.Park = park;
-                console.log(item.Park)
             }
             return item
         });
