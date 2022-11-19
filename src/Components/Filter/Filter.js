@@ -1,6 +1,7 @@
 import React from "react";
 import "./Filter.css"
-import {IoIosArrowUp} from "react-icons/io"
+import {IoIosArrowUp} from "react-icons/io";
+import {BiSearchAlt2} from "react-icons/bi";
 import parks from "../../data/parks";
 
 class Filter extends React.Component{
@@ -25,8 +26,17 @@ class Filter extends React.Component{
     }
 
     render(){
-        console.log(parks.parks)
-        let dropDown = null
+        let dropDown = null;
+        let parksList = [];
+        for (let i = 0; i <= parks.parks.length; i++){
+            parksList.push(
+                <li className="filter__searchItem">
+                    <label htmlFor={parks.parks[i]} className="filter__searchItem__label">{parks.parks[i]}</label>
+                    <input id={parks.parks[i]} className="filter__searchItem__checkbox" type="checkbox"/>
+                </li>
+            )
+        }
+        console.log(parksList)
         if (this.props.type === "slider"){
             dropDown = (
                 <>
@@ -36,6 +46,19 @@ class Filter extends React.Component{
                         <h2 className="filter__sliderText">{new Date().getFullYear()}</h2>
                     </div>
                     <h2 className="filter__sliderText">{this.state.sliderInput}</h2>
+                </>
+            )
+        }
+        if (this.props.type === "search") {
+            dropDown = (
+                <>
+                    <div className="filter__searchContainer">
+                        <input placeholder="Zoeken" className="filter__searchInput" type="search"/>
+                        <BiSearchAlt2 className="filter__searchSVG"/>
+                    </div>
+                    <ul className="filter__searchList">
+                        {parksList}
+                    </ul>
                 </>
             )
         }

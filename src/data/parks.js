@@ -33,7 +33,6 @@ const parks = [
     "Six Flags México",
     "Gardaland",
     "Lotte World",
-    "Lotte World",
     "Ferrari World",
     "Kings Island",
     "Holiday World",
