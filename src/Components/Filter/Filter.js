@@ -6,6 +6,7 @@ class Filter extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
+            isOpen: false,
             sliderInput: null,
         }
     }
@@ -16,6 +17,10 @@ class Filter extends React.Component{
 
     changeSliderValue = (event) => {
         this.setState({sliderInput: event.target.value})
+    }
+
+    onButtonClick = () => {
+        this.setState({isOpen: !this.state.isOpen});
     }
 
     render(){
@@ -32,17 +37,31 @@ class Filter extends React.Component{
                 </>
             )
         }
-        return(
-            <div className="filter">
-                <div className="filter__button filter__button--open">
-                    <h1 className="filter__h1">{this.props.title}</h1>
-                    <IoIosArrowUp className="filter__icon"/>
+
+        if (this.state.isOpen){
+            return(
+                <div className="filter">
+                    <div onClick={this.onButtonClick} className="filter__button filter__button--open">
+                        <h1 className="filter__h1">{this.props.title}</h1>
+                        <IoIosArrowUp className="filter__icon"/>
+                    </div>
+                    <div className="filter__open">
+                        {dropDown}
+                    </div>
                 </div>
-                <div className="filter__open">
-                    {dropDown}
+            )
+        }else{
+            return(
+                <div className="filter">
+                    <div onClick={this.onButtonClick} className="filter__button">
+                        <h1 className="filter__h1">{this.props.title}</h1>
+                        <IoIosArrowUp className="filter__icon"/>
+                    </div>
+
                 </div>
-            </div>
-        )
+            )
+        }
+
     }
 }
 

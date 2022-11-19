@@ -1,6 +1,8 @@
 .filter{
     min-width: 48.5%;
     position: relative;
+    border-radius: inherit;
+
 }
 
 .filter__button{
@@ -10,6 +12,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 0 0 1.8rem 0.1rem rgba(0,0,0,0.42);
 }
 
 .filter__button--open{
@@ -53,6 +56,7 @@
     align-items: center;
     gap: 2rem;
     justify-content: center;
+    box-shadow: 0 2rem 1.8rem 0.1rem rgba(0,0,0,0.42);
 }
 
 .filter__sliderContainer{
