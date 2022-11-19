@@ -11,12 +11,14 @@ class Filter extends React.Component{
             isOpen: false,
             sliderInput: null,
             parks: [],
+            oldParksList: [],
+            searchValue: "",
         }
     }
 
     componentDidMount() {
         const parksList = [];
-        for (let i = 0; i <= parks.parks.length; i++){
+        for (let i = 0; i < parks.parks.length; i++){
             parksList.push({
                 id: i,
                 parkName: parks.parks[i],
@@ -27,6 +29,7 @@ class Filter extends React.Component{
             isOpen: false,
             sliderInput: 1950,
             parks: parksList,
+            oldParksList: parksList,
         })
 
     }
@@ -51,15 +54,35 @@ class Filter extends React.Component{
         this.setState({
             parks: tempState,
         })
+    }
 
-
+    onSearchBarChanged = (event) => {
+        let parks = this.state.oldParksList;
+        let tempState = parks.map(park => {
+            let valueLength = event.target.value.length;
+            let parkValueLength = "";
+            for (let  i = 0; i < valueLength; i++){
+                parkValueLength = parkValueLength + park.parkName[i];
+            }
+            if (event.target.value === parkValueLength){
+                return park
+            }
+        });
+        this.setState({
+            searchValue: event.target.value,
+            parks: tempState
+        });
     }
 
     render(){
+
         let dropDown = null;
-        let parksList = [];
+        let parksList = this.state.parks;
+        parksList = parksList.filter(function(element){
+            return element !== undefined;
+        });
         if (this.state.parks !== undefined ||this.state.parks !== []){
-            parksList = this.state.parks.map(park => {
+            parksList = parksList.map(park => {
                  return (
                      <li key={park.id} className="filter__searchItem">
                          <label htmlFor={park.parkName} className="filter__searchItem__label">{park.parkName}</label>
@@ -85,7 +108,7 @@ class Filter extends React.Component{
             dropDown = (
                 <>
                     <div className="filter__searchContainer">
-                        <input placeholder="Zoeken" className="filter__searchInput" type="search"/>
+                        <input value={this.state.searchValue} onChange={this.onSearchBarChanged} placeholder="Zoeken" className="filter__searchInput" type="search"/>
                         <BiSearchAlt2 className="filter__searchSVG"/>
                     </div>
                     <ul className="filter__searchList">
