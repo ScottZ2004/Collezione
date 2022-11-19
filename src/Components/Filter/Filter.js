@@ -10,11 +10,25 @@ class Filter extends React.Component{
         this.state = {
             isOpen: false,
             sliderInput: null,
+            parks: [],
         }
     }
 
     componentDidMount() {
-        this.setState({sliderInput: 1950})
+        const parksList = [];
+        for (let i = 0; i <= parks.parks.length; i++){
+            parksList.push({
+                id: i,
+                parkName: parks.parks[i],
+                isSelected: false,
+            })
+        }
+        this.setState({
+            isOpen: false,
+            sliderInput: 1950,
+            parks: parksList,
+        })
+
     }
 
     changeSliderValue = (event) => {
@@ -25,18 +39,36 @@ class Filter extends React.Component{
         this.setState({isOpen: !this.state.isOpen});
     }
 
+    onCheckBoxChange = (event) => {
+        let parks = this.state.parks;
+        let tempState = parks.map(park => {
+            if (event.target.id === park.parkName){
+                park.isSelected = !park.isSelected;
+            }
+            return park;
+        });
+
+        this.setState({
+            parks: tempState,
+        })
+
+
+    }
+
     render(){
         let dropDown = null;
         let parksList = [];
-        for (let i = 0; i <= parks.parks.length; i++){
-            parksList.push(
-                <li className="filter__searchItem">
-                    <label htmlFor={parks.parks[i]} className="filter__searchItem__label">{parks.parks[i]}</label>
-                    <input id={parks.parks[i]} className="filter__searchItem__checkbox" type="checkbox"/>
-                </li>
-            )
+        if (this.state.parks !== undefined ||this.state.parks !== []){
+            parksList = this.state.parks.map(park => {
+                 return (
+                     <li key={park.id} className="filter__searchItem">
+                         <label htmlFor={park.parkName} className="filter__searchItem__label">{park.parkName}</label>
+                         <input id={park.parkName} className="filter__searchItem__checkbox" type="checkbox" onClick={this.onCheckBoxChange}/>
+                     </li>
+                )
+            })
         }
-        console.log(parksList)
+
         if (this.props.type === "slider"){
             dropDown = (
                 <>

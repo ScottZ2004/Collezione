@@ -50,7 +50,6 @@ class Login extends React.Component{
     }
 
     render(){
-        console.log(this.props.redirectPath)
         let passwordType = "text";
         let eye = (<AiFillEye onClick={this.onEyeClick} className="login__passwordSvg"/>);
         if (!this.state.passwordCheck){
