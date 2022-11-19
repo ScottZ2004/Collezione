@@ -44,15 +44,23 @@ class Filter extends React.Component{
 
     onCheckBoxChange = (event) => {
         let parks = this.state.parks;
-        let tempState = parks.map(park => {
+
+        parks = parks.filter(function(element){
+            return element !== undefined;
+        });
+
+        let tempStateParks = parks.map(park => {
             if (event.target.id === park.parkName){
                 park.isSelected = !park.isSelected;
             }
             return park;
         });
 
+
+        console.log(tempStateParks)
+
         this.setState({
-            parks: tempState,
+            parks: tempStateParks,
         })
     }
 
@@ -75,7 +83,6 @@ class Filter extends React.Component{
     }
 
     render(){
-
         let dropDown = null;
         let parksList = this.state.parks;
         parksList = parksList.filter(function(element){
