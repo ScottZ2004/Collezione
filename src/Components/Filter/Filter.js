@@ -43,7 +43,7 @@ class Filter extends React.Component{
                 <div className="filter">
                     <div onClick={this.onButtonClick} className="filter__button filter__button--open">
                         <h1 className="filter__h1">{this.props.title}</h1>
-                        <IoIosArrowUp className="filter__icon"/>
+                        <IoIosArrowUp className="filter__icon filter__icon--rotated"/>
                     </div>
                     <div className="filter__open">
                         {dropDown}
