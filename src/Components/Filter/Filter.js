@@ -1,6 +1,7 @@
 import React from "react";
 import "./Filter.css"
 import {IoIosArrowUp} from "react-icons/io"
+import parks from "../../data/parks";
 
 class Filter extends React.Component{
     constructor(props) {
@@ -24,6 +25,7 @@ class Filter extends React.Component{
     }
 
     render(){
+        console.log(parks.parks)
         let dropDown = null
         if (this.props.type === "slider"){
             dropDown = (

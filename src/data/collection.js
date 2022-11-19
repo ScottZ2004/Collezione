@@ -15,7 +15,7 @@ const collection = [
             " Je begint in een oude Griekse tempel en snel daarna wordt je boot omhoog getrokken om te beginnen aan een snelle afdaling naar de wereld van de Griekse god van de zeeën!" +
             " Na een rustig vaartochtje ga je nogmaals omhoog en duik je opnieuw in de Griekse wateren.",
         Build_Year: 2001,
-        Park: "Europapark",
+        Park: "Europa Park",
         img: Poseidon,
         userId: 1,
     },
