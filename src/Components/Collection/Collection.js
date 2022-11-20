@@ -16,7 +16,9 @@ class Collection extends React.Component{
             myNumber: this.props.match.params.number,
             collection: [],
             selectedItemId: 1,
-            editMode: false
+            editMode: false,
+            buildYearValue: 0,
+            parkValue: [],
         }
     }
 
@@ -44,6 +46,10 @@ class Collection extends React.Component{
                 this.props.history.push('/login')
             }
         }
+    }
+
+    getBuildYearValue = (value) => {
+        this.setState({buildYearValue: value})
     }
 
     changeMode = () => {
@@ -75,7 +81,6 @@ class Collection extends React.Component{
         });
     }
     render(){
-
         let selectedItem = {};
         this.state.collection.filter(item => {
             if (item.id === this.state.selectedItemId){
@@ -131,7 +136,7 @@ class Collection extends React.Component{
                         editMode={this.state.editMode}
                         changeMode={this.changeMode}
                         userId={this.props.userId}
-
+                        getBuildYearValue={this.getBuildYearValue}
                     />
                     <CollectionRight
                         items={otherItems}

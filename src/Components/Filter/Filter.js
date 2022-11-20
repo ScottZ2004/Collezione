@@ -8,7 +8,6 @@ class Filter extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            isOpen: false,
             sliderInput: null,
             parks: [],
             oldParksList: [],
@@ -26,7 +25,6 @@ class Filter extends React.Component{
             })
         }
         this.setState({
-            isOpen: false,
             sliderInput: 1950,
             parks: parksList,
             oldParksList: parksList,
@@ -36,10 +34,11 @@ class Filter extends React.Component{
 
     changeSliderValue = (event) => {
         this.setState({sliderInput: event.target.value})
+        this.props.getBuildYearValue(event.target.value)
     }
 
     onButtonClick = () => {
-        this.setState({isOpen: !this.state.isOpen});
+        this.props.onFilterCLick(this.props.id);
     }
 
     onCheckBoxChange = (event) => {
@@ -125,7 +124,7 @@ class Filter extends React.Component{
             )
         }
 
-        if (this.state.isOpen){
+        if (this.props.isOpen){
             return(
                 <div className="filter">
                     <div onClick={this.onButtonClick} className="filter__button filter__button--open">
