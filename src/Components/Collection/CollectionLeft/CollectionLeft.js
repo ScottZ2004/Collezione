@@ -21,7 +21,8 @@ class CollectionLeft extends React.Component{
             description: this.props.item.description,
             build_year: this.props.item.Build_Year,
             park: this.props.item.Park,
-            filtersOpen: [false, false]
+            filtersOpen: [false, false],
+
         })
     }
 
@@ -134,7 +135,7 @@ class CollectionLeft extends React.Component{
             <div className="collection__Left">
                 <header className="collection__heading">
                     <Filter getBuildYearValue={this.getBuildYearValue} onFilterCLick={this.onFilterClick} id="0" isOpen={this.state.filtersOpen[0]} type="slider" title="Bouw jaar"/>
-                    <Filter onFilterCLick={this.onFilterClick} id="1" isOpen={this.state.filtersOpen[1]} type="search" title="Park"/>
+                    <Filter getSelectedParks={this.props.getSelectedParks} onFilterCLick={this.onFilterClick} id="1" isOpen={this.state.filtersOpen[1]} type="search" title="Park"/>
                 </header>
                 <div className="collection__selected__imageContainer">
                     <img className="collection__selected__image" src={this.props.item.img || Poseidon} alt={this.props.item.title || "achtbaan heeft geen eigen afbeelding"}/>

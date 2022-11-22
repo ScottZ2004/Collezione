@@ -55,12 +55,11 @@ class Filter extends React.Component{
             return park;
         });
 
-
-        console.log(tempStateParks)
-
         this.setState({
             parks: tempStateParks,
         })
+
+        this.props.getSelectedParks(tempStateParks);
     }
 
     onSearchBarChanged = (event) => {
@@ -103,7 +102,7 @@ class Filter extends React.Component{
                 <>
                     <div className="filter__sliderContainer">
                         <h2 className="filter__sliderText">1950</h2>
-                        <input onChange={this.changeSliderValue} className="filter__slider" type="range" min="1950" max={new Date().getFullYear()}/>
+                        <input onChange={this.changeSliderValue} className="filter__slider" defaultValue={this.state.sliderInput} type="range" min="1950" max={new Date().getFullYear()}/>
                         <h2 className="filter__sliderText">{new Date().getFullYear()}</h2>
                     </div>
                     <h2 className="filter__sliderText">{this.state.sliderInput}</h2>

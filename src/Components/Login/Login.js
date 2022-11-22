@@ -43,7 +43,7 @@ class Login extends React.Component{
                 this.props.history.push(route);
             }else{
                 this.setState({wrongInput: true});
-                this.props.redirectToLogin(null)
+                this.props.redirectToLogin(null);
             }
         })
 

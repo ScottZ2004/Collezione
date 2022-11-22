@@ -147,7 +147,7 @@
 }
 
 .filter__searchList{
-    overflow: scroll;
+    overflow-y: scroll;
     max-height: 20rem;
     width: 100%;
 }
