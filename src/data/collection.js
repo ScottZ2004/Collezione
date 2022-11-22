@@ -29,7 +29,7 @@ const collection = [
             " Andere voorbeelden van zulke attracties zijn Big Thunder Mountain Railroad en Splash Mountain." +
             " De berg van Expedition Everest is op zijn hoogste punt 98 meter hoog.",
         Build_Year: 2003,
-        Park: "Disney's Animal kingdom",
+        Park: "Disney's Animal Kingdom",
         img: Expedition_Everest,
         userId: 1,
     },

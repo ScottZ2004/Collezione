@@ -50,7 +50,7 @@ class Collection extends React.Component{
 
     getBuildYearValue = (value) => {
         this.setState({buildYearValue: value});
-        this.renderNewItems(value, []);
+        this.renderNewItems(value, 0);
     }
 
     getSelectedParks = (parks) => {
@@ -99,6 +99,7 @@ class Collection extends React.Component{
             if (selectedItemToBeReplaced.length > 0){
                 this.setState({
                     collection: selectedItemToBeReplaced,
+                    selectedItemId: selectedItemToBeReplaced[0].id
                 })
             }
         }else{

@@ -51,9 +51,13 @@ class Filter extends React.Component{
         let tempStateParks = parks.map(park => {
             if (event.target.id === park.parkName){
                 park.isSelected = !park.isSelected;
+                event.target.checked = park.isSelected
+            }else{
+                park.isSelected = false
             }
             return park;
         });
+
 
         this.setState({
             parks: tempStateParks,
@@ -91,7 +95,7 @@ class Filter extends React.Component{
                  return (
                      <li key={park.id} className="filter__searchItem">
                          <label htmlFor={park.parkName} className="filter__searchItem__label">{park.parkName}</label>
-                         <input id={park.parkName} className="filter__searchItem__checkbox" type="checkbox" onClick={this.onCheckBoxChange}/>
+                         <input id={park.parkName} name="park" className="filter__searchItem__checkbox" type="radio" onClick={this.onCheckBoxChange}/>
                      </li>
                 )
             })
