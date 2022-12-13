@@ -73,20 +73,20 @@ class Collection extends React.Component{
         if (buildYear > 0){
             BuildYear = buildYear;
         }else{
-            BuildYear = this.state.buildYearValue
+            BuildYear = 0
         }
 
         if (parks !== 0){
             newSelectedParks = parks
         }else{
-            newSelectedParks = this.state.selectedParks;
+            newSelectedParks = []
         }
-        console.log(newSelectedParks)
 
         let collection = this.state.collection;
         let selectedItemToBeReplaced
         if (newSelectedParks.length > 0) {
             selectedItemToBeReplaced = collection.map(item => {
+
                 for (let i = 0; i < newSelectedParks.length; i++){
                     if (item.Park === newSelectedParks[i]){
                         return item
@@ -102,7 +102,24 @@ class Collection extends React.Component{
                     selectedItemId: selectedItemToBeReplaced[0].id
                 })
             }
-        }else{
+        }else if(BuildYear > 1950){
+            selectedItemToBeReplaced = collection.map(item => {
+                if (item.Build_Year == BuildYear){
+                    console.log(item)
+                    return item
+                }
+            })
+            selectedItemToBeReplaced = selectedItemToBeReplaced.filter(function(element){
+                return element !== undefined;
+            })
+            if (selectedItemToBeReplaced.length > 0){
+                this.setState({
+                    collection: selectedItemToBeReplaced,
+                    selectedItemId: selectedItemToBeReplaced[0].id
+                })
+            }
+        }
+        else{
             let newCollection = []
             newCollection = collectionList.map(item => {
                 if (item.userId == this.state.myNumber){
