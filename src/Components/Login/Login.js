@@ -43,14 +43,13 @@ class Login extends React.Component{
                 this.props.history.push(route);
             }else{
                 this.setState({wrongInput: true});
-                this.props.redirectToLogin(null)
+                this.props.redirectToLogin(null);
             }
         })
 
     }
 
     render(){
-        console.log(this.props.redirectPath)
         let passwordType = "text";
         let eye = (<AiFillEye onClick={this.onEyeClick} className="login__passwordSvg"/>);
         if (!this.state.passwordCheck){

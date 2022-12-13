@@ -1,6 +1,7 @@
 import React from "react";
 import Poseidon from "../../../images/coasters/Poseidon.jpg";
 import {BsFillPencilFill} from "react-icons/bs";
+import Filter from "../../Filter/Filter";
 
 class CollectionLeft extends React.Component{
     constructor(props) {
@@ -10,6 +11,7 @@ class CollectionLeft extends React.Component{
             description: this.props.item.description,
             build_year: this.props.item.Build_Year,
             park: this.props.item.Park,
+            filtersOpen: [],
         }
     }
 
@@ -19,7 +21,21 @@ class CollectionLeft extends React.Component{
             description: this.props.item.description,
             build_year: this.props.item.Build_Year,
             park: this.props.item.Park,
+            filtersOpen: [false, false],
+
         })
+    }
+
+    getBuildYearValue = (value) => {
+        this.props.getBuildYearValue(value)
+    }
+
+    onFilterClick = (id) =>{
+        if (id == 0) {
+            this.setState({filtersOpen: [!this.state.filtersOpen[0], false]});
+        }else if (id == 1) {
+            this.setState({filtersOpen: [false, !this.state.filtersOpen[1]]});
+        }
     }
 
     changeMode = () => {
@@ -118,8 +134,8 @@ class CollectionLeft extends React.Component{
         return(
             <div className="collection__Left">
                 <header className="collection__heading">
-                    <h1 className="collection__filter">Filter #1</h1>
-                    <h1 className="collection__filter">Filter #2</h1>
+                    <Filter getBuildYearValue={this.getBuildYearValue} onFilterCLick={this.onFilterClick} id="0" isOpen={this.state.filtersOpen[0]} type="slider" title="Bouw jaar"/>
+                    <Filter getSelectedParks={this.props.getSelectedParks} onFilterCLick={this.onFilterClick} id="1" isOpen={this.state.filtersOpen[1]} type="search" title="Park"/>
                 </header>
                 <div className="collection__selected__imageContainer">
                     <img className="collection__selected__image" src={this.props.item.img || Poseidon} alt={this.props.item.title || "achtbaan heeft geen eigen afbeelding"}/>

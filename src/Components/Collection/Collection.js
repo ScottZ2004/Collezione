@@ -16,7 +16,9 @@ class Collection extends React.Component{
             myNumber: this.props.match.params.number,
             collection: [],
             selectedItemId: 1,
-            editMode: false
+            editMode: false,
+            buildYearValue: 0,
+            selectedParks: [],
         }
     }
 
@@ -46,6 +48,94 @@ class Collection extends React.Component{
         }
     }
 
+    getBuildYearValue = (value) => {
+        this.setState({buildYearValue: value});
+        this.renderNewItems(value, 0);
+    }
+
+    getSelectedParks = (parks) => {
+        let selectedParks = parks.map(park => {
+            if (park.isSelected){
+                return park.parkName
+            }
+        })
+
+        selectedParks = selectedParks.filter(function(element){
+            return element !== undefined;
+        })
+        this.setState({selectedParks: selectedParks});
+        this.renderNewItems(0, selectedParks);
+    }
+
+    renderNewItems = (buildYear, parks) => {
+        let BuildYear = 0
+        let newSelectedParks = null
+        if (buildYear > 0){
+            BuildYear = buildYear;
+        }else{
+            BuildYear = 0
+        }
+
+        if (parks !== 0){
+            newSelectedParks = parks
+        }else{
+            newSelectedParks = []
+        }
+
+        let collection = this.state.collection;
+        let selectedItemToBeReplaced
+        if (newSelectedParks.length > 0) {
+            selectedItemToBeReplaced = collection.map(item => {
+
+                for (let i = 0; i < newSelectedParks.length; i++){
+                    if (item.Park === newSelectedParks[i]){
+                        return item
+                    }
+                }
+            });
+            selectedItemToBeReplaced = selectedItemToBeReplaced.filter(function(element){
+                return element !== undefined;
+            })
+            if (selectedItemToBeReplaced.length > 0){
+                this.setState({
+                    collection: selectedItemToBeReplaced,
+                    selectedItemId: selectedItemToBeReplaced[0].id
+                })
+            }
+        }else if(BuildYear > 1950){
+            selectedItemToBeReplaced = collection.map(item => {
+                if (item.Build_Year == BuildYear){
+                    console.log(item)
+                    return item
+                }
+            })
+            selectedItemToBeReplaced = selectedItemToBeReplaced.filter(function(element){
+                return element !== undefined;
+            })
+            if (selectedItemToBeReplaced.length > 0){
+                this.setState({
+                    collection: selectedItemToBeReplaced,
+                    selectedItemId: selectedItemToBeReplaced[0].id
+                })
+            }
+        }
+        else{
+            let newCollection = []
+            newCollection = collectionList.map(item => {
+                if (item.userId == this.state.myNumber){
+                    return item
+                }
+            })
+
+            newCollection = newCollection.filter(function(element){
+                return element !== undefined;
+            })
+            this.setState({
+                collection: newCollection
+            })
+        }
+    }
+
     changeMode = () => {
         this.setState({editMode: !this.state.editMode})
     }
@@ -66,7 +156,6 @@ class Collection extends React.Component{
                 item.description = description;
                 item.Build_Year = build_year;
                 item.Park = park;
-                console.log(item.Park)
             }
             return item
         });
@@ -76,7 +165,6 @@ class Collection extends React.Component{
         });
     }
     render(){
-
         let selectedItem = {};
         this.state.collection.filter(item => {
             if (item.id === this.state.selectedItemId){
@@ -132,7 +220,8 @@ class Collection extends React.Component{
                         editMode={this.state.editMode}
                         changeMode={this.changeMode}
                         userId={this.props.userId}
-
+                        getBuildYearValue={this.getBuildYearValue}
+                        getSelectedParks={this.getSelectedParks}
                     />
                     <CollectionRight
                         items={otherItems}
