@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 
 import Navigation from "../Navigation/Navigation";
 import Footer from "../Footer/Footer";
@@ -6,7 +6,7 @@ import CollectionRight from "./CollectionRight/CollectionRight";
 import CollectionLeft from "./CollectionLeft/CollectionLeft";
 import {withRouter} from "react-router-dom";
 import collectionList from "../../data/collection";
-
+import CollectionContext from "../../Context/CollectionContext";
 import "./Collection.css";
 
 class Collection extends React.Component{
@@ -76,7 +76,7 @@ class Collection extends React.Component{
         });
     }
     render(){
-
+        
         let selectedItem = {};
         this.state.collection.filter(item => {
             if (item.id === this.state.selectedItemId){
@@ -144,4 +144,4 @@ class Collection extends React.Component{
     }
 }
 
-export default withRouter(Collection) ;
+export default Collection ;
