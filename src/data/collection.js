@@ -79,4 +79,4 @@ const collection = [
     },
 ];
 
-export default collection;
+export default {collection};

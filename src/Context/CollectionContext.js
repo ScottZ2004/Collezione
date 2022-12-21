@@ -1,10 +1,12 @@
 import { createContext, useState, useEffect } from "react";
 import usersData from "../data/users";
 import { useNavigate } from "react-router-dom";
+import collectionData from "../data/collection";
 const CollectionContext = createContext();
 
 export const CollectionProvider = ({children}) => {
     const navigate = useNavigate();
+    //login
     const [users, setUsers] = useState([]);
     const [user, setUser] = useState({
         isLoggedIn: false,
@@ -16,11 +18,6 @@ export const CollectionProvider = ({children}) => {
         password: "",
     })
     const [wrongInput, setWrongInput] = useState(false);
-
-    useEffect(() => {
-        setUsers(usersData.users);
-    },[])
-
     const redirectToLogin = (path) => {
         setRedirectPath(path);
     }
@@ -65,6 +62,53 @@ export const CollectionProvider = ({children}) => {
 
     }
 
+    useEffect(() => {
+        setUsers(usersData.users);
+    },[])
+
+    // collection
+    const [collection, setCollection] = useState(collectionData.collection);
+    const [selectedItem, setSelectedItem] = useState(1);
+    const [editMode, setEditMode] = useState(false);
+    const [selectedInput, setSelectedInput] = useState({
+        title: "",
+        description: "",
+        build_year: "",
+        park: "",
+    })
+
+    const changeMode = () => {
+        setEditMode(!editMode);
+    }
+
+    const onItemClick = (id) =>{
+        setSelectedItem(id)
+        setEditMode(false)
+    }
+
+    const saveItem = () => {
+        let tempCollection = collection;
+        let newState = tempCollection.map(item => {
+            if (selectedItem === item.id){
+                item.id = selectedItem
+                item.title = selectedInput.title;
+                item.description = selectedInput.description;
+                item.Build_Year = selectedInput.build_year;
+                item.Park = selectedInput.park;
+            }
+            return item
+        });
+        setCollection(newState);
+        setEditMode(false);
+    }
+
+    const onSelectedInputchange = (event) => {
+        setSelectedInput({
+            ...selectedInput,
+            [event.target.name]: event.target.value
+        });
+    }
+
     return <CollectionContext.Provider value={{
         redirectToLogin,
         users,
@@ -72,8 +116,18 @@ export const CollectionProvider = ({children}) => {
         addUser,
         onInputChange,
         logIn,
-        wrongInput
-
+        wrongInput,
+        collection,
+        changeMode,
+        onItemClick,
+        saveItem,
+        setCollection,
+        setSelectedItem,
+        selectedItem,
+        onSelectedInputchange,
+        selectedInput,
+        editMode,
+        setSelectedInput,
     }}>{children}</CollectionContext.Provider>
 }
 
