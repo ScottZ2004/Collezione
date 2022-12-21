@@ -86,20 +86,43 @@ export const CollectionProvider = ({children}) => {
         setEditMode(false)
     }
 
-    const saveItem = () => {
-        let tempCollection = collection;
-        let newState = tempCollection.map(item => {
+    const saveItem = (title, description, build_year, park) => {
+        let newState = collection.map(item => {
             if (selectedItem === item.id){
-                item.id = selectedItem
-                item.title = selectedInput.title;
-                item.description = selectedInput.description;
-                item.Build_Year = selectedInput.build_year;
-                item.Park = selectedInput.park;
+                item.id = selectedItem;
+                if(selectedInput.title === ""){
+                    item.title = title
+                    console.log("hallo")
+                }else{
+                    item.title = selectedInput.title;    
+                }     
+                if(selectedInput.description === ""){
+                    item.description = description
+                }else{
+                    item.description = selectedInput.description;    
+                }    
+                if(selectedInput.build_year === ""){
+                    item.Build_Year = build_year
+                }else{
+                    item.Build_Year = selectedInput.build_year;
+                }   
+                if(selectedInput.park === ""){
+                    item.Park = park
+                }else{
+                    item.Park = selectedInput.park;
+                }              
+                               
             }
             return item
         });
         setCollection(newState);
         setEditMode(false);
+        setSelectedInput({
+            title: "",
+            description: "",
+            build_year: "",
+            park: "",
+        })
     }
 
     const onSelectedInputchange = (event) => {

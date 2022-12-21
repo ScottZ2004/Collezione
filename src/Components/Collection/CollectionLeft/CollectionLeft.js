@@ -3,17 +3,12 @@ import Poseidon from "../../../images/coasters/Poseidon.jpg";
 import {BsFillPencilFill} from "react-icons/bs";
 import { useContext } from "react";
 import CollectionContext from "../../../Context/CollectionContext";
-import { useEffect } from "react";
 const CollectionLeft = (props) =>{
-    const {editMode, onSelectedInputchange, saveItem, changeMode, user, SelectedInput, setSelectedInput} = useContext(CollectionContext);
-    useEffect(() => {
-        setSelectedInput({
-            title: props.item.title,
-            description: props.item.description,
-            build_year: props.item.Build_Year,
-            park: props.item.Park,
-        })
-    }, []);
+    const {editMode, onSelectedInputchange, saveItem, changeMode, user} = useContext(CollectionContext);
+
+    const onClick = () => {
+        saveItem(props.item.title,props.item.description,props.item.Build_Year,props.item.Park);
+    }
     let articleSection = (
         <article className="collection__selected__article">
             <h1 className="collection__selected__h1">{props.item.title || "title"}</h1>
@@ -60,7 +55,7 @@ const CollectionLeft = (props) =>{
                     id="park"
                     defaultValue={props.item.Park}
                     onChange={onSelectedInputchange}/>
-                <button onClick={saveItem} className="collection__selected__button">Opslaan</button>
+                <button onClick={onClick} className="collection__selected__button">Opslaan</button>
             </article>
         )
     }
