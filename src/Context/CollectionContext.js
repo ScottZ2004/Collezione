@@ -75,7 +75,7 @@ export const CollectionProvider = ({children}) => {
         description: "",
         build_year: "",
         park: "",
-    })
+    });
 
     const changeMode = () => {
         setEditMode(!editMode);

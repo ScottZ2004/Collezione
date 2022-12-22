@@ -1,4 +1,5 @@
 import React from "react";
+import Filters from "../../Filters/Filters";
 import Poseidon from "../../../images/coasters/Poseidon.jpg";
 import {BsFillPencilFill} from "react-icons/bs";
 import { useContext } from "react";
@@ -72,17 +73,14 @@ const CollectionLeft = (props) =>{
         )
     }
     return(
-        <div className="collection__Left">
-            <header className="collection__heading">
-                <h1 className="collection__filter">Filter #1</h1>
-                <h1 className="collection__filter">Filter #2</h1>
-            </header>
+        <section className="collection__Left">
+            <Filters/>
             <div className="collection__selected__imageContainer">
                 <img className="collection__selected__image" src={props.item.img || Poseidon} alt={props.item.title || "achtbaan heeft geen eigen afbeelding"}/>
             </div>
             {editModeSection}
             {articleSection}
-        </div>
+        </section>
     )
 
 }
