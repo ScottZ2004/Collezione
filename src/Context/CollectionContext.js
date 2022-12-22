@@ -156,9 +156,12 @@ export const CollectionProvider = ({children}) => {
                     return item
                 }
             });
-            console.log(newCollection)
             setCollection(newCollection);
-            setSelectedItem(newCollection[0].id)
+            if(newCollection.length !== 0){
+                setSelectedItem(newCollection[0].id)
+            }else{
+                setSelectedInput(0)
+            }
         }else{
             const filteredCollection = collectionData.collection.filter(item => {
                 if(item.userId == pageNumber){

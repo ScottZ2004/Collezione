@@ -24,28 +24,37 @@ const Collection = () =>{
         }
     },[]);
 
-    let selectedItemToBeRendered = {};
-    collection.filter(item => {
-        if (item.id === selectedItem){
-            selectedItemToBeRendered = item
-        }
-    });
-    let key = 0
-    while (Object.keys(selectedItemToBeRendered).length === 0) {
-        selectedItemToBeRendered = collection[key];
-        setSelectedItem(key);
-        key = key + 1;
-    }
+    let left = null
     let otherItems = [];
-    otherItems = collection.filter(item => {
-        if (item.id !== selectedItem){
-            
-            return item
+    if(collection.length === 0){
+        left = <CollectionLeft />
+        
+    }else{
+        console.log(collection)
+        let selectedItemToBeRendered = {};
+        collection.filter(item => {
+            if (item.id === selectedItem){
+                selectedItemToBeRendered = item
+            }
+        });
+        let key = 0
+        while (Object.keys(selectedItemToBeRendered).length === 0) {
+            selectedItemToBeRendered = collection[key];
+            setSelectedItem(key);
+            key = key + 1;
         }
-    });
 
-    
-   
+        otherItems = collection.filter(item => {
+            if (item.id !== selectedItem){
+                
+                return item
+            }
+        });
+        if(collection.length !== 0){ 
+            left = <CollectionLeft item={selectedItemToBeRendered}/>
+        }
+    }
+
 
     const itemsList = [
         {
@@ -69,17 +78,11 @@ const Collection = () =>{
             border_color: "purple"
         }
     ];
-
-    if (collection.length === 0){
-        return <h1>This page doesn't exist</h1>
-    }
     return(
         <>
             <Navigation items={itemsList}/>
             <section className="collection">
-                <CollectionLeft
-                    item={selectedItemToBeRendered}
-                />
+                {left}
                 <CollectionRight
                     items={otherItems}/>
             </section>
