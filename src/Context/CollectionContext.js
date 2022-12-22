@@ -76,6 +76,7 @@ export const CollectionProvider = ({children}) => {
         build_year: "",
         park: "",
     });
+    const [activeFilter, setActiveFilter] = useState("ALLES");
 
     const changeMode = () => {
         setEditMode(!editMode);
@@ -132,6 +133,10 @@ export const CollectionProvider = ({children}) => {
         });
     }
 
+    const onFilterButtonClicked = (event) => {
+        setActiveFilter(event.target.id);
+    }
+
     return <CollectionContext.Provider value={{
         redirectToLogin,
         users,
@@ -151,6 +156,9 @@ export const CollectionProvider = ({children}) => {
         selectedInput,
         editMode,
         setSelectedInput,
+        activeFilter,
+        onFilterButtonClicked,
+
     }}>{children}</CollectionContext.Provider>
 }
 
