@@ -77,6 +77,16 @@ export const CollectionProvider = ({children}) => {
         park: "",
     });
     const [activeFilter, setActiveFilter] = useState("ALLES");
+    const [pageNumber, setPageNumber] = useState(0);
+
+    const getCollection = (number) => {
+        const filteredCollection = collectionData.collection.filter(item => {
+            if(item.userId == number){
+                return item
+            }
+        });
+        setCollection(filteredCollection)
+    }
 
     const changeMode = () => {
         setEditMode(!editMode);
@@ -135,6 +145,29 @@ export const CollectionProvider = ({children}) => {
 
     const onFilterButtonClicked = (event) => {
         setActiveFilter(event.target.id);
+        if(event.target.id !== "ALLES"){
+            const filteredCollection = collectionData.collection.filter(item => {
+                if(item.userId == pageNumber){
+                    return item
+                }
+            });
+            const newCollection = filteredCollection.filter(item => {
+                if(event.target.id === item.filter){
+                    return item
+                }
+            });
+            console.log(newCollection)
+            setCollection(newCollection);
+            setSelectedItem(newCollection[0].id)
+        }else{
+            const filteredCollection = collectionData.collection.filter(item => {
+                if(item.userId == pageNumber){
+                    return item
+                }
+            });
+            setCollection(filteredCollection)
+            setSelectedItem(collectionData.collection[0].id)
+        }
     }
 
     return <CollectionContext.Provider value={{
@@ -158,6 +191,8 @@ export const CollectionProvider = ({children}) => {
         setSelectedInput,
         activeFilter,
         onFilterButtonClicked,
+        setPageNumber,
+        getCollection,
 
     }}>{children}</CollectionContext.Provider>
 }

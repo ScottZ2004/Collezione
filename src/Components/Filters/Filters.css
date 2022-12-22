@@ -10,7 +10,7 @@
 }
 
 .filter__header{
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: bold;
     grid-column-start: 1;
     grid-column-end: 4;

@@ -32,7 +32,7 @@ const Filters = () => {
 
     const filtersToBeRendered = filters.map(filter => {
         if(filter.id !== activeFilter){
-            return <button onClick={onFilterButtonClicked} id={filter.id} className="filter">{filter.title}</button>
+            return <button key={filter.id} onClick={onFilterButtonClicked} id={filter.id} className="filter">{filter.title}</button>
         }
     });
 
