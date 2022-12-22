@@ -30,7 +30,6 @@ const Login = () =>{
     if (wrongInput){
         wrongText = (<p className="login__Text__wrong">Sorry maar dit account bestaat niet. Probeer het nog een keer of maak een nieuw account.</p>)
     }
-
     return(
         <>
             <Navigation/>

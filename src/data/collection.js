@@ -15,7 +15,7 @@ const collection = [
             " Je begint in een oude Griekse tempel en snel daarna wordt je boot omhoog getrokken om te beginnen aan een snelle afdaling naar de wereld van de Griekse god van de zeeën!" +
             " Na een rustig vaartochtje ga je nogmaals omhoog en duik je opnieuw in de Griekse wateren.",
         Build_Year: 2001,
-        Park: "Europapark",
+        Park: "Europa Park",
         img: Poseidon,
         userId: 1,
     },
@@ -29,7 +29,7 @@ const collection = [
             " Andere voorbeelden van zulke attracties zijn Big Thunder Mountain Railroad en Splash Mountain." +
             " De berg van Expedition Everest is op zijn hoogste punt 98 meter hoog.",
         Build_Year: 2003,
-        Park: "Disney's Animal kingdom",
+        Park: "Disney's Animal Kingdom",
         img: Expedition_Everest,
         userId: 1,
     },

@@ -11,12 +11,14 @@ import "./Collection.css";
 const Collection = () =>{
     const {collection, setSelectedItem, user, redirectToLogin, selectedItem} = useContext(CollectionContext);
 
+
     let myNumber = useParams();
     const navigate = useNavigate();
     let newCollection = collection.filter(item => {
         if(item.userId == myNumber.number){
             return item
         }
+
     });
    
     let selectedItemToBeRendered = {};
@@ -28,11 +30,12 @@ const Collection = () =>{
 
     let otherItems = [];
 
+
     otherItems = newCollection.filter(item => {
         if (item.id !== selectedItem){
             return item
         }
-    });
+});
 
     useEffect(() => { 
         setSelectedItem(newCollection[0].id);

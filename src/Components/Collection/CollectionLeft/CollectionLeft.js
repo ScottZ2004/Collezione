@@ -8,6 +8,7 @@ const CollectionLeft = (props) =>{
 
     const onClick = () => {
         saveItem(props.item.title,props.item.description,props.item.Build_Year,props.item.Park);
+
     }
     let articleSection = (
         <article className="collection__selected__article">
@@ -17,6 +18,7 @@ const CollectionLeft = (props) =>{
             <h2 className="collection__selected__h2">Park: {props.item.Park || "naam park"}</h2>
         </article>
     );
+
 
     if (editMode){
         articleSection = (
@@ -59,7 +61,6 @@ const CollectionLeft = (props) =>{
             </article>
         )
     }
-
     let editModeSection = null;
     if(user.userId === props.item.userId){
         editModeSection = (
