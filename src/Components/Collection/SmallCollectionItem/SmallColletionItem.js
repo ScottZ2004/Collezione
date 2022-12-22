@@ -1,7 +1,11 @@
 import tempCoaster from "../../../images/coasters/temp-roller coaster.jpg";
+import { useContext } from "react";
+import CollectionContext from "../../../Context/CollectionContext";
 const SmallColletionItem = (props) => {
+
+    const {onItemClick} = useContext(CollectionContext);
     const click = () => {
-        props.onItemClick(props.id)
+        onItemClick(props.id)
     }
 
     return(
