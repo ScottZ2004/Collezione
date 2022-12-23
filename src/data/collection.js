@@ -18,6 +18,7 @@ const collection = [
         Park: "Europa Park",
         img: Poseidon,
         userId: 1,
+        filter: "WATER",
     },
     {
         id: 2,
@@ -32,6 +33,7 @@ const collection = [
         Park: "Disney's Animal Kingdom",
         img: Expedition_Everest,
         userId: 1,
+        filter: "HOUT",
     },
     {
         id: 3,
@@ -44,6 +46,7 @@ const collection = [
         Park: "Disney's Hollywood Studios",
         img: Slinky_Dog_Dash,
         userId: 2,
+        filter: "STAAL",
     },
     {
         id: 4,
@@ -63,6 +66,7 @@ const collection = [
         Park: "Phantasialand",
         img: Taron,
         userId: 1,
+        filter: "STAAL",
     },
     {
         id: 5,
@@ -76,6 +80,7 @@ const collection = [
         Park: "Phantasialand",
         img: Fly,
         userId: 1,
+        filter: "STAAL",
     },
 ];
 

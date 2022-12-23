@@ -9,42 +9,52 @@ import CollectionContext from "../../Context/CollectionContext";
 import "./Collection.css";
 
 const Collection = () =>{
-    const {collection, setSelectedItem, user, redirectToLogin, selectedItem} = useContext(CollectionContext);
+    const {collection, setSelectedItem, user, redirectToLogin, selectedItem, setPageNumber, getCollection} = useContext(CollectionContext);
 
 
     let myNumber = useParams();
     const navigate = useNavigate();
-    let newCollection = collection.filter(item => {
-        if(item.userId == myNumber.number){
-            return item
-        }
-
-    });
-   
-    let selectedItemToBeRendered = {};
-    newCollection.filter(item => {
-        if (item.id === selectedItem){
-            selectedItemToBeRendered = item
-        }
-    })
-
-    let otherItems = [];
-
-
-    otherItems = newCollection.filter(item => {
-        if (item.id !== selectedItem){
-            return item
-        }
-});
-
+    
     useEffect(() => { 
-        setSelectedItem(newCollection[0].id);
+        getCollection(myNumber.number);
+        setPageNumber(myNumber.number);
         if (!user.isLoggedIn){
             redirectToLogin(window.location.pathname);
             navigate('/login');
         }
     },[]);
-   
+
+    let left = null
+    let otherItems = [];
+    if(collection.length === 0){
+        left = <CollectionLeft />
+        
+    }else{
+        console.log(collection)
+        let selectedItemToBeRendered = {};
+        collection.filter(item => {
+            if (item.id === selectedItem){
+                selectedItemToBeRendered = item
+            }
+        });
+        let key = 0
+        while (Object.keys(selectedItemToBeRendered).length === 0) {
+            selectedItemToBeRendered = collection[key];
+            setSelectedItem(key);
+            key = key + 1;
+        }
+
+        otherItems = collection.filter(item => {
+            if (item.id !== selectedItem){
+                
+                return item
+            }
+        });
+        if(collection.length !== 0){ 
+            left = <CollectionLeft item={selectedItemToBeRendered}/>
+        }
+    }
+
 
     const itemsList = [
         {
@@ -68,17 +78,11 @@ const Collection = () =>{
             border_color: "purple"
         }
     ];
-
-    if (newCollection.length === 0){
-        return <h1>This page doesn't exist</h1>
-    }
     return(
         <>
             <Navigation items={itemsList}/>
             <section className="collection">
-                <CollectionLeft
-                    item={selectedItemToBeRendered}
-                />
+                {left}
                 <CollectionRight
                     items={otherItems}/>
             </section>

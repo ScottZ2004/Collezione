@@ -251,3 +251,6 @@
         margin-top: 0;
     }
 }
+.collection__error{
+    font-size: 3rem;
+}
