@@ -4,6 +4,7 @@ import Homepage from "../Components/Homepage/Homepage";
 import Collection from "../Components/Collection/Collection";
 import Login from "../Components/Login/Login";
 import Signup from "../Components/Signup/Signup";
+import Backlog from "../Components/Backlog/Backlog";
 import { BrowserRouter, Routes, Route,  } from "react-router-dom";
 import { CollectionProvider } from "../Context/CollectionContext";
 
@@ -16,6 +17,9 @@ const App = () =>{
                         
                     </Route>
                     <Route path="/signup"element={<Signup/>}>
+                        
+                    </Route>
+                    <Route path="/backlog"element={<Backlog/>}>
                         
                     </Route>
                     <Route path="/user/:number/collection" element={<Collection/>}>
