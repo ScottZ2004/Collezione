@@ -1,7 +1,7 @@
 import "./Backlog.css";
 import Navigation from "../Navigation/Navigation";
 import Footer from "../Footer/Footer";
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import CollectionContext from "../../Context/CollectionContext";
 import taron from "../../images/coasters/Taron.jpg";
 import {BsFillArrowRightCircleFill} from "react-icons/bs"
@@ -9,9 +9,21 @@ import { Link } from "react-router-dom";
 
 const Backlog = () => {
     const {collection} = useContext(CollectionContext);
-    const backlog = collection.map(item => {
-        return <li className="backlog__item">{item.title}</li>
-    })
+    
+    const [inputs, setInputs] = useState({
+        park: "",
+        type: ""
+    });
+
+    const onInputChange = (e) => {
+        setInputs({
+            ...inputs,
+            [e.target.id]: e.target.value
+        });
+    }
+
+    console.log(inputs)
+
     return(
         <>
             <Navigation/>
@@ -20,16 +32,17 @@ const Backlog = () => {
                     <h1 className="backlog__header">Backlog Chooser</h1>
                     <div className="backlog__searchContainer">
                         <label htmlFor="park" className="backlog__label">Park</label>
-                        <select className="backlog__select" name="park" id="park">
-                            <option className="backlog__option" value="hallo">wdfsdgsg</option>
-                            <option className="backlog__option" value="hallo">wdfgsg</option>
-                            <option className="backlog__option" value="hallo">wgsg</option>
+                        <select onChange={onInputChange} className="backlog__select" name="park" id="park">
+                            <option className="backlog__option" value="europapark">Europapark</option>
+                            <option className="backlog__option" value="phantasialand">Phantasialand</option>
+                            <option className="backlog__option" value="efteling">Efteling</option>
                         </select>
                     </div>
                     <div className="backlog__searchContainer">
                         <label htmlFor="type" className="backlog__label">Type</label>
-                        <select className="backlog__select" name="type" id="type">
-                            <option className="backlog__option" value="wbdb">dsdsdsdsd</option>
+                        <select onChange={onInputChange} className="backlog__select" name="type" id="type">
+                            <option className="backlog__option" value="staal">Staal</option>
+                            <option className="backlog__option" value="ugu">Staal</option>
                         </select>
                     </div>
                     <button className="button">Search</button>
