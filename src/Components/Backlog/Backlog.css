@@ -1,0 +1,115 @@
+.backlog{
+    padding-top: 8rem;
+    min-height: 87.3vh;
+    padding-bottom: 2rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    background-color: #FAF6F4;
+}
+
+.backlog__form{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background-color: white;
+    border-radius: 0.3rem;
+    padding: 4rem;
+    min-width: 50rem;
+    
+}
+
+.backlog__header{
+    font-size: 4rem;
+    align-self: flex-start;
+}
+
+.backlog__searchContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.backlog__label{
+    font-size: 2.5rem;
+}
+
+.backlog__select{
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 2rem;
+    background-color: white;
+    border: #413D45 0.1rem solid;
+}
+
+.backlog__option{
+    padding: 1rem 2rem;
+    font-size: 2rem;
+    background-color: white;
+    border: none;
+}
+
+.backlog__error{
+    color: rgb(255, 126, 29);
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.backlog__item{
+    position: relative;
+    width: 50rem;
+    min-height: 40rem;
+    height: auto;
+}
+
+.backlog__img{
+    position: absolute;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.backlog__itemContainer{
+    position: absolute;
+    background-color: #FAF6F4;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    left: 1rem;
+    bottom: 1rem;
+    min-height: 12rem;
+    width: 60%;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.backlog__item__title{
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.backlog__item__park{
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.backlog___link{
+    width: fit-content;
+}
+
+.backlog__arrow{
+    color: #0C6FF9;
+    font-size: 2.5rem;
+}
+@media screen and (max-width: 600px){
+    .backlog__form{
+        min-width: 35rem;
+    }
+
+    .backlog__item{
+        width: 35rem;
+    }
+}
