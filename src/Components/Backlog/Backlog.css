@@ -51,6 +51,12 @@
     border: none;
 }
 
+.backlog__error{
+    color: rgb(255, 126, 29);
+    font-size: 2rem;
+    font-weight: bold;
+}
+
 .backlog__item{
     position: relative;
     width: 50rem;

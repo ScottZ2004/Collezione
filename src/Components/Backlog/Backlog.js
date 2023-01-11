@@ -10,11 +10,13 @@ import parks from "../../data/parks";
 
 const Backlog = () => {
     const {collection} = useContext(CollectionContext);
-
+    const [error, setError] = useState("");
     const [inputs, setInputs] = useState({
         park: "",
         type: ""
     });
+
+    const [chosenCoaster, setChosenCoaster] = useState({});
 
     let activeParks = []
     collection.filter(item => {
@@ -36,9 +38,39 @@ const Backlog = () => {
 
     const submit = (e) => {
         e.preventDefault();
+        setError("")
+        setChosenCoaster({})
+        const item = collection.filter(coaster => {
+            if(coaster.Park.toUpperCase() === inputs.park.toUpperCase() && coaster.filter.toUpperCase() === inputs.type.toUpperCase()){
+                return coaster
+            }
+        });
+        if(item.length > 0){
+            setChosenCoaster(item[0]);
+        }else{
+            setChosenCoaster(item)
+        }
+        console.log(item)
+        if(item.length < 1){
+            setError("Geen achtbaan gevonden")
+        }
+                
     }
-
-    console.log(inputs)
+    let coasterToBeRendered = null;
+    if(chosenCoaster.Park !== undefined){
+        coasterToBeRendered = (
+            <div className="backlog__item">
+                <img className="backlog__img" src={chosenCoaster.img} alt="" />
+                <article className="backlog__itemContainer">
+                    <h1 className="backlog__item__title">{chosenCoaster.title}</h1>
+                    <h2 className="backlog__item__park">{chosenCoaster.Park}</h2>
+                    <Link className="backlog___link">
+                        <BsFillArrowRightCircleFill className="backlog__arrow"/>                           
+                    </Link>
+                </article>
+            </div>
+        )
+    }
 
     return(
         <>
@@ -55,24 +87,16 @@ const Backlog = () => {
                     <div className="backlog__searchContainer">
                         <label htmlFor="type" className="backlog__label">Type</label>
                         <select onChange={onInputChange} className="backlog__select" name="type" id="type">
-                            <option className="backlog__option" value="steel">Staal</option>
-                            <option className="backlog__option" value="wood">Hout</option>
+                            <option className="backlog__option" value="staal">Staal</option>
+                            <option className="backlog__option" value="hout">Hout</option>
                             <option className="backlog__option" value="water">Water</option>
                         </select>
                     </div>
                     <button className="button">Search</button>
+                    {error && <span className="backlog__error">{error}</span>}
                 </form>
-              
-                <div className="backlog__item">
-                    <img className="backlog__img" src={taron} alt="" />
-                    <article className="backlog__itemContainer">
-                        <h1 className="backlog__item__title">Taron</h1>
-                        <h2 className="backlog__item__park">Phantasialand</h2>
-                        <Link className="backlog___link">
-                            <BsFillArrowRightCircleFill className="backlog__arrow"/>                           
-                        </Link>
-                    </article>
-                </div>
+                {coasterToBeRendered}
+                
             </section>
             <Footer dropDownItems = {["Deutsch","English","Nederlands","Español","Français","Português"]}/>
         </>
