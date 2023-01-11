@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import parks from "../../data/parks";
 
 const Backlog = () => {
-    const {collection} = useContext(CollectionContext);
+    const {collection, setSelectedItem} = useContext(CollectionContext);
     const [error, setError] = useState("");
     const [inputs, setInputs] = useState({
         park: "",
@@ -67,13 +67,15 @@ const Backlog = () => {
 
     let coasterToBeRendered = null;
     if(chosenCoaster.Park !== undefined){
+        const linkToBeRendered = "/user/" + chosenCoaster.userId + /collection/;
+        setSelectedItem(chosenCoaster.id)
         coasterToBeRendered = (
             <div className="backlog__item">
                 <img className="backlog__img" src={chosenCoaster.img} alt="" />
                 <article className="backlog__itemContainer">
                     <h1 className="backlog__item__title">{chosenCoaster.title}</h1>
                     <h2 className="backlog__item__park">{chosenCoaster.Park}</h2>
-                    <Link className="backlog___link">
+                    <Link className="backlog___link" to={linkToBeRendered}>
                         <BsFillArrowRightCircleFill className="backlog__arrow"/>                           
                     </Link>
                 </article>
