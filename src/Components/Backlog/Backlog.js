@@ -18,6 +18,8 @@ const Backlog = () => {
 
     const [chosenCoaster, setChosenCoaster] = useState({});
 
+
+
     let activeParks = []
     collection.filter(item => {
         activeParks.push(item.Park)
@@ -50,12 +52,19 @@ const Backlog = () => {
         }else{
             setChosenCoaster(item)
         }
-        console.log(item)
         if(item.length < 1){
             setError("Geen achtbaan gevonden")
         }
                 
     }
+
+    useEffect(() => {
+        setInputs({
+            park: activeParks[0],
+            type: "staal"
+        })       
+    }, [])
+
     let coasterToBeRendered = null;
     if(chosenCoaster.Park !== undefined){
         coasterToBeRendered = (
