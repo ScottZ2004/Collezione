@@ -6,13 +6,25 @@ import CollectionContext from "../../Context/CollectionContext";
 import taron from "../../images/coasters/Taron.jpg";
 import {BsFillArrowRightCircleFill} from "react-icons/bs"
 import { Link } from "react-router-dom";
+import parks from "../../data/parks";
 
 const Backlog = () => {
     const {collection} = useContext(CollectionContext);
-    
+
     const [inputs, setInputs] = useState({
         park: "",
         type: ""
+    });
+
+    let activeParks = []
+    collection.filter(item => {
+        activeParks.push(item.Park)
+    });
+    activeParks = [...new Set(activeParks)]
+    let activeParksToBeRendered = activeParks.map(park => {
+        return (
+            <option key={park} className="backlog__option" value={park.toLowerCase()}>{park}</option>
+        )
     });
 
     const onInputChange = (e) => {
@@ -22,27 +34,30 @@ const Backlog = () => {
         });
     }
 
+    const submit = (e) => {
+        e.preventDefault();
+    }
+
     console.log(inputs)
 
     return(
         <>
             <Navigation/>
             <section className="backlog">
-                <form className="backlog__form" action="">
+                <form onSubmit={submit} className="backlog__form" action="">
                     <h1 className="backlog__header">Backlog Chooser</h1>
                     <div className="backlog__searchContainer">
                         <label htmlFor="park" className="backlog__label">Park</label>
                         <select onChange={onInputChange} className="backlog__select" name="park" id="park">
-                            <option className="backlog__option" value="europapark">Europapark</option>
-                            <option className="backlog__option" value="phantasialand">Phantasialand</option>
-                            <option className="backlog__option" value="efteling">Efteling</option>
+                            {activeParksToBeRendered}
                         </select>
                     </div>
                     <div className="backlog__searchContainer">
                         <label htmlFor="type" className="backlog__label">Type</label>
                         <select onChange={onInputChange} className="backlog__select" name="type" id="type">
-                            <option className="backlog__option" value="staal">Staal</option>
-                            <option className="backlog__option" value="ugu">Staal</option>
+                            <option className="backlog__option" value="steel">Staal</option>
+                            <option className="backlog__option" value="wood">Hout</option>
+                            <option className="backlog__option" value="water">Water</option>
                         </select>
                     </div>
                     <button className="button">Search</button>
