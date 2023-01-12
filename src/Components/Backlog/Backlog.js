@@ -18,7 +18,28 @@ const Backlog = () => {
 
     const [chosenCoaster, setChosenCoaster] = useState({});
 
-
+    const itemsList = [
+        {
+            name: 'Collectie',
+            goto: '/user/1/collection',
+            border_color: "orange"
+        },
+        {
+            name: 'Backlog',
+            goto: '/backlog',
+            border_color: "blue"
+        },
+        {
+            name: 'Contact',
+            goto: '/#contact',
+            border_color: "yellow"
+        },
+        {
+            name: 'Logout',
+            goto: '/logout',
+            border_color: "purple"
+        }
+    ];
 
     let activeParks = []
     collection.filter(item => {
@@ -85,7 +106,7 @@ const Backlog = () => {
 
     return(
         <>
-            <Navigation/>
+            <Navigation items={itemsList}/>
             <section className="backlog">
                 <form onSubmit={submit} className="backlog__form" action="">
                     <h1 className="backlog__header">Backlog Chooser</h1>
