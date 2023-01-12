@@ -173,6 +173,14 @@ export const CollectionProvider = ({children}) => {
         }
     }
 
+    //share
+    const [shareIsOpen, setShareIsOpen] = useState(false);
+
+    const openShare = () => {
+        document.body.style.overflow = "hidden"
+        setShareIsOpen(true)
+    }
+
     return <CollectionContext.Provider value={{
         redirectToLogin,
         users,
@@ -196,6 +204,9 @@ export const CollectionProvider = ({children}) => {
         onFilterButtonClicked,
         setPageNumber,
         getCollection,
+        shareIsOpen,
+        setShareIsOpen,
+        openShare
 
     }}>{children}</CollectionContext.Provider>
 }
