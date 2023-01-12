@@ -59,9 +59,9 @@ const Navigation = (props) =>{
     }
 
     let sideNavigation = null;
-    let sideNavigationItems = null;
-    if (showSideNavigation){
-        sideNavigationItems = props.items.filter(item => {
+    if (showSideNavigation && props.items != null){
+        let sideNavigationItems = null;
+        sideNavigationItems = props.items.map(item => {
             if(item.goto[0] === "#"){
                 return <a className="sideNavigation__item" key={item.name} href={item.goto}><li>{item.name}</li><AiOutlineArrowRight/></a>
             }
