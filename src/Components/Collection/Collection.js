@@ -30,7 +30,6 @@ const Collection = () =>{
         left = <CollectionLeft />
         
     }else{
-        console.log(collection)
         let selectedItemToBeRendered = {};
         collection.filter(item => {
             if (item.id === selectedItem){

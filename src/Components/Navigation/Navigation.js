@@ -1,15 +1,16 @@
 import logo from '../../images/logo.png';
 import "./Navigation.css";
-import Button from "../Button/Button";
+import CollectionContext from '../../Context/CollectionContext';
 import React  from "react";
 import {GiHamburgerMenu} from 'react-icons/gi';
 import {ImCross} from 'react-icons/im';
 import {AiOutlineArrowRight} from 'react-icons/ai';
 import {Link} from "react-router-dom";
-import { useState } from 'react';
+import { useState,useContext } from 'react';
 
 
 const Navigation = (props) =>{
+    const {user} = useContext(CollectionContext);
     const [hamburgerMenuIsOn, setHamburgerMenuIsOn] = useState(true)
     const [showSideNavigation, setShowSideNavigation] = useState(false)    
 
@@ -24,19 +25,31 @@ const Navigation = (props) =>{
         leftButton = (<div className="navigation__right">
             <Link to="/signup" className="button">Signup</Link>
         </div>)
-    }else{
+    }else if (!user.isLoggedIn){
         leftButton = (<div className="navigation__right">
             <Link to="/login" className="button">Login</Link>
         </div>)
+    }else if( url === "/"){
+        let goTo = "/user/" + user.userId + "/collection/"
+        leftButton = (<div className="navigation__right">
+            <Link to={goTo} className="button">Collectie</Link>
+        </div>)
+    }else{
+        leftButton = (<div className="navigation__right">
+            <Link to="/delen" className="button">Delen</Link>
+        </div>) 
     }
 
     let items = null;
     if (props.items != null){
         items = props.items.map(item => {
-            return <a key={item.name} className={`navigation__item navigation__item--${item.border_color} `} href={item.goto}>{item.name}</a>
+            if(item.goto[0] === "#"){
+                return <a key={item.name} className={`navigation__item navigation__item--${item.border_color} `} href={item.goto}>{item.name}</a>
+            }
+            return <Link key={item.name} className={`navigation__item navigation__item--${item.border_color} `} to={item.goto}>{item.name}</Link>
+            
         });
     }
-
 
     let hamburgerMenu = null;
     if (hamburgerMenuIsOn){
@@ -48,15 +61,18 @@ const Navigation = (props) =>{
     let sideNavigation = null;
     let sideNavigationItems = null;
     if (showSideNavigation){
-        sideNavigationItems = props.items.map(item => {
-            return <a className="sideNavigation__item" key={item.name} href={item.goto}><li>{item.name}</li><AiOutlineArrowRight/></a>
+        sideNavigationItems = props.items.filter(item => {
+            if(item.goto[0] === "#"){
+                return <a className="sideNavigation__item" key={item.name} href={item.goto}><li>{item.name}</li><AiOutlineArrowRight/></a>
+            }
+            return <Link className="sideNavigation__item" key={item.name} to={item.goto}><li>{item.name}</li><AiOutlineArrowRight/></Link>
         })
         sideNavigation = (
             <ul className="sideNavigation">
                 {sideNavigationItems}
             </ul>
         );
-    }else if(!showSideNavigation){
+    }else{
         sideNavigation = null;
     }
 
