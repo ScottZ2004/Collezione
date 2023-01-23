@@ -1,5 +1,5 @@
 .share__background{
-    position: absolute;
+    position: fixed;
     top: 0;
     z-index: 3;
     background-color: rgba(0, 0, 0, 0.486);
