@@ -34,6 +34,7 @@ export const CollectionProvider = ({children}) => {
         ]
         let mergedArrays = users.concat(toBeAdded);
         setUsers(mergedArrays);
+        navigate('/login')
     }
 
     const onInputChange = (event) => {
