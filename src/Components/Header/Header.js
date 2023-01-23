@@ -10,7 +10,7 @@ const Header = () => {
                 <img className="header__img" src={rolleCcoasterTrans2} alt="Achtbaan 1"/>
                 <div className="header__container">
                     <h1 className="header__h1">Collezione</h1>
-                    <h2 className="header__h2">Life is like a roller coaster</h2>
+                    <h2 className="header__h2">"Life is like a rollercoaster"</h2>
                     <Link to="/login" className="button-center button">Login</Link>
                 </div>
                 <img className="header__img" src={rolleCcoasterTrans}alt="Achtbaan 2"/>

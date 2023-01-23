@@ -8,7 +8,7 @@ const Share = () => {
     const {setShareIsOpen, shareIsOpen, user } = useContext(CollectionContext);
     const [isCopied, setIsCopied] = useState(false)
 
-    const url = "http://collezione.scottzico.com/" + user.userId +"/collection/"
+    const url = "http://collezione.scottzico.com/user/" + user.userId +"/collection/"
 
     const copyLink = () => {
         navigator.clipboard.writeText(url);

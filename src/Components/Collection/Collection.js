@@ -19,7 +19,9 @@ const Collection = () =>{
         getCollection(myNumber.number);
         setPageNumber(myNumber.number);
         if (!user.isLoggedIn){
-            redirectToLogin(window.location.pathname);
+            if(user.userId !== null){
+                redirectToLogin(window.location.pathname);
+            }
             navigate('/login');
         }
     },[]);

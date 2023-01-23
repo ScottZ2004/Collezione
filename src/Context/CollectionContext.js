@@ -50,13 +50,13 @@ export const CollectionProvider = ({children}) => {
                     userId: user.id,
                 });
                 let route = "/user/" + user.id + "/collection/";
-                if (redirectPath !== null){
+                if (redirectPath !== ""){
                     route = redirectPath
                 }
                 navigate(route);
             }else{
                 setWrongInput(true)
-                redirectToLogin(null)
+                redirectToLogin("")
             }
         })
 

@@ -41,7 +41,7 @@ class Price extends React.Component{
         }
 
         if (this.state.best_value){
-            this.bestValue = <p className="price__best_value">Best value</p>
+            this.bestValue = <p className="price__best_value">Beste optie</p>
         }else{
             this.bestValue = null;
         }

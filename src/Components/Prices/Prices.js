@@ -60,7 +60,7 @@ class Prices extends React.Component{
                     {prices}
                 </section>
                 <footer className="prices__footer">
-                    <button className="prices__button">Try for free</button>
+                    <button className="prices__button">Probeer Gratis!</button>
                 </footer>
             </article>
 

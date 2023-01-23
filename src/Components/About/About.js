@@ -1,8 +1,11 @@
 import "./About.css";
 import MensenInAchtbaan from "../../images/Mensen in achtbaan.jpg";
-import Button from "../Button/Button";
-
+import {Link} from "react-router-dom";
+import CollectionContext from "../../Context/CollectionContext";
+import { useContext } from "react";
 const About = () => {
+    const {user} = useContext(CollectionContext);
+    let collectionUrl = "user/" + user.userId + "/collection"
     return(
         <section id="over" className="about__section">
             <article className="about__article">
@@ -12,7 +15,7 @@ const About = () => {
                     Met Collezione kan je jouw favoriete achtbaan delen met anderen of je kan zelf achtbanen aanbevolen krijgen waar je nog nooit van hebt gehoord.
                     Je kan zelf je eigen gemaakte achtbanen in Planet Coaster, No Limits 2 of een andere achtbaan simulatie delen, of raak geinspireerd om een nieuwe achtbaan te maken.
                 </h2>
-                <Button goto="#" title="Ga naar de collectie!" class="button-left"/>
+                <Link to={collectionUrl} className=" button button-left">Ga naar de collectie</Link>
             </article>
             <div className="about__image-container">
                 <img className="about__image" src={MensenInAchtbaan} alt="mensen in achtbaan"/>
