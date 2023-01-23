@@ -10,7 +10,7 @@ import { useState,useContext } from 'react';
 
 
 const Navigation = (props) =>{
-    const {user} = useContext(CollectionContext);
+    const {user, openShare} = useContext(CollectionContext);
     const [hamburgerMenuIsOn, setHamburgerMenuIsOn] = useState(true)
     const [showSideNavigation, setShowSideNavigation] = useState(false)    
 
@@ -36,7 +36,7 @@ const Navigation = (props) =>{
         </div>)
     }else{
         leftButton = (<div className="navigation__right">
-            <Link to="/delen" className="button">Delen</Link>
+            <button onClick={openShare} className="button">Delen</button>
         </div>) 
     }
 
