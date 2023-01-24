@@ -9,9 +9,7 @@ import CollectionContext from "../../Context/CollectionContext";
 import "./Collection.css";
 
 const Collection = () =>{
-    const {collection, setSelectedItem, user, redirectToLogin, selectedItem, setPageNumber, getCollection} = useContext(CollectionContext);
-
-    console.log(selectedItem)
+    const {collection, user, redirectToLogin, selectedItem, setPageNumber, getCollection} = useContext(CollectionContext);
     let myNumber = useParams();
     const navigate = useNavigate();
     
@@ -72,7 +70,7 @@ const Collection = () =>{
         {
             name: 'Logout',
             goto: '/logout',
-            border_color: "purple"
+            border_color: "purple",
         }
     ];
     return(

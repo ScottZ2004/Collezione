@@ -207,7 +207,8 @@ export const CollectionProvider = ({children}) => {
         getCollection,
         shareIsOpen,
         setShareIsOpen,
-        openShare
+        openShare,
+        setUser
 
     }}>{children}</CollectionContext.Provider>
 }
