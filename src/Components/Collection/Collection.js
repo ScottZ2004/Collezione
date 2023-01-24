@@ -1,5 +1,5 @@
 import {useContext, useEffect} from "react";
-
+import CollectionFromData from "../../data/collection"
 import Navigation from "../Navigation/Navigation";
 import Footer from "../Footer/Footer";
 import CollectionRight from "./CollectionRight/CollectionRight";
@@ -9,7 +9,7 @@ import CollectionContext from "../../Context/CollectionContext";
 import "./Collection.css";
 
 const Collection = () =>{
-    const {collection, user, redirectToLogin, selectedItem, setPageNumber, getCollection} = useContext(CollectionContext);
+    const {collection, setSelectedItem, user, redirectToLogin, selectedItem, setPageNumber, getCollection} = useContext(CollectionContext);
     let myNumber = useParams();
     const navigate = useNavigate();
     
@@ -27,6 +27,9 @@ const Collection = () =>{
     },[]);
 
     let left = null
+    console.log(collection)
+    console.log(selectedItem)
+    
     let otherItems = [];
     if(collection.length === 0){
         left = <CollectionLeft />
@@ -38,6 +41,7 @@ const Collection = () =>{
                 selectedItemToBeRendered = item
             }
         });
+        
         
         otherItems = collection.filter(item => {
             if (item.id !== selectedItem){

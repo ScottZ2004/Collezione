@@ -56,8 +56,6 @@ const Navigation = (props) =>{
         });
     }
 
-    console.log(user)
-
     let hamburgerMenu = null;
     if (hamburgerMenuIsOn){
         hamburgerMenu = (<GiHamburgerMenu onClick={onClickHamburger} className="navigation__icon"/>)

@@ -63,9 +63,6 @@ export const CollectionProvider = ({children}) => {
 
     }
 
-    useEffect(() => {
-        setUsers(usersData.users);
-    },[])
 
     // collection
     const [collection, setCollection] = useState(collectionData.collection);
@@ -83,9 +80,12 @@ export const CollectionProvider = ({children}) => {
     const getCollection = (number) => {
         const filteredCollection = collectionData.collection.filter(item => {
             if(item.userId == number){
+                
                 return item
             }
         });
+        // setSelectedInput(filteredCollection[0].id)
+        setSelectedItem(filteredCollection[0].id)
         setCollection(filteredCollection)
     }
 
@@ -181,6 +181,11 @@ export const CollectionProvider = ({children}) => {
         document.body.style.overflow = "hidden"
         setShareIsOpen(true)
     }
+
+    
+    useEffect(() => {
+        setUsers(usersData.users);
+    },[])
 
     return <CollectionContext.Provider value={{
         redirectToLogin,
