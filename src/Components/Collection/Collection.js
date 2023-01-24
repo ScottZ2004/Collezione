@@ -78,11 +78,11 @@ const Collection = () =>{
     return(
         <>
             <Navigation items={itemsList}/>
-            <section className="collection">
+            <article className="collection">
                 {left}
                 <CollectionRight
                     items={otherItems}/>
-            </section>
+            </article>
             <Footer dropDownItems = {["Deutsch","English","Nederlands","Español","Français","Português"]}/>
         </>
     )

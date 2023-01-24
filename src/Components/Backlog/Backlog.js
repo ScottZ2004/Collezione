@@ -90,7 +90,7 @@ const Backlog = () => {
         const linkToBeRendered = "/user/" + chosenCoaster.userId + /collection/;
         
         coasterToBeRendered = (
-            <div className="backlog__item">
+            <figure className="backlog__item">
                 <img className="backlog__img" src={chosenCoaster.img} alt="" />
                 <article className="backlog__itemContainer">
                     <h1 className="backlog__item__title">{chosenCoaster.title}</h1>
@@ -99,7 +99,7 @@ const Backlog = () => {
                         <BsFillArrowRightCircleFill className="backlog__arrow"/>                           
                     </Link>
                 </article>
-            </div>
+            </figure>
         )
     }
 
@@ -127,7 +127,6 @@ const Backlog = () => {
                     {error && <span className="backlog__error">{error}</span>}
                 </form>
                 {coasterToBeRendered}
-                
             </section>
             <Footer dropDownItems = {["Deutsch","English","Nederlands","Español","Français","Português"]}/>
         </>

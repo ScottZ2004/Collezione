@@ -9,10 +9,10 @@ const SmallColletionItem = (props) => {
     }
 
     return(
-        <div onClick={click} className="collection__small">
+        <figure onClick={click} className="collection__small">
             <img className="collection__smallContainer" src={props.img || tempCoaster} alt={props.title || "achtbaan heeft geen eigen afbeelding"}/>
             <p className="collection__smallText">{props.title || "title"}</p>
-        </div>
+        </figure>
     )
 }
 

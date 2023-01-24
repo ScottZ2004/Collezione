@@ -17,9 +17,9 @@ const About = () => {
                 </h2>
                 <Link to={collectionUrl} className=" button button-left">Ga naar de collectie</Link>
             </article>
-            <div className="about__image-container">
+            <figure className="about__image-container">
                 <img className="about__image" src={MensenInAchtbaan} alt="mensen in achtbaan"/>
-            </div>
+            </figure>
         </section>
     )
 }

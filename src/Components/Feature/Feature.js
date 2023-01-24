@@ -27,13 +27,13 @@ const Feature = (props) => {
     return(
 
         <div className="feature">
-            <div className="feature__svg_container">
+            <figure className="feature__svg_container">
                 {svg}
-            </div>
-            <div className="feature__text">
+            </figure>
+            <article className="feature__text">
                 <h1 className="feature__h1">{props.title || "Feature"}</h1>
                 <p className="feature__p">{props.text || "Hier komt een korte uitleg"}</p>
-            </div>
+            </article>
         </div>
 
     );
