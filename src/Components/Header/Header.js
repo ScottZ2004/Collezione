@@ -1,7 +1,7 @@
 import "./Header.css"
 import {Link} from "react-router-dom";
-import rolleCcoasterTrans from "../../images/roller-coaster-trans.png";
-import rolleCcoasterTrans2 from "../../images/roller-coaster-trans2.png";
+import rolleCcoasterTrans from "../../images/roller-coaster-trans.webp";
+import rolleCcoasterTrans2 from "../../images/roller-coaster-trans2.webp";
 
 const Header = () => {
     return(

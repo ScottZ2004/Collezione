@@ -1,4 +1,4 @@
-import logo from '../../images/logo.png';
+import logo from '../../images/logo.webp';
 import "./Navigation.css";
 import CollectionContext from '../../Context/CollectionContext';
 import React  from "react";

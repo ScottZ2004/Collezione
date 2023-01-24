@@ -1,8 +1,8 @@
-import Poseidon from "../images/coasters/Poseidon.jpg";
-import Expedition_Everest from "../images/coasters/Expedition-Everest.jpg";
-import Slinky_Dog_Dash from "../images/coasters/Slinky-Dog-Dash.jpg";
-import Taron from "../images/coasters/Taron.jpg";
-import Fly from "../images/coasters/Fly.jpg";
+import Poseidon from "../images/coasters/Poseidon.webp";
+import Expedition_Everest from "../images/coasters/Expedition-Everest.webp";
+import Slinky_Dog_Dash from "../images/coasters/Slinky-Dog-Dash.webp";
+import Taron from "../images/coasters/Taron.webp";
+import Fly from "../images/coasters/Fly.webp";
 
 
 const collection = [

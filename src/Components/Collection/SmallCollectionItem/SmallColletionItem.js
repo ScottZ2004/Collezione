@@ -1,4 +1,4 @@
-import tempCoaster from "../../../images/coasters/temp-roller coaster.jpg";
+import tempCoaster from "../../../images/coasters/temp-roller-coaster.webp";
 import { useContext } from "react";
 import CollectionContext from "../../../Context/CollectionContext";
 const SmallColletionItem = (props) => {

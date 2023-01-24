@@ -1,5 +1,5 @@
 import "./About.css";
-import MensenInAchtbaan from "../../images/Mensen in achtbaan.jpg";
+import MensenInAchtbaan from "../../images/Mensen-in-achtbaan.webp";
 import {Link} from "react-router-dom";
 import CollectionContext from "../../Context/CollectionContext";
 import { useContext } from "react";
