@@ -174,11 +174,12 @@ export const CollectionProvider = ({children}) => {
         }else{
             const filteredCollection = collectionData.collection.filter(item => {
                 if(item.userId == pageNumber){
+                    console.log(item)
                     return item
                 }
             });
             setCollection(filteredCollection)
-            setSelectedItem(collectionData.collection[0].id)
+            setSelectedItem(filteredCollection[0].id)
         }
     }
 
