@@ -82,20 +82,6 @@ const collection = [
         userId: 1,
         filter: "STAAL",
     },
-    {
-        id: 6,
-        title: "Fly",
-        description: "F.L.Y. is een stalen vliegende achtbaan in het Duitse attractiepark Phantasialand. De achtbaan opende op 11 augustus 2020 in het themagebied Rookburgh.\n" +
-            "\n" +
-            "In 2016 werd begonnen met de afbraak van de attractie Race for Atlantis. Na de sloop van Race for Atlantis werd de grond gereed gemaakt voor de bouw. In 2018 werden de achtbaanonderdelen geleverd. Een jaar later, op 25 april 2019, was de baan van F.L.Y. compleet. Uiteindelijk opende de achtbaan voor bezoekers op 17 september 2020. Dit gebeurde zonder een vooraankondiging of reclame.\n" +
-            "\n" +
-            "De attractie met een donkerrood achtbaanspoor gaat net als de achtbaan Taron dwars door het sub-themagebied Rookburgh heen. Dit themagebied kenmerkt zich door de steampunkstijl. Het spoor kruist zichzelf meerdere keren en passeert onder en boven diverse wandelpaden waar bezoekers lopen. Tijdens de rit scheert de trein rakelings langs bebouwing en het decor. De gehele rit is 1150 meter lang en telt twee inversies. F.L.Y. is hiermee de langste vliegende achtbaan ter wereld. De wachtrij is grotendeels overdekt. In de wachtrij worden de veiligheidsinstructies per minifilm uitgelegd. Tevens moeten alle bezoekers door een metaaldetector om te voorkomen dat ze voorwerpen tijdens de rit meenemen. Deze dienen voorafgaand aan de rit in één van de kluizen in het station worden gelegd. Dit is om te voorkomen dat er voorwerpen op bezoekers vallen die onder het spoor lopen.",
-        Build_Year: 2020,
-        Park: "Phantasialand",
-        img: Fly,
-        userId: 2,
-        filter: "STAAL",
-    },
 ];
 
 export default {collection};

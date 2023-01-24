@@ -27,8 +27,6 @@ const Collection = () =>{
     },[]);
 
     let left = null
-    console.log(collection)
-    console.log(selectedItem)
     
     let otherItems = [];
     if(collection.length === 0){
