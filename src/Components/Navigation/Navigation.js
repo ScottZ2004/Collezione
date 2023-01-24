@@ -69,6 +69,11 @@ const Navigation = (props) =>{
         sideNavigationItems = props.items.map(item => {
             if(item.goto[0] === "#"){
                 return <a className="sideNavigation__item" key={item.name} href={item.goto}><li>{item.name}</li><AiOutlineArrowRight/></a>
+            }else if(item.goto === "/logout"){
+                return <Link to={"/login"} key={item.name} className="sideNavigation__item" onClick={() => setUser({
+                    isLoggedIn: false,
+                    userId: null
+                })} ><li>{item.name}</li><AiOutlineArrowRight/></Link>
             }
             return <Link className="sideNavigation__item" key={item.name} to={item.goto}><li>{item.name}</li><AiOutlineArrowRight/></Link>
         })
