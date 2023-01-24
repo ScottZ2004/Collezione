@@ -11,7 +11,7 @@ import "./Collection.css";
 const Collection = () =>{
     const {collection, setSelectedItem, user, redirectToLogin, selectedItem, setPageNumber, getCollection} = useContext(CollectionContext);
 
-
+    console.log(selectedItem)
     let myNumber = useParams();
     const navigate = useNavigate();
     
@@ -40,13 +40,7 @@ const Collection = () =>{
                 selectedItemToBeRendered = item
             }
         });
-        let key = 0
-        while (Object.keys(selectedItemToBeRendered).length === 0) {
-            selectedItemToBeRendered = collection[key];
-            setSelectedItem(key);
-            key = key + 1;
-        }
-
+        
         otherItems = collection.filter(item => {
             if (item.id !== selectedItem){
                 

@@ -3,13 +3,12 @@ import Navigation from "../Navigation/Navigation";
 import Footer from "../Footer/Footer";
 import { useContext, useState, useEffect } from "react";
 import CollectionContext from "../../Context/CollectionContext";
-import taron from "../../images/coasters/Taron.jpg";
 import {BsFillArrowRightCircleFill} from "react-icons/bs"
 import { Link } from "react-router-dom";
-import parks from "../../data/parks";
+import collectionData from "../../data/collection";
 
 const Backlog = () => {
-    const {collection, setSelectedItem} = useContext(CollectionContext);
+    const {setSelectedItem} = useContext(CollectionContext);
     const [error, setError] = useState("");
     const [inputs, setInputs] = useState({
         park: "",
@@ -42,7 +41,7 @@ const Backlog = () => {
     ];
 
     let activeParks = []
-    collection.filter(item => {
+    collectionData.collection.filter(item => {
         activeParks.push(item.Park)
     });
     activeParks = [...new Set(activeParks)]
@@ -63,7 +62,7 @@ const Backlog = () => {
         e.preventDefault();
         setError("")
         setChosenCoaster({})
-        const item = collection.filter(coaster => {
+        const item = collectionData.collection.filter(coaster => {
             if(coaster.Park.toUpperCase() === inputs.park.toUpperCase() && coaster.filter.toUpperCase() === inputs.type.toUpperCase()){
                 return coaster
             }
@@ -75,8 +74,7 @@ const Backlog = () => {
         }
         if(item.length < 1){
             setError("Geen achtbaan gevonden")
-        }
-                
+        }   
     }
 
     useEffect(() => {
@@ -88,15 +86,16 @@ const Backlog = () => {
 
     let coasterToBeRendered = null;
     if(chosenCoaster.Park !== undefined){
+        console.log(chosenCoaster)
         const linkToBeRendered = "/user/" + chosenCoaster.userId + /collection/;
-        setSelectedItem(chosenCoaster.id)
+        
         coasterToBeRendered = (
             <div className="backlog__item">
                 <img className="backlog__img" src={chosenCoaster.img} alt="" />
                 <article className="backlog__itemContainer">
                     <h1 className="backlog__item__title">{chosenCoaster.title}</h1>
                     <h2 className="backlog__item__park">{chosenCoaster.Park}</h2>
-                    <Link className="backlog___link" to={linkToBeRendered}>
+                    <Link className="backlog___link" onClick={() => setSelectedItem(chosenCoaster.id)} to={linkToBeRendered}>
                         <BsFillArrowRightCircleFill className="backlog__arrow"/>                           
                     </Link>
                 </article>
