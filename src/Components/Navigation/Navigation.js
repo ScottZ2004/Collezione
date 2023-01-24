@@ -1,4 +1,4 @@
-import logo from '../../images/logo.png';
+import logo from '../../images/logo.webp';
 import "./Navigation.css";
 import CollectionContext from '../../Context/CollectionContext';
 import React  from "react";
@@ -10,7 +10,7 @@ import { useState,useContext } from 'react';
 
 
 const Navigation = (props) =>{
-    const {user, openShare} = useContext(CollectionContext);
+    const {user, setUser, openShare} = useContext(CollectionContext);
     const [hamburgerMenuIsOn, setHamburgerMenuIsOn] = useState(true)
     const [showSideNavigation, setShowSideNavigation] = useState(false)    
 
@@ -45,6 +45,11 @@ const Navigation = (props) =>{
         items = props.items.map(item => {
             if(item.goto[0] === "#"){
                 return <a key={item.name} className={`navigation__item navigation__item--${item.border_color} `} href={item.goto}>{item.name}</a>
+            }else if(item.goto === "/logout"){
+                return <Link to={"/login"} key={item.name} className={`navigation__item navigation__item--${item.border_color} `} onClick={() => setUser({
+                    isLoggedIn: false,
+                    userId: null
+                })} >{item.name}</Link>
             }
             return <Link key={item.name} className={`navigation__item navigation__item--${item.border_color} `} to={item.goto}>{item.name}</Link>
             
@@ -64,6 +69,11 @@ const Navigation = (props) =>{
         sideNavigationItems = props.items.map(item => {
             if(item.goto[0] === "#"){
                 return <a className="sideNavigation__item" key={item.name} href={item.goto}><li>{item.name}</li><AiOutlineArrowRight/></a>
+            }else if(item.goto === "/logout"){
+                return <Link to={"/login"} key={item.name} className="sideNavigation__item" onClick={() => setUser({
+                    isLoggedIn: false,
+                    userId: null
+                })} ><li>{item.name}</li><AiOutlineArrowRight/></Link>
             }
             return <Link className="sideNavigation__item" key={item.name} to={item.goto}><li>{item.name}</li><AiOutlineArrowRight/></Link>
         })

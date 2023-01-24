@@ -71,17 +71,17 @@ const CollectionLeft = (props) =>{
         if(user.userId === props.item.userId){
             editModeSection = (
                 <div className="collection__selected__svgContainer">
-                    <div onClick={changeMode} className="collection__selected__svg">
+                    <figure onClick={changeMode} className="collection__selected__svg">
                         <BsFillPencilFill/>
-                    </div>
+                    </figure>
                 </div>
             )
         }
         content = (
         <>
-                <div className="collection__selected__imageContainer">
+                <figure className="collection__selected__imageContainer">
                     <img className="collection__selected__image" src={props.item.img || Poseidon} alt={props.item.title || "achtbaan heeft geen eigen afbeelding"}/>
-                </div>
+                </figure>
                 {editModeSection}
                 {articleSection}
         </>

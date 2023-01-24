@@ -34,7 +34,7 @@ const Login = () =>{
         <>
             <Navigation/>
             <section className="login">
-                <div className="login__svgContainer">
+                <figure className="login__svgContainer">
                     <svg className="login__svg" xmlns="http://www.w3.org/2000/svg" width="714.021" height="343.283" viewBox="0 0 714.021 320.283">
                         <g id="Group_16" data-name="Group 16" transform="translate(-36.978 -3229.717)">
                             <path id="Path_23" data-name="Path 23" d="M4.739,70.6c14.475,22.747,54.282-4.691,54.282-4.691s-9.783,15.907-7.4,34.2c1.591,16.3,9.459,32.085,28.632,32.609,13.9-.174,32.61-5.269,41.755-19.883,11.506-18.386,7.158-46.925,7.158-46.925s8.908,46.13,36.347,46.925,32.052-46.925,32.052-46.925S200.392,3.075,175.339.689,57.589,3.075,34.524.689-9.736,47.851,4.739,70.6Z" transform="translate(608.168 3387.804) rotate(180)" fill="#fff"/>
@@ -85,7 +85,7 @@ const Login = () =>{
                             <path id="Path_21" data-name="Path 21" d="M28.052,30.769c16.353-25.7,61.325,5.3,61.325,5.3S78.324,18.1,81.02-2.568c1.8-18.42,10.687-36.247,32.347-36.839,15.706.2,36.841,5.953,47.173,22.463,13,20.771,8.087,53.013,8.087,53.013s10.064-52.115,41.063-53.013S245.9,36.069,245.9,36.069s3.19,70.984-25.114,73.679-133.028-2.7-159.085,0S11.7,56.467,28.052,30.769Z" transform="translate(504.992 3460.474)" fill="#fff"/>
                         </g>
                     </svg>
-                </div>
+                </figure>
                 <div className="loginWrapper">
                     <form className="login__form" action="">
                         <h1 className="login__header">Log in</h1>

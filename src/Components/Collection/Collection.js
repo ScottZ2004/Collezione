@@ -1,5 +1,5 @@
 import {useContext, useEffect} from "react";
-
+import CollectionFromData from "../../data/collection"
 import Navigation from "../Navigation/Navigation";
 import Footer from "../Footer/Footer";
 import CollectionRight from "./CollectionRight/CollectionRight";
@@ -10,8 +10,6 @@ import "./Collection.css";
 
 const Collection = () =>{
     const {collection, setSelectedItem, user, redirectToLogin, selectedItem, setPageNumber, getCollection} = useContext(CollectionContext);
-
-
     let myNumber = useParams();
     const navigate = useNavigate();
     
@@ -19,14 +17,17 @@ const Collection = () =>{
         getCollection(myNumber.number);
         setPageNumber(myNumber.number);
         if (!user.isLoggedIn){
-            if(user.userId !== null){
-                redirectToLogin(window.location.pathname);
+            if(user.userId === null){
+                if(window.location.href !== window.location.origin + "/user/null/collection"){
+                    redirectToLogin(window.location.pathname)
+                }
             }
             navigate('/login');
         }
     },[]);
 
     let left = null
+    
     let otherItems = [];
     if(collection.length === 0){
         left = <CollectionLeft />
@@ -38,13 +39,8 @@ const Collection = () =>{
                 selectedItemToBeRendered = item
             }
         });
-        let key = 0
-        while (Object.keys(selectedItemToBeRendered).length === 0) {
-            selectedItemToBeRendered = collection[key];
-            setSelectedItem(key);
-            key = key + 1;
-        }
-
+        
+        
         otherItems = collection.filter(item => {
             if (item.id !== selectedItem){
                 
@@ -76,17 +72,17 @@ const Collection = () =>{
         {
             name: 'Logout',
             goto: '/logout',
-            border_color: "purple"
+            border_color: "purple",
         }
     ];
     return(
         <>
             <Navigation items={itemsList}/>
-            <section className="collection">
+            <article className="collection">
                 {left}
                 <CollectionRight
                     items={otherItems}/>
-            </section>
+            </article>
             <Footer dropDownItems = {["Deutsch","English","Nederlands","Español","Français","Português"]}/>
         </>
     )

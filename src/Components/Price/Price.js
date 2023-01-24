@@ -47,13 +47,13 @@ class Price extends React.Component{
         }
         return(
             <div onClick={this.onclick} className={className}>
-                <div>
+                <article>
                     <p>{this.bestValue}</p>
                     <h3 className="price__h3">{this.props.h3}</h3>
                     <h1 className="price__h1">{this.props.h1}</h1>
                     <h2 className="price__h2">{this.props.h2}</h2>
-                </div>
-                <div className="price__checkbox">{this.svg}</div>
+                </article>
+                <figure className="price__checkbox">{this.svg}</figure>
             </div>
         );
     }

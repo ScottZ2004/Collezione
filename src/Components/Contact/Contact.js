@@ -3,7 +3,7 @@ import "./Contact.css";
 
 const Contact = () => {
     return(
-        <div id="contact" className="contact">
+        <article id="contact" className="contact">
             <div className="contactWrapper">
                 <h1 className="contact__title">Contact</h1>
                 <form className="contact__form" action="">
@@ -22,7 +22,7 @@ const Contact = () => {
                     <Button title="Submit" />
                 </form>
             </div>
-        </div>
+        </article>
 
     );
 }

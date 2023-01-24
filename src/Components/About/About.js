@@ -1,5 +1,5 @@
 import "./About.css";
-import MensenInAchtbaan from "../../images/Mensen in achtbaan.jpg";
+import MensenInAchtbaan from "../../images/Mensen-in-achtbaan.webp";
 import {Link} from "react-router-dom";
 import CollectionContext from "../../Context/CollectionContext";
 import { useContext } from "react";
@@ -17,9 +17,9 @@ const About = () => {
                 </h2>
                 <Link to={collectionUrl} className=" button button-left">Ga naar de collectie</Link>
             </article>
-            <div className="about__image-container">
+            <figure className="about__image-container">
                 <img className="about__image" src={MensenInAchtbaan} alt="mensen in achtbaan"/>
-            </div>
+            </figure>
         </section>
     )
 }

@@ -63,9 +63,6 @@ export const CollectionProvider = ({children}) => {
 
     }
 
-    useEffect(() => {
-        setUsers(usersData.users);
-    },[])
 
     // collection
     const [collection, setCollection] = useState(collectionData.collection);
@@ -81,11 +78,22 @@ export const CollectionProvider = ({children}) => {
     const [pageNumber, setPageNumber] = useState(0);
 
     const getCollection = (number) => {
+        let isInCollection = false
         const filteredCollection = collectionData.collection.filter(item => {
             if(item.userId == number){
+                
                 return item
             }
         });
+        filteredCollection.map(item => {
+            if(selectedItem === item.id){
+                isInCollection = true
+            }
+        })
+        if(!isInCollection){
+            setSelectedItem(filteredCollection[0].id)
+        }
+        
         setCollection(filteredCollection)
     }
 
@@ -166,11 +174,12 @@ export const CollectionProvider = ({children}) => {
         }else{
             const filteredCollection = collectionData.collection.filter(item => {
                 if(item.userId == pageNumber){
+                    console.log(item)
                     return item
                 }
             });
             setCollection(filteredCollection)
-            setSelectedItem(collectionData.collection[0].id)
+            setSelectedItem(filteredCollection[0].id)
         }
     }
 
@@ -181,6 +190,10 @@ export const CollectionProvider = ({children}) => {
         document.body.style.overflow = "hidden"
         setShareIsOpen(true)
     }
+    
+    useEffect(() => {
+        setUsers(usersData.users);
+    },[])
 
     return <CollectionContext.Provider value={{
         redirectToLogin,
@@ -207,7 +220,8 @@ export const CollectionProvider = ({children}) => {
         getCollection,
         shareIsOpen,
         setShareIsOpen,
-        openShare
+        openShare,
+        setUser
 
     }}>{children}</CollectionContext.Provider>
 }
