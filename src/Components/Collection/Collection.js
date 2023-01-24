@@ -19,8 +19,10 @@ const Collection = () =>{
         getCollection(myNumber.number);
         setPageNumber(myNumber.number);
         if (!user.isLoggedIn){
-            if(user.userId !== null){
-                redirectToLogin(window.location.pathname);
+            if(user.userId === null){
+                if(window.location.href !== window.location.origin + "/user/null/collection"){
+                    redirectToLogin(window.location.pathname)
+                }
             }
             navigate('/login');
         }

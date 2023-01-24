@@ -6,8 +6,7 @@ import {Link, useNavigate, withRouter} from "react-router-dom";
 import CollectionContext from "../../Context/CollectionContext";
 import {AiFillEyeInvisible, AiFillEye} from "react-icons/ai";
 const Signup = (props) =>{
-    const navigate = useNavigate()
-    const {user, addUser} = useContext(CollectionContext)
+    const {addUser} = useContext(CollectionContext)
     const [passWordCheck, setPassWordCheck] = useState(false);
     const [signupValues, setSignupValues] = useState({
         firstName: "",
