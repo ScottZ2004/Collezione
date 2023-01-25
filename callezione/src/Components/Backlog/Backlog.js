@@ -86,7 +86,6 @@ const Backlog = () => {
 
     let coasterToBeRendered = null;
     if(chosenCoaster.Park !== undefined){
-        console.log(chosenCoaster)
         const linkToBeRendered = "/user/" + chosenCoaster.userId + /collection/;
         
         coasterToBeRendered = (

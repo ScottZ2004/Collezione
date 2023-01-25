@@ -2,8 +2,10 @@ import { createContext, useState, useEffect } from "react";
 import usersData from "../data/users";
 import { useNavigate } from "react-router-dom";
 import collectionData from "../data/collection";
-const CollectionContext = createContext();
+import axios from "axios";
+axios.defaults.baseURL = "http://127.0.0.1:8000/api/v1/";
 
+const CollectionContext = createContext(); 
 export const CollectionProvider = ({children}) => {
     const navigate = useNavigate();
     //login
@@ -42,14 +44,16 @@ export const CollectionProvider = ({children}) => {
             [event.target.id]: event.target.value
         })
     }
-    const logIn = () => {
-        users.map(user => {
-            if (loginValues.email == user.email && loginValues.password == user.password){
+    const logIn = async() => {
+        try{
+            const response = await axios.post('users/login', loginValues);
+            console.log(response.data.id)
+            if(response.data.id !== undefined){
                 setUser({
                     isLoggedIn: true,
-                    userId: user.id,
+                    userId: response.data.id
                 });
-                let route = "/user/" + user.id + "/collection/";
+                let route = "/user/" + response.data.id + "/collection/";
                 if (redirectPath !== ""){
                     route = redirectPath
                 }
@@ -58,8 +62,9 @@ export const CollectionProvider = ({children}) => {
                 setWrongInput(true)
                 redirectToLogin("")
             }
-        })
-
+        }
+        catch(e){
+        }
     }
 
 
@@ -173,7 +178,6 @@ export const CollectionProvider = ({children}) => {
         }else{
             const filteredCollection = collectionData.collection.filter(item => {
                 if(item.userId == pageNumber){
-                    console.log(item)
                     return item
                 }
             });
@@ -191,6 +195,7 @@ export const CollectionProvider = ({children}) => {
     }
     
     useEffect(() => {
+
         setUsers(usersData.users);
     },[])
 
