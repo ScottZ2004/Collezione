@@ -12,3 +12,4 @@ Route::group(['prefix' => 'v1'], function () {
 
 Route::post('v1/users/register', [UserController::class, 'register']);
 Route::post('v1/users/login', [UserController::class, 'login']);
+Route::get('v1/users/get', [UserController::class, 'get']);

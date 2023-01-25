@@ -24,18 +24,30 @@ export const CollectionProvider = ({children}) => {
         setRedirectPath(path);
     }
 
-    const addUser = (firstName, lastName, email, password) => {
-        let toBeAdded = [
+    const getUsers = async() =>{
+        try{
+            let response = await axios.get('users/get');
+            setUsers(response.data.data)
+        }
+        catch(e){
+        
+        }
+    }
+
+    const addUser = async(firstName, lastName, email, password) => {
+        let toBeAdded = 
             {
                 name: firstName,
-                lastName: lastName,
+                lastname: lastName,
                 email: email,
                 password: password,
-                id: users.length + 1,
             }
-        ]
-        let mergedArrays = users.concat(toBeAdded);
-        setUsers(mergedArrays);
+        try{
+            const response = await axios.post('users/register', toBeAdded)
+            console.log(response)
+        }catch(e){
+            console.log(e)
+        }
         navigate('/login')
     }
     const onInputChange = (event) => {
@@ -47,7 +59,6 @@ export const CollectionProvider = ({children}) => {
     const logIn = async() => {
         try{
             const response = await axios.post('users/login', loginValues);
-            console.log(response.data.id)
             if(response.data.id !== undefined){
                 setUser({
                     isLoggedIn: true,
@@ -57,6 +68,7 @@ export const CollectionProvider = ({children}) => {
                 if (redirectPath !== ""){
                     route = redirectPath
                 }
+                getUsers();
                 navigate(route);
             }else{
                 setWrongInput(true)

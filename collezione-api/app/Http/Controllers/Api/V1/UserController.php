@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Requests\StoreUserRequest;
+use App\Http\Resources\V1\UserCollection;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -26,5 +27,9 @@ class UserController extends Controller
             return ["error" => "Email or password is not matched"];
         }
         return response()->json($user);
+    }
+
+    public function get(){
+        return new UserCollection(User::all());
     }
 }
