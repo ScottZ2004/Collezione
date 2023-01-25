@@ -16,7 +16,6 @@ class Collection extends Model
         'Park',
         'img',
         'userId',
-        'userId',
         'filter'
     ];
 }

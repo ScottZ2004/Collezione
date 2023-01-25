@@ -36,7 +36,6 @@ export const CollectionProvider = ({children}) => {
         setUsers(mergedArrays);
         navigate('/login')
     }
-
     const onInputChange = (event) => {
         setLoginValues({
             ...loginValues,
