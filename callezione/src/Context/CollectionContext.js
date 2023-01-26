@@ -30,7 +30,7 @@ export const CollectionProvider = ({children}) => {
             setUsers(response.data.data)
         }
         catch(e){
-        
+            console.log(e)
         }
     }
 
@@ -81,7 +81,8 @@ export const CollectionProvider = ({children}) => {
 
 
     // collection
-    const [collection, setCollection] = useState(collectionData.collection);
+    const [collectionFromDataBase, setCollectionFromDataBase] = useState([])
+    const [collection, setCollection] = useState(collectionFromDataBase);
     const [selectedItem, setSelectedItem] = useState(1);
     const [editMode, setEditMode] = useState(false);
     const [selectedInput, setSelectedInput] = useState({
@@ -93,11 +94,21 @@ export const CollectionProvider = ({children}) => {
     const [activeFilter, setActiveFilter] = useState("ALLES");
     const [pageNumber, setPageNumber] = useState(0);
 
+    const getCollectionFromDataBase = async() => {
+        try{
+            let response = await axios.get('/collection');
+            setCollectionFromDataBase(response.data.data);
+            console.log(response.data.data)
+        }
+        catch(e){
+
+        }
+    }
+
     const getCollection = (number) => {
         let isInCollection = false
-        const filteredCollection = collectionData.collection.filter(item => {
+        const filteredCollection = collectionFromDataBase.filter(item => {
             if(item.userId == number){
-                
                 return item
             }
         });
@@ -106,7 +117,7 @@ export const CollectionProvider = ({children}) => {
                 isInCollection = true
             }
         })
-        if(!isInCollection){
+        if(!isInCollection && filteredCollection.length !== 0){
             setSelectedItem(filteredCollection[0].id)
         }
         
@@ -171,7 +182,7 @@ export const CollectionProvider = ({children}) => {
     const onFilterButtonClicked = (event) => {
         setActiveFilter(event.target.id);
         if(event.target.id !== "ALLES"){
-            const filteredCollection = collectionData.collection.filter(item => {
+            const filteredCollection = collectionFromDataBase.filter(item => {
                 if(item.userId == pageNumber){
                     return item
                 }
@@ -188,7 +199,7 @@ export const CollectionProvider = ({children}) => {
                 setSelectedInput(0)
             }
         }else{
-            const filteredCollection = collectionData.collection.filter(item => {
+            const filteredCollection = collectionFromDataBase.filter(item => {
                 if(item.userId == pageNumber){
                     return item
                 }
@@ -207,8 +218,7 @@ export const CollectionProvider = ({children}) => {
     }
     
     useEffect(() => {
-
-        setUsers(usersData.users);
+        getCollectionFromDataBase()
     },[])
 
     return <CollectionContext.Provider value={{
@@ -237,7 +247,8 @@ export const CollectionProvider = ({children}) => {
         shareIsOpen,
         setShareIsOpen,
         openShare,
-        setUser
+        setUser,
+        collectionFromDataBase
 
     }}>{children}</CollectionContext.Provider>
 }

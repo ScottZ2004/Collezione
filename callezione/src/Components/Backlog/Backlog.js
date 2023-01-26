@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import collectionData from "../../data/collection";
 
 const Backlog = () => {
-    const {setSelectedItem} = useContext(CollectionContext);
+    const {setSelectedItem, collectionFromDataBase} = useContext(CollectionContext);
     const [error, setError] = useState("");
     const [inputs, setInputs] = useState({
         park: "",
@@ -41,7 +41,7 @@ const Backlog = () => {
     ];
 
     let activeParks = []
-    collectionData.collection.filter(item => {
+    collectionFromDataBase.filter(item => {
         activeParks.push(item.Park)
     });
     activeParks = [...new Set(activeParks)]
@@ -62,7 +62,7 @@ const Backlog = () => {
         e.preventDefault();
         setError("")
         setChosenCoaster({})
-        const item = collectionData.collection.filter(coaster => {
+        const item = collectionFromDataBase.filter(coaster => {
             if(coaster.Park.toUpperCase() === inputs.park.toUpperCase() && coaster.filter.toUpperCase() === inputs.type.toUpperCase()){
                 return coaster
             }
