@@ -1,12 +1,12 @@
-import { useEffect, useContext, useState } from "react";
+import { useEffect, useContext } from "react";
 import Navigation from "../Navigation/Navigation";
 import "./Addpage.css";
 import CollectionContext from "../../Context/CollectionContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Footer from "../Footer/Footer";
 
 const Addpage = () => {
-    const {user, redirectToLogin, openSelectImage, selectedImage, setAddItemInput, addItemInput, addToCollection} = useContext(CollectionContext);
+    const {user, redirectToLogin, openSelectImage, selectedImage, setAddItemInput, addItemInput, addToCollection, getCollection, addpageError} = useContext(CollectionContext);
     const navigate = useNavigate();
     useEffect(() => {
         if (!user.isLoggedIn){
@@ -17,6 +17,7 @@ const Addpage = () => {
             }
             navigate('/login');
         }
+        getCollection(user.userId);
     }, [])
 
     const itemsList = [
@@ -96,6 +97,7 @@ const Addpage = () => {
                     <div className="addpage__buttonContainer">
                         <button className="login__button">Voeg toe</button>
                     </div>
+                    {addpageError && <span className="addpage__error">{addpageError}</span>}
                 </form>
             </section>
             <Footer dropDownItems = {["Deutsch","English","Nederlands","Español","Français","Português"]}/>

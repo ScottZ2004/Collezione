@@ -234,6 +234,8 @@ export const CollectionProvider = ({children}) => {
         }
     }
 
+    const [addpageError, setAddpageError] = useState("");
+
     const addToCollection = async(e) => {
         e.preventDefault();
         const toBeAdded = {
@@ -245,12 +247,14 @@ export const CollectionProvider = ({children}) => {
             "userId": user.userId,
             "filter": addItemInput.filter
         }
+
         try{
             await axios.post('collection', toBeAdded);
-            getCollectionFromDataBase();
-            navigate('/user/' + user.userId + "/collection")
+            getCollectionFromDataBase()
+            navigate('/user/' + user.userId + "/collection");
         }
         catch(e){
+            setAddpageError(e.response.data.message);
             console.log(e.response.data.message)
         }
     }
@@ -312,7 +316,7 @@ export const CollectionProvider = ({children}) => {
         addItemInput,
         setAddItemInput,
         addToCollection,
-
+        addpageError,
 
     }}>{children}</CollectionContext.Provider>
 }

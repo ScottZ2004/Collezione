@@ -65,3 +65,7 @@
     width: 100%;
 }
 
+.addpage__error{
+    font-size: 2rem;
+    color: rgb(255, 126, 29);
+}
