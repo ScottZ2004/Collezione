@@ -1,0 +1,71 @@
+.addpage{
+    padding-top: 9rem;
+    min-height: 87.3vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FAF6F4;
+}
+
+.addpage__form{
+    border-radius: 0.5rem;
+    margin: 2rem;
+    max-width: 55rem;
+    background-color: white;
+    padding: 2rem;
+}
+
+.addpage__heading{
+    padding: 0.5rem;
+    font-size: 4rem;
+    text-align: center;
+}
+
+.addpage__select{
+    border: 1px solid #DAD7D5;
+    border-radius: 0.8rem;
+    height: 5.8rem;
+    font-size: 1.6rem;
+    color: rgb(90, 88, 87);
+    width: 100%;
+    padding-left: 1rem;
+}
+
+.addpage__option{
+    border-radius: 0.8rem;
+    height: 5.8rem;
+    font-size: 1.6rem;
+    color: rgb(90, 88, 87);
+    width: 100%;
+    padding-left: 1rem;
+    background: none;
+    text-align: start;
+}
+
+.addpage__selectButton{
+    border: 1px solid #DAD7D5;
+    border-radius: 0.8rem;
+    height: 5.8rem;
+    font-size: 1.6rem;
+    color: rgb(90, 88, 87);
+    width: 100%;
+    padding-left: 1rem;
+    background: none;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+.addpage__selectButton:hover{
+    cursor: pointer;
+}
+
+.addpage__buttonContainer{
+    width: 100%;
+}
+
+.addpage__error{
+    font-size: 2rem;
+    color: rgb(255, 126, 29);
+}

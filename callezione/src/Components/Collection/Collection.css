@@ -226,6 +226,7 @@
     border-radius: 50%;
     background: #FFFFFF;
     transition: 0.2s all;
+    color: black;
 }
 
 .collection__add__text{

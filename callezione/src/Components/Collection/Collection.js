@@ -9,7 +9,7 @@ import CollectionContext from "../../Context/CollectionContext";
 import "./Collection.css";
 
 const Collection = () =>{
-    const {collection, user, redirectToLogin, selectedItem, setPageNumber, getCollection} = useContext(CollectionContext);
+    const {collection, user, redirectToLogin, selectedItem, setPageNumber, getCollection, collectionFromDataBase} = useContext(CollectionContext);
     let myNumber = useParams();
     const navigate = useNavigate();
     
@@ -25,6 +25,10 @@ const Collection = () =>{
             navigate('/login');
         }
     },[]);
+
+    useEffect(() => {
+        getCollection(myNumber.number);
+    },[collectionFromDataBase])
 
     let left = null
     

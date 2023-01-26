@@ -93,12 +93,22 @@ export const CollectionProvider = ({children}) => {
     });
     const [activeFilter, setActiveFilter] = useState("ALLES");
     const [pageNumber, setPageNumber] = useState(0);
+    const [addItemInput, setAddItemInput] = useState(
+        {
+            title: "",
+            description: "",
+            Build_Year: 0,
+            Park: "",
+            img: "",
+            userId: 0,
+            filter: ""
+        }
+    )
 
     const getCollectionFromDataBase = async() => {
         try{
             let response = await axios.get('/collection');
             setCollectionFromDataBase(response.data.data);
-            console.log(response.data.data)
         }
         catch(e){
 
@@ -162,7 +172,6 @@ export const CollectionProvider = ({children}) => {
             }
             
         });
-        console.log(newState[0]);
 
         const toBeAdded = {
             "title": newState[0].title,
@@ -174,8 +183,7 @@ export const CollectionProvider = ({children}) => {
             "filter": filter
         }
         try{
-            let response = await axios.put("collection/" + selectedItem, toBeAdded);
-            console.log(response)
+            await axios.put("collection/" + selectedItem, toBeAdded);
         }catch(e){
             console.log(e)
         }
@@ -226,12 +234,46 @@ export const CollectionProvider = ({children}) => {
         }
     }
 
+    const [addpageError, setAddpageError] = useState("");
+
+    const addToCollection = async(e) => {
+        e.preventDefault();
+        const toBeAdded = {
+            "title": addItemInput.title,
+            "description": addItemInput.description,
+            "Build_Year": addItemInput.Build_Year,
+            "Park": addItemInput.Park,
+            "img": selectedImage,
+            "userId": user.userId,
+            "filter": addItemInput.filter
+        }
+
+        try{
+            await axios.post('collection', toBeAdded);
+            getCollectionFromDataBase()
+            navigate('/user/' + user.userId + "/collection");
+        }
+        catch(e){
+            setAddpageError(e.response.data.message);
+            console.log(e.response.data.message)
+        }
+    }
+
     //share
     const [shareIsOpen, setShareIsOpen] = useState(false);
 
     const openShare = () => {
         document.body.style.overflow = "hidden"
         setShareIsOpen(true)
+    }
+
+    //selectImage
+    const [selectImageIsOpen, setSelecteImageIsOpen] = useState(false);
+    const [selectedImage, setSelectedImage] = useState("");
+
+    const openSelectImage = () => {
+        document.body.style.overflow = "hidden";
+        setSelecteImageIsOpen(true)
     }
     
     useEffect(() => {
@@ -265,7 +307,16 @@ export const CollectionProvider = ({children}) => {
         setShareIsOpen,
         openShare,
         setUser,
-        collectionFromDataBase
+        collectionFromDataBase,
+        selectImageIsOpen,
+        openSelectImage,
+        setSelecteImageIsOpen,
+        selectedImage,
+        setSelectedImage,
+        addItemInput,
+        setAddItemInput,
+        addToCollection,
+        addpageError,
 
     }}>{children}</CollectionContext.Provider>
 }
