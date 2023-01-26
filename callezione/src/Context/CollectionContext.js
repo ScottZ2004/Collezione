@@ -2,8 +2,10 @@ import { createContext, useState, useEffect } from "react";
 import usersData from "../data/users";
 import { useNavigate } from "react-router-dom";
 import collectionData from "../data/collection";
-const CollectionContext = createContext();
+import axios from "axios";
+axios.defaults.baseURL = "http://127.0.0.1:8000/api/v1/";
 
+const CollectionContext = createContext(); 
 export const CollectionProvider = ({children}) => {
     const navigate = useNavigate();
     //login
@@ -22,50 +24,65 @@ export const CollectionProvider = ({children}) => {
         setRedirectPath(path);
     }
 
-    const addUser = (firstName, lastName, email, password) => {
-        let toBeAdded = [
-            {
-                name: firstName,
-                lastName: lastName,
-                email: email,
-                password: password,
-                id: users.length + 1,
-            }
-        ]
-        let mergedArrays = users.concat(toBeAdded);
-        setUsers(mergedArrays);
-        navigate('/login')
+    const getUsers = async() =>{
+        try{
+            let response = await axios.get('users/get');
+            setUsers(response.data.data)
+        }
+        catch(e){
+            console.log(e)
+        }
     }
 
+    const addUser = async(firstName, lastName, email, password) => {
+        let toBeAdded = 
+            {
+                name: firstName,
+                lastname: lastName,
+                email: email,
+                password: password,
+            }
+        try{
+            const response = await axios.post('users/register', toBeAdded)
+            console.log(response)
+        }catch(e){
+            console.log(e)
+        }
+        navigate('/login')
+    }
     const onInputChange = (event) => {
         setLoginValues({
             ...loginValues,
             [event.target.id]: event.target.value
         })
     }
-    const logIn = () => {
-        users.map(user => {
-            if (loginValues.email == user.email && loginValues.password == user.password){
+    const logIn = async() => {
+        try{
+            const response = await axios.post('users/login', loginValues);
+            if(response.data.id !== undefined){
                 setUser({
                     isLoggedIn: true,
-                    userId: user.id,
+                    userId: response.data.id
                 });
-                let route = "/user/" + user.id + "/collection/";
+                let route = "/user/" + response.data.id + "/collection/";
                 if (redirectPath !== ""){
                     route = redirectPath
                 }
+                getUsers();
                 navigate(route);
             }else{
                 setWrongInput(true)
                 redirectToLogin("")
             }
-        })
-
+        }
+        catch(e){
+        }
     }
 
 
     // collection
-    const [collection, setCollection] = useState(collectionData.collection);
+    const [collectionFromDataBase, setCollectionFromDataBase] = useState([])
+    const [collection, setCollection] = useState(collectionFromDataBase);
     const [selectedItem, setSelectedItem] = useState(1);
     const [editMode, setEditMode] = useState(false);
     const [selectedInput, setSelectedInput] = useState({
@@ -77,11 +94,21 @@ export const CollectionProvider = ({children}) => {
     const [activeFilter, setActiveFilter] = useState("ALLES");
     const [pageNumber, setPageNumber] = useState(0);
 
+    const getCollectionFromDataBase = async() => {
+        try{
+            let response = await axios.get('/collection');
+            setCollectionFromDataBase(response.data.data);
+            console.log(response.data.data)
+        }
+        catch(e){
+
+        }
+    }
+
     const getCollection = (number) => {
         let isInCollection = false
-        const filteredCollection = collectionData.collection.filter(item => {
+        const filteredCollection = collectionFromDataBase.filter(item => {
             if(item.userId == number){
-                
                 return item
             }
         });
@@ -90,7 +117,7 @@ export const CollectionProvider = ({children}) => {
                 isInCollection = true
             }
         })
-        if(!isInCollection){
+        if(!isInCollection && filteredCollection.length !== 0){
             setSelectedItem(filteredCollection[0].id)
         }
         
@@ -106,13 +133,13 @@ export const CollectionProvider = ({children}) => {
         setEditMode(false)
     }
 
-    const saveItem = (title, description, build_year, park) => {
-        let newState = collection.map(item => {
+    const saveItem = async(title, description, build_year, park, img, filter) => {
+        console.log(img, filter);
+        let newState = collection.filter(item => {
             if (selectedItem === item.id){
                 item.id = selectedItem;
                 if(selectedInput.title === ""){
                     item.title = title
-                    console.log("hallo")
                 }else{
                     item.title = selectedInput.title;    
                 }     
@@ -131,11 +158,28 @@ export const CollectionProvider = ({children}) => {
                 }else{
                     item.Park = selectedInput.park;
                 }              
-                               
+                return item               
             }
-            return item
+            
         });
-        setCollection(newState);
+        console.log(newState[0]);
+
+        const toBeAdded = {
+            "title": newState[0].title,
+            "description": newState[0].description,
+            "Build_Year": newState[0].Build_Year,
+            "Park": newState[0].Park,
+            "img": img,
+            "userId": user.userId,
+            "filter": filter
+        }
+        try{
+            let response = await axios.put("collection/" + selectedItem, toBeAdded);
+            console.log(response)
+        }catch(e){
+            console.log(e)
+        }
+        getCollectionFromDataBase();
         setEditMode(false);
         setSelectedInput({
             title: "",
@@ -155,7 +199,7 @@ export const CollectionProvider = ({children}) => {
     const onFilterButtonClicked = (event) => {
         setActiveFilter(event.target.id);
         if(event.target.id !== "ALLES"){
-            const filteredCollection = collectionData.collection.filter(item => {
+            const filteredCollection = collectionFromDataBase.filter(item => {
                 if(item.userId == pageNumber){
                     return item
                 }
@@ -172,9 +216,8 @@ export const CollectionProvider = ({children}) => {
                 setSelectedInput(0)
             }
         }else{
-            const filteredCollection = collectionData.collection.filter(item => {
+            const filteredCollection = collectionFromDataBase.filter(item => {
                 if(item.userId == pageNumber){
-                    console.log(item)
                     return item
                 }
             });
@@ -192,7 +235,7 @@ export const CollectionProvider = ({children}) => {
     }
     
     useEffect(() => {
-        setUsers(usersData.users);
+        getCollectionFromDataBase()
     },[])
 
     return <CollectionContext.Provider value={{
@@ -221,7 +264,8 @@ export const CollectionProvider = ({children}) => {
         shareIsOpen,
         setShareIsOpen,
         openShare,
-        setUser
+        setUser,
+        collectionFromDataBase
 
     }}>{children}</CollectionContext.Provider>
 }

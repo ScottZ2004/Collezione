@@ -16,7 +16,6 @@ const Share = () => {
     }
   
     const closeShareBackground = (e) => {
-        console.log(modalRef.current)
         if(modalRef.current === e.target){
             document.body.style.overflow = "scroll"
             setShareIsOpen(false) 

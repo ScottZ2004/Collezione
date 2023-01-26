@@ -11,10 +11,8 @@ const CollectionLeft = (props) =>{
         content = <h1 className="collection__error">Je hebt nog niks in je collectie of je hebt geen achtbaan met {activeFilter} in je collectie zitten. voeg een nieuw item toe door op het plusje te klikken!</h1>
     }else{
         const onClick = () => {
-            saveItem(props.item.title,props.item.description,props.item.Build_Year,props.item.Park);
+            saveItem(props.item.title,props.item.description,props.item.Build_Year,props.item.Park,props.item.img,props.item.filter);
         }
-
-        
 
         let articleSection = (
             <article className="collection__selected__article">
