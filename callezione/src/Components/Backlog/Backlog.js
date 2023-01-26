@@ -68,7 +68,8 @@ const Backlog = () => {
             }
         });
         if(item.length > 0){
-            setChosenCoaster(item[0]);
+            let nmbr = Math.floor(Math.random() * item.length)
+            setChosenCoaster(item[nmbr]);
         }else{
             setChosenCoaster(item)
         }
