@@ -234,6 +234,27 @@ export const CollectionProvider = ({children}) => {
         }
     }
 
+    const addToCollection = async(e) => {
+        e.preventDefault();
+        const toBeAdded = {
+            "title": addItemInput.title,
+            "description": addItemInput.description,
+            "Build_Year": addItemInput.Build_Year,
+            "Park": addItemInput.Park,
+            "img": selectedImage,
+            "userId": user.userId,
+            "filter": addItemInput.filter
+        }
+        try{
+            await axios.post('collection', toBeAdded);
+            getCollectionFromDataBase();
+            navigate('/user/' + user.userId + "/collection")
+        }
+        catch(e){
+            console.log(e.response.data.message)
+        }
+    }
+
     //share
     const [shareIsOpen, setShareIsOpen] = useState(false);
 
@@ -241,10 +262,6 @@ export const CollectionProvider = ({children}) => {
         document.body.style.overflow = "hidden"
         setShareIsOpen(true)
     }
-    
-    useEffect(() => {
-        getCollectionFromDataBase()
-    },[])
 
     //selectImage
     const [selectImageIsOpen, setSelecteImageIsOpen] = useState(false);
@@ -254,6 +271,10 @@ export const CollectionProvider = ({children}) => {
         document.body.style.overflow = "hidden";
         setSelecteImageIsOpen(true)
     }
+    
+    useEffect(() => {
+        getCollectionFromDataBase()
+    },[])
 
     return <CollectionContext.Provider value={{
         redirectToLogin,
@@ -289,7 +310,9 @@ export const CollectionProvider = ({children}) => {
         selectedImage,
         setSelectedImage,
         addItemInput,
-        setAddItemInput
+        setAddItemInput,
+        addToCollection,
+
 
     }}>{children}</CollectionContext.Provider>
 }

@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Footer from "../Footer/Footer";
 
 const Addpage = () => {
-    const {user, redirectToLogin, openSelectImage, selectedImage, setAddItemInput, addItemInput} = useContext(CollectionContext);
+    const {user, redirectToLogin, openSelectImage, selectedImage, setAddItemInput, addItemInput, addToCollection} = useContext(CollectionContext);
     const navigate = useNavigate();
     useEffect(() => {
         if (!user.isLoggedIn){
@@ -48,14 +48,12 @@ const Addpage = () => {
             [e.target.id]: e.target.value
         })
     }
-    
-    console.log(addItemInput);
-    
+
     return(
         <>
             <Navigation items={itemsList}/>
             <section className="addpage">
-                <form className="addpage__form" action="">
+                <form onSubmit={addToCollection} className="addpage__form" action="">
                     <h1 className="addpage__heading">Voeg een nieuwe achtbaan toe aan je collectie!</h1>
                     <div className="login__inputContainer">
                         <div className="login__inputWrapper">
