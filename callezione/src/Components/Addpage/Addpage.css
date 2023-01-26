@@ -1,10 +1,12 @@
 .addpage{
     padding-top: 9rem;
+    padding-bottom: 9rem;
     min-height: 87.3vh;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #FAF6F4;
+    overflow-x: hidden;
 }
 
 .addpage__form{
