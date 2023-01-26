@@ -162,7 +162,6 @@ export const CollectionProvider = ({children}) => {
             }
             
         });
-        console.log(newState[0]);
 
         const toBeAdded = {
             "title": newState[0].title,
@@ -175,7 +174,6 @@ export const CollectionProvider = ({children}) => {
         }
         try{
             let response = await axios.put("collection/" + selectedItem, toBeAdded);
-            console.log(response)
         }catch(e){
             console.log(e)
         }
