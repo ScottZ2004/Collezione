@@ -1,4 +1,4 @@
-import { useEffect, useContext } from "react";
+import { useEffect, useContext, useState } from "react";
 import Navigation from "../Navigation/Navigation";
 import "./Addpage.css";
 import CollectionContext from "../../Context/CollectionContext";
@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Footer from "../Footer/Footer";
 
 const Addpage = () => {
-    const {user, redirectToLogin} = useContext(CollectionContext);
+    const {user, redirectToLogin, openSelectImage} = useContext(CollectionContext);
     const navigate = useNavigate();
     useEffect(() => {
         if (!user.isLoggedIn){
@@ -83,7 +83,7 @@ const Addpage = () => {
                     </div>
                     <div className="login__inputContainer">
                         <div className="login__inputWrapper">
-                            <div id="email" className="addpage__selectButton">Afbeelding kiezen</div>
+                            <div onClick={openSelectImage} id="email" className="addpage__selectButton">Afbeelding kiezen</div>
                         </div>
                     </div>
                     <div className="addpage__buttonContainer">

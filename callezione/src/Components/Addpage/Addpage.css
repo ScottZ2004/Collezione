@@ -8,6 +8,8 @@
 }
 
 .addpage__form{
+    border-radius: 0.5rem;
+    margin: 2rem;
     max-width: 55rem;
     background-color: white;
     padding: 2rem;

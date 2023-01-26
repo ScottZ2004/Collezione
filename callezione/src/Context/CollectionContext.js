@@ -98,7 +98,6 @@ export const CollectionProvider = ({children}) => {
         try{
             let response = await axios.get('/collection');
             setCollectionFromDataBase(response.data.data);
-            console.log(response.data.data)
         }
         catch(e){
 
@@ -173,7 +172,7 @@ export const CollectionProvider = ({children}) => {
             "filter": filter
         }
         try{
-            let response = await axios.put("collection/" + selectedItem, toBeAdded);
+            await axios.put("collection/" + selectedItem, toBeAdded);
         }catch(e){
             console.log(e)
         }
@@ -236,6 +235,14 @@ export const CollectionProvider = ({children}) => {
         getCollectionFromDataBase()
     },[])
 
+    //selectImage
+    const [selectImageIsOpen, setSelecteImageIsOpen] = useState(false);
+
+    const openSelectImage = () => {
+        document.body.style.overflow = "hidden";
+        setSelecteImageIsOpen(true)
+    }
+
     return <CollectionContext.Provider value={{
         redirectToLogin,
         users,
@@ -263,7 +270,10 @@ export const CollectionProvider = ({children}) => {
         setShareIsOpen,
         openShare,
         setUser,
-        collectionFromDataBase
+        collectionFromDataBase,
+        selectImageIsOpen,
+        openSelectImage,
+        setSelecteImageIsOpen
 
     }}>{children}</CollectionContext.Provider>
 }
