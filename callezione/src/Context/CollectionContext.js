@@ -93,6 +93,17 @@ export const CollectionProvider = ({children}) => {
     });
     const [activeFilter, setActiveFilter] = useState("ALLES");
     const [pageNumber, setPageNumber] = useState(0);
+    const [addItemInput, setAddItemInput] = useState(
+        {
+            title: "",
+            description: "",
+            Build_Year: 0,
+            Park: "",
+            img: "",
+            userId: 0,
+            filter: ""
+        }
+    )
 
     const getCollectionFromDataBase = async() => {
         try{
@@ -276,7 +287,9 @@ export const CollectionProvider = ({children}) => {
         openSelectImage,
         setSelecteImageIsOpen,
         selectedImage,
-        setSelectedImage
+        setSelectedImage,
+        addItemInput,
+        setAddItemInput
 
     }}>{children}</CollectionContext.Provider>
 }

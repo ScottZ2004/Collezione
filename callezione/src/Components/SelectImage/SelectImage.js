@@ -22,18 +22,15 @@ const SelectImage = () => {
     const onImageClick = (src) => {
         setSelectedImage(src)
     }
-
-    let i = 0
     
     const imagesToBeRendered = images.images.map(image => {
         let className = "selectimage__imageContainer ";
         if(selectedImage === image){
             className = className + "selectimage__imageContainer--selected"
         }
-        i++
         return(
-            <div className={className}>
-                <img onClick={() => onImageClick(image)} src={image} alt={i} className="selectimage__image " />
+            <div key={image} className={className}>
+                <img onClick={() => onImageClick(image)} src={image} alt={image} className="selectimage__image " />
             </div>
         )
     })

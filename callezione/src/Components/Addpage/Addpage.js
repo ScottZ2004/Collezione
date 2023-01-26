@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Footer from "../Footer/Footer";
 
 const Addpage = () => {
-    const {user, redirectToLogin, openSelectImage, selectedImage} = useContext(CollectionContext);
+    const {user, redirectToLogin, openSelectImage, selectedImage, setAddItemInput, addItemInput} = useContext(CollectionContext);
     const navigate = useNavigate();
     useEffect(() => {
         if (!user.isLoggedIn){
@@ -42,6 +42,15 @@ const Addpage = () => {
         }
     ];
 
+    const onInputChange = (e) => {
+        setAddItemInput({
+            ...addItemInput,
+            [e.target.id]: e.target.value
+        })
+    }
+    
+    console.log(addItemInput);
+    
     return(
         <>
             <Navigation items={itemsList}/>
@@ -50,34 +59,34 @@ const Addpage = () => {
                     <h1 className="addpage__heading">Voeg een nieuwe achtbaan toe aan je collectie!</h1>
                     <div className="login__inputContainer">
                         <div className="login__inputWrapper">
-                            <input placeholder="email"  id="title" className="login__input" type="text"/>
+                            <input onChange={onInputChange} placeholder="email"  id="title" className="login__input" type="text"/>
                             <label  className="login__label" htmlFor="title">Titel</label>
                         </div>
                     </div>
                     <div className="login__inputContainer">
                         <div className="login__inputWrapper">
-                            <input placeholder="email" type="text" id="description" className="login__input"/>
+                            <input onChange={onInputChange} placeholder="email" type="text" id="description" className="login__input"/>
                             <label className="login__label" htmlFor="description">Beschrijving</label>
                         </div>
                     </div>
                     <div className="login__inputContainer">
                         <div className="login__inputWrapper">
-                            <input placeholder="email"  id="Build_Year" className="login__input" type="number"/>
+                            <input onChange={onInputChange} placeholder="email"  id="Build_Year" className="login__input" type="number"/>
                             <label  className="login__label" htmlFor="Build_Year">Bouw jaar</label>
                         </div>
                     </div>
                     <div className="login__inputContainer">
                         <div className="login__inputWrapper">
-                            <input placeholder="email" id="Park" className="login__input" type="text"/>
+                            <input onChange={onInputChange} placeholder="email" id="Park" className="login__input" type="text"/>
                             <label  className="login__label" htmlFor="Park">Park</label>
                         </div>
                     </div>
                     <div className="login__inputContainer">
                         <div className="login__inputWrapper">
-                            <select className="addpage__select" name="" id="">
-                                <option className="addpage__option" value="">Water</option>
-                                <option className="addpage__option" value="">Staal</option>
-                                <option className="addpage__option" value="">Hout</option>
+                            <select onChange={onInputChange} className="addpage__select" name="" id="filter">
+                                <option className="addpage__option" value="WATER">Water</option>
+                                <option className="addpage__option" value="STAAL">Staal</option>
+                                <option className="addpage__option" value="HOUT">Hout</option>
                             </select>
                         </div>
                     </div>
