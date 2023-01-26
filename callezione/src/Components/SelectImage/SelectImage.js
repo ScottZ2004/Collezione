@@ -5,7 +5,7 @@ import images from "../../data/images";
 
 const SelectImage = () => {
     const modalRef = useRef();
-    const {selectImageIsOpen, setSelecteImageIsOpen} = useContext(CollectionContext);
+    const {selectImageIsOpen, setSelecteImageIsOpen, selectedImage, setSelectedImage} = useContext(CollectionContext);
 
     const closeSelectImageBackground = (e) => {
         if(modalRef.current === e.target){
@@ -18,12 +18,22 @@ const SelectImage = () => {
         document.body.style.overflow = "scroll"
         setSelecteImageIsOpen(false) 
     }
+
+    const onImageClick = (src) => {
+        setSelectedImage(src)
+    }
+
     let i = 0
+    
     const imagesToBeRendered = images.images.map(image => {
+        let className = "selectimage__imageContainer ";
+        if(selectedImage === image){
+            className = className + "selectimage__imageContainer--selected"
+        }
         i++
         return(
-            <div className="selectimage__imageContainer selectimage__imageContainer--selected">
-                <img src={image} alt={i} className="selectimage__image " />
+            <div className={className}>
+                <img onClick={() => onImageClick(image)} src={image} alt={i} className="selectimage__image " />
             </div>
         )
     })

@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Footer from "../Footer/Footer";
 
 const Addpage = () => {
-    const {user, redirectToLogin, openSelectImage} = useContext(CollectionContext);
+    const {user, redirectToLogin, openSelectImage, selectedImage} = useContext(CollectionContext);
     const navigate = useNavigate();
     useEffect(() => {
         if (!user.isLoggedIn){
@@ -83,7 +83,7 @@ const Addpage = () => {
                     </div>
                     <div className="login__inputContainer">
                         <div className="login__inputWrapper">
-                            <div onClick={openSelectImage} id="email" className="addpage__selectButton">Afbeelding kiezen</div>
+                            <div onClick={openSelectImage} id="email" className="addpage__selectButton">Afbeelding kiezen {selectedImage && <p>{selectedImage}</p>}</div>
                         </div>
                     </div>
                     <div className="addpage__buttonContainer">

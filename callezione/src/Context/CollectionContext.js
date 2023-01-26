@@ -237,6 +237,7 @@ export const CollectionProvider = ({children}) => {
 
     //selectImage
     const [selectImageIsOpen, setSelecteImageIsOpen] = useState(false);
+    const [selectedImage, setSelectedImage] = useState("");
 
     const openSelectImage = () => {
         document.body.style.overflow = "hidden";
@@ -273,7 +274,9 @@ export const CollectionProvider = ({children}) => {
         collectionFromDataBase,
         selectImageIsOpen,
         openSelectImage,
-        setSelecteImageIsOpen
+        setSelecteImageIsOpen,
+        selectedImage,
+        setSelectedImage
 
     }}>{children}</CollectionContext.Provider>
 }

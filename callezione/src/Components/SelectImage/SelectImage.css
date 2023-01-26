@@ -57,6 +57,10 @@
     width: 100%;
     height: 100%;
 }
+.selectimage__imageContainer:hover{
+    cursor: pointer;
+}
+
 
 .selectimage__imageContainer--selected{
     border: rgb(255, 126, 29) solid 0.3rem;
