@@ -9,7 +9,7 @@ import CollectionContext from "../../Context/CollectionContext";
 import "./Collection.css";
 
 const Collection = () =>{
-    const {collection, setSelectedItem, user, redirectToLogin, selectedItem, setPageNumber, getCollection} = useContext(CollectionContext);
+    const {collection, user, redirectToLogin, selectedItem, setPageNumber, getCollection} = useContext(CollectionContext);
     let myNumber = useParams();
     const navigate = useNavigate();
     
@@ -39,8 +39,6 @@ const Collection = () =>{
                 selectedItemToBeRendered = item
             }
         });
-        
-        
         otherItems = collection.filter(item => {
             if (item.id !== selectedItem){
                 

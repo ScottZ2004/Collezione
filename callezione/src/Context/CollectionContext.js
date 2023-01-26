@@ -133,13 +133,13 @@ export const CollectionProvider = ({children}) => {
         setEditMode(false)
     }
 
-    const saveItem = (title, description, build_year, park) => {
-        let newState = collection.map(item => {
+    const saveItem = async(title, description, build_year, park, img, filter) => {
+        console.log(img, filter);
+        let newState = collection.filter(item => {
             if (selectedItem === item.id){
                 item.id = selectedItem;
                 if(selectedInput.title === ""){
                     item.title = title
-                    console.log("hallo")
                 }else{
                     item.title = selectedInput.title;    
                 }     
@@ -158,11 +158,28 @@ export const CollectionProvider = ({children}) => {
                 }else{
                     item.Park = selectedInput.park;
                 }              
-                               
+                return item               
             }
-            return item
+            
         });
-        setCollection(newState);
+        console.log(newState[0]);
+
+        const toBeAdded = {
+            "title": newState[0].title,
+            "description": newState[0].description,
+            "Build_Year": newState[0].Build_Year,
+            "Park": newState[0].Park,
+            "img": img,
+            "userId": user.userId,
+            "filter": filter
+        }
+        try{
+            let response = await axios.put("collection/" + selectedItem, toBeAdded);
+            console.log(response)
+        }catch(e){
+            console.log(e)
+        }
+        getCollectionFromDataBase();
         setEditMode(false);
         setSelectedInput({
             title: "",
