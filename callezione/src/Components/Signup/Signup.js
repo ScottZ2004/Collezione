@@ -139,7 +139,7 @@ const Signup = (props) =>{
                             {eye}
                         </div>
                         {wrongInputToBeRendered}
-                        <button onClick={onSubmitButtonClick} type="button" className="signup__button">Sign up</button>
+                        <button onClick={onSubmitButtonClick} type="button" className="signup__button">Registreer</button>
                     </form>
                 </section>
             </section>

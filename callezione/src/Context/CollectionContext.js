@@ -252,6 +252,7 @@ export const CollectionProvider = ({children}) => {
             await axios.post('collection', toBeAdded);
             getCollectionFromDataBase()
             navigate('/user/' + user.userId + "/collection");
+            setAddpageError("")
         }
         catch(e){
             setAddpageError(e.response.data.message);

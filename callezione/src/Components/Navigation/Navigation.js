@@ -23,11 +23,11 @@ const Navigation = (props) =>{
     let leftButton;
     if (url === "/login"){
         leftButton = (<div className="navigation__right">
-            <Link to="/signup" className="button">Signup</Link>
+            <Link to="/signup" className="button">Registreer</Link>
         </div>)
     }else if (!user.isLoggedIn){
         leftButton = (<div className="navigation__right">
-            <Link to="/login" className="button">Login</Link>
+            <Link to="/login" className="button">Log in</Link>
         </div>)
     }else if( url === "/"){
         let goTo = "/user/" + user.userId + "/collection/"

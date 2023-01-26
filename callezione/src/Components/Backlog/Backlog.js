@@ -34,7 +34,7 @@ const Backlog = () => {
             border_color: "yellow"
         },
         {
-            name: 'Logout',
+            name: 'Log uit',
             goto: '/logout',
             border_color: "purple"
         }
@@ -122,7 +122,7 @@ const Backlog = () => {
                             <option className="backlog__option" value="water">Water</option>
                         </select>
                     </div>
-                    <button className="button">Search</button>
+                    <button className="button">Zoek</button>
                     {error && <span className="backlog__error">{error}</span>}
                 </form>
                 {coasterToBeRendered}
