@@ -19,7 +19,7 @@ const Contact = () => {
                         <input id="message" name="message" placeholder="bericht" type="text" className="contact__input" />
                         <label htmlFor="message" className="contact__label">Bericht*</label>
                     </div>
-                    <Button title="Submit" />
+                    <Button title="Verstuur" />
                 </form>
             </div>
         </article>

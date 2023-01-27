@@ -37,7 +37,7 @@ const Addpage = () => {
             border_color: "yellow"
         },
         {
-            name: 'Logout',
+            name: 'Log uit',
             goto: '/logout',
             border_color: "purple",
         }

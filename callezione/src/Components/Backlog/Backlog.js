@@ -34,7 +34,7 @@ const Backlog = () => {
             border_color: "yellow"
         },
         {
-            name: 'Logout',
+            name: 'Log uit',
             goto: '/logout',
             border_color: "purple"
         }
@@ -68,7 +68,8 @@ const Backlog = () => {
             }
         });
         if(item.length > 0){
-            setChosenCoaster(item[0]);
+            let nmbr = Math.floor(Math.random() * item.length)
+            setChosenCoaster(item[nmbr]);
         }else{
             setChosenCoaster(item)
         }
@@ -122,7 +123,7 @@ const Backlog = () => {
                             <option className="backlog__option" value="water">Water</option>
                         </select>
                     </div>
-                    <button className="button">Search</button>
+                    <button className="button">Zoek</button>
                     {error && <span className="backlog__error">{error}</span>}
                 </form>
                 {coasterToBeRendered}

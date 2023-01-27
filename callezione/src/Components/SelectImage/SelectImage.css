@@ -13,9 +13,10 @@
 .selectimage__article{
     background: white;
     max-width: 80rem;
-    max-height: 80rem;
+    max-height: 70rem;
     overflow-y: scroll;
     position: relative;
+    padding: 1rem;
 }
 
 .selectimage__x{
