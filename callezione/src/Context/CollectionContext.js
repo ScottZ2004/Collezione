@@ -3,7 +3,8 @@ import usersData from "../data/users";
 import { useNavigate } from "react-router-dom";
 import collectionData from "../data/collection";
 import axios from "axios";
-axios.defaults.baseURL = "http://collezione-api.scottzico.com/api/v1/";
+
+axios.defaults.baseURL = "https://collezione-api.scottzico.com/api/v1/";
 
 const CollectionContext = createContext(); 
 export const CollectionProvider = ({children}) => {
